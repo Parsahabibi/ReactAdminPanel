@@ -1,12 +1,15 @@
 import React from 'react'
-import {Typography, useTheme} from "@mui/material";
+import {Grid, useTheme} from "@mui/material";
+import Dashboard from "../Components/Dashboard";
 
 const Home = () => {
 
     const theme = useTheme()
 
     return (
-        <Typography variant={'h1'} color={theme.palette.primary.main}>hello</Typography>
+      <Grid bgcolor={theme.palette.primary.one} height={'100vh'} width={'100%'}>
+          <Dashboard />
+      </Grid>
     )
 }
 export default Home

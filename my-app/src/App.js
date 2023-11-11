@@ -1,13 +1,18 @@
 
 import './App.css';
 import Home from "./Pages/Home";
+import {Grid} from "@mui/material";
+import {RouterProvider} from "react-router-dom";
+import router from "./routes/routes";
 
 function App() {
 
 
 
   return (
-      <Home />
+      <Grid>
+        <RouterProvider router={router} />
+      </Grid>
   );
 }
 

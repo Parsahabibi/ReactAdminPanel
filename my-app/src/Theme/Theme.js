@@ -29,69 +29,11 @@ const Theme = createTheme({
                 },
             },
         },
-        // MuiButton: {
-        //     variants: [
-        //         {
-        //             props: {variant: "outlined"},
-        //             style: {
-        //                 color: "#444A5D",
-        //                 backgrond: theme,
-        //                 border: '1px solid #444A5D',
-        //                 borderRadius: "10px",
-        //                 padding: "12px",
-        //                 fontWeight: "500",
-        //                 fontSize: "16px",
-        //                 "&:hover": {
-        //                     border: " 1px solid #FFBF3F"
-        //                 },
-        //             },
-        //         },
-        //         {
-        //             props: {variant: "contained"},
-        //             style: {
-        //                 background: "#4318FF",
-        //                 color: "white",
-        //                 borderRadius: "16px",
-        //                 fontSize: "14px",
-        //                 display: "flex",
-        //                 justifyContent: "center",
-        //                 // "&:hover": {
-        //                 //     background: "rgba(255, 191, 63, 1)",
-        //                 //     color: "#333845",
-        //                 // },
-        //             },
-        //         },
-        //         {
-        //             props: {variant: "outlinedTwo"},
-        //             style: {
-        //                 background: "white",
-        //                 color: "rgba(68, 74, 93, 1)",
-        //                 borderRadius: "10px",
-        //                 border: " 1px solid rgba(68, 74, 93, 1)",
-        //                 backgroundColor: 'white',
-        //                 fontSize: "14px",
-        //                 display: "flex",
-        //                 justifyContent: "center",
-        //                 alignItems: 'center',
-        //                 width: "100%",
-        //                 padding: "4px 10px",
-        //                 // margin:'auto',
-        //                 "&:hover": {
-        //                     background: "rgba(255, 191, 63, 1)",
-        //                     color: "#333845",
-        //                     border: '1px solid rgba(255, 191, 63, 1)',
-        //
-        //                 },
-        //             },
-        //         },
-        //     ],
-        // },
     },
     palette: {
-        primary: {
             main: '#4318FF',
-            primary: '#2B3674',
-            secondary: '#A3AED0',
+            dark: '#2B3674',
+            light: '#A3AED0',
             one: '#F4F7FE',
             two: '#B0BBD5',
             three: '#6D7175',
@@ -100,7 +42,6 @@ const Theme = createTheme({
             six: '#EFF4FB',
             seven: '#FAFCFE',
             eight: '#707EAE'
-        },
         // primary: {
         // main: '#08A6A6',
         // primary : '#036666',
@@ -145,6 +86,8 @@ const Theme = createTheme({
         // eight: '#B79191'
         // },
     },
+
+
     breakpoints: {
         values: {
             xs: 0,

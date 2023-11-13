@@ -1,12 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {Grid, Typography, useTheme} from "@mui/material";
 import {useMediaQuery} from '@mui/material';
-import {Info, Moon, Notification} from "./Icons";
+import {Info, Moon, Notification} from "../Icons";
 import {useSpring, animated} from "@react-spring/web";
 import {Link} from "react-router-dom";
 
 
-const DesktopHeader = ({SubTitle, MainTitle}) => {
+const DesktopHeader = ({SubTitle, MainTitle }) => {
 
     const [showIcon, setShowIcon] = useState(true)
 
@@ -57,8 +57,8 @@ const DesktopHeader = ({SubTitle, MainTitle}) => {
         <Grid className={'DesktopHeader'} pt={'48px'} pr={'16px'} pb={'32px'} pl={{md: '16px', l: '48px'}}
               display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
             <Grid className={'TitleHeader'}>
-                <Typography fontWeight={500} variant={'h6'} color={theme.palette.eight}>منو / داشبورد</Typography>
-                <Typography fontWeight={700} variant={'h1'} color={theme.palette.dark}>داشبورد اصلی</Typography>
+                <Typography fontWeight={500} variant={'h6'} color={theme.palette.eight}>{SubTitle}</Typography>
+                <Typography fontWeight={700} variant={'h1'} color={theme.palette.dark}>{MainTitle}</Typography>
             </Grid>
             <Grid className={'ItemsTitle'} py={'10px'} px={'12px'} bgcolor={'white'} borderRadius={'30px'}
                   display={'flex'} alignItems={'center'} justifyContent={'space-between'} gap={'15px'}>

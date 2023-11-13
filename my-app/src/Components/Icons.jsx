@@ -1,5 +1,3 @@
-import {SvgIcon, useTheme} from "@mui/material";
-
 
 const HomeIcon = ({fill}) => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -102,11 +100,68 @@ const LoginIcon = () => {
 };
 
 
+const Notification = () => {
+    return(
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="notifications_none" clip-path="url(#clip0_1_3915)">
+                <path id="Vector" d="M4.70995 17.29L5.99995 16V11C5.99995 7.93 7.63995 5.36 10.4999 4.68V4C10.4999 3.17 11.1699 2.5 11.9999 2.5C12.8299 2.5 13.4999 3.17 13.4999 4V4.68C16.3699 5.36 17.9999 7.92 17.9999 11V16L19.2899 17.29C19.9199 17.92 19.4799 19 18.5899 19H5.41995C4.51995 19 4.07995 17.92 4.70995 17.29ZM7.99995 17H15.9999V11C15.9999 8.52 14.4899 6.5 11.9999 6.5C9.50995 6.5 7.99995 8.52 7.99995 11V17ZM11.9999 22C10.8999 22 9.99995 21.1 9.99995 20H13.9999C13.9999 21.1 13.1099 22 11.9999 22Z" fill="#A3AED0"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_1_3915">
+                    <rect width="24" height="24" fill="white" transform="matrix(-1 0 0 1 24 0)"/>
+                </clipPath>
+            </defs>
+        </svg>
+    )
+};
+
+
+
+const Moon = () => {
+    return(
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="moon-solid 1" clip-path="url(#clip0_1_3913)">
+                <path id="Vector" d="M8.04297 18C5.26696 18 2.7316 16.737 1.0519 14.6675C0.803415 14.3613 1.07436 13.9141 1.45837 13.9872C5.82489 14.8188 9.83478 11.4709 9.83478 7.06303C9.83478 4.52398 8.47556 2.18914 6.26649 0.931992C5.92596 0.738211 6.0116 0.221941 6.39853 0.150469C6.94097 0.0504468 7.49139 8.21369e-05 8.04297 0C13.0109 0 17.043 4.02578 17.043 9C17.043 13.9679 13.0172 18 8.04297 18Z" fill="#A3AED0"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_1_3913">
+                    <rect width="18" height="18" fill="white" transform="matrix(-1 0 0 1 18 0)"/>
+                </clipPath>
+            </defs>
+        </svg>
+
+    )
+};
+
+
+
+
+
+const Info = () => {
+    return(
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="info_outline" clip-path="url(#clip0_1_3908)">
+                <path id="Vector" d="M13 7H11V9H13V7ZM12 17C11.45 17 11 16.55 11 16V12C11 11.45 11.45 11 12 11C12.55 11 13 11.45 13 12V16C13 16.55 12.55 17 12 17ZM12 2C17.52 2 22 6.48 22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2ZM12 20C16.41 20 20 16.41 20 12C20 7.59 16.41 4 12 4C7.59 4 4 7.59 4 12C4 16.41 7.59 20 12 20Z" fill="#A3AED0"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_1_3908">
+                    <rect width="24" height="24" fill="white" transform="matrix(-1 0 0 1 24 0)"/>
+                </clipPath>
+            </defs>
+        </svg>
+
+    )
+};
+
+
 export {
     HomeIcon,
     BasketIcon,
     ChartIcon,
     KanbanIcon,
     ProfileIcon,
-    LoginIcon
+    LoginIcon ,
+    Notification ,
+    Moon ,
+    Info
 }

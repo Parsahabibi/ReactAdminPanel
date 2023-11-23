@@ -55,7 +55,7 @@ const DesktopHeader = ({SubTitle, MainTitle }) => {
 
     return (
         <Grid className={'DesktopHeader'} pt={'48px'} pr={'16px'} pb={'32px'} pl={{md: '16px', l: '48px'}}
-              display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
+              display={'flex'} alignItems={'center'} justifyContent={'space-between'} width={'100%'}>
             <Grid className={'TitleHeader'}>
                 <Typography fontWeight={500} variant={'h6'} color={theme.palette.eight}>{SubTitle}</Typography>
                 <Typography fontWeight={700} variant={'h1'} color={theme.palette.dark}>{MainTitle}</Typography>

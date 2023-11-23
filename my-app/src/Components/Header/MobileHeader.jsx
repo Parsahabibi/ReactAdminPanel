@@ -3,11 +3,16 @@ import {Grid, Typography, useTheme} from "@mui/material";
 import {Info, MenuIcon, Moon, Notification} from "../Icons";
 import {useSpring, animated} from "@react-spring/web";
 import {Link} from "react-router-dom";
+import Dashboard from "../Dashboard";
 
 const MobileHeader = () => {
 
 
     const [showOption, setShowOption] = useState(false)
+
+    const [openDashboard, setOpenDashboard] = useState(false)
+
+
 
     const IconsData = [
         {id: 1, icon: <Notification/>},
@@ -21,6 +26,18 @@ const MobileHeader = () => {
     const optionAnimation = useSpring({
         opacity: showOption ? 1 : 0,
     });
+
+    const dashboardAnimation = useSpring({
+        opacity: openDashboard ? 1 : 0,
+        transform: openDashboard ? 'translateY(0)' : 'translateY(-100%)',
+        onRest: () => {
+            // Set openDashboard to false after the animation is complete
+            if (!openDashboard) {
+                setOpenDashboard(false);
+            }
+        },
+    });
+
 
 
     const ref = useRef();
@@ -39,71 +56,89 @@ const MobileHeader = () => {
         };
     }, [ref]);
 
+
+
     return (
-        <Grid className={'DesktopHeader'} pt={'6px'} pr={'24px'} pb={'16px'} pl={'12px'}  display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
-            <Grid className={'MobileDashboardMenu'} width={'28px'} height={'28px'}>
-                <MenuIcon fill={theme.palette.main}/>
-            </Grid>
-            <Grid className={'ItemsTitle'} py={'10px'} px={'12px'} display={'flex'} alignItems={'center'} justifyContent={'space-between'} gap={'15px'}>
-                <Grid className={'IconsItemsTitle'} display={'flex'} alignItems={'center'} justifyContent={'flex-start'}
-                      gap={'16px'}>
-                    {
-                        IconsData.map(
-                            item =>
-                                <>
-                                    {item.icon}
-                                </>
-                        )
-                    }
+        <Grid className={'MobileHeader'}>
+            {openDashboard && (
+                <Grid>
+                    <Grid bgcolor={'rgba(0, 0, 0, 0.2)'} width={'100%'} height={'100%'} position={'fixed'} top={0} right={0} zIndex={10} onClick={()=>{setOpenDashboard(false)}}/>
+                        <Grid className={'dashboard'} position={'absolute'} top={0} right={0} zIndex={11}>
+                            <Dashboard />
+                        </Grid>
                 </Grid>
-                <Grid width={'41px'} height={'41px'} className={'ProfileItemsTitle'} display={'flex'}
-                      alignItems={'center'} justifyContent={'center'}>
-                    <img src={'assets/images/User.png'} width={'100%'} height={'100%'} alt={''}
-                         style={{borderRadius: '50%'}}/>
+            )}
+
+            <Grid className={'mobileHeaderItems'} pt={'6px'} pr={'16px'} pb={'16px'} pl={'12px'} display={'flex'}
+                  alignItems={'center'} justifyContent={'space-between'}>
+                <Grid onClick={() => {
+                    setOpenDashboard(!openDashboard)
+                }} className={'MobileDashboardMenu'} width={'28px'} height={'28px'}>
+                    <MenuIcon fill={theme.palette.main}/>
                 </Grid>
-                <Grid className={'OptionItemsTitle'} width={'4px'} height={'16px'} display={'flex'}
-                      alignItems={'center'} justifyContent={'center'} position={'relative'} ref={ref}>
-                    <img src={'assets/images/HeaderOption.svg'} width={'100%'} height={'100%'} alt={''}
-                         onClick={() => {
-                             setShowOption(!showOption)
-                         }}
-                    />
-                    <animated.div
-                        style={{
-                            ...optionAnimation,
-                            position: 'absolute',
-                            top: '37px',
-                            left: 0,
-                            backgroundColor: 'white',
-                            borderRadius: '16px',
-                            boxShadow: '0px 5px 5px rgba(0, 0, 0, 0.25)',
-                            paddingTop: '35px',
-                            paddingBottom: '35px',
-                            paddingRight: '40px',
-                            paddingLeft: '120px',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'flex-start',
-                            justifyContent: 'flex-start',
-                            gap: '16px',
-                        }}
-                    >
-                        <Link to={''}>
-                            <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
-                                تغییر رمز عبور
-                            </Typography>
-                        </Link>
-                        <Link to={''}>
-                            <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
-                                خروج
-                            </Typography>
-                        </Link>
-                        <Link to={''}>
-                            <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
-                                به روز رسانی آمار
-                            </Typography>
-                        </Link>
-                    </animated.div>
+                <Grid className={'ItemsTitle'} py={'10px'} px={'12px'} display={'flex'} alignItems={'center'}
+                      justifyContent={'space-between'} gap={'15px'}>
+                    <Grid className={'IconsItemsTitle'} display={'flex'} alignItems={'center'}
+                          justifyContent={'flex-start'}
+                          gap={'16px'}>
+                        {
+                            IconsData.map(
+                                item =>
+                                    <>
+                                        {item.icon}
+                                    </>
+                            )
+                        }
+                    </Grid>
+                    <Grid width={'41px'} height={'41px'} className={'ProfileItemsTitle'} display={'flex'}
+                          alignItems={'center'} justifyContent={'center'}>
+                        <img src={'assets/images/User.png'} width={'100%'} height={'100%'} alt={''}
+                             style={{borderRadius: '50%'}}/>
+                    </Grid>
+                    <Grid className={'OptionItemsTitle'} width={'4px'} height={'16px'} display={'flex'}
+                          alignItems={'center'} justifyContent={'center'} position={'relative'} ref={ref}>
+                        <img src={'assets/images/HeaderOption.svg'} width={'100%'} height={'100%'} alt={''}
+                             onClick={() => {
+                                 setShowOption(!showOption)
+                             }}
+                        />
+                        <animated.div
+                            style={{
+                                ...optionAnimation,
+                                position: 'absolute',
+                                top: '37px',
+                                left: 0,
+                                backgroundColor: 'white',
+                                borderRadius: '16px',
+                                boxShadow: '0px 5px 5px rgba(0, 0, 0, 0.25)',
+                                paddingTop: '35px',
+                                paddingBottom: '35px',
+                                paddingRight: '40px',
+                                paddingLeft: '120px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'flex-start',
+                                justifyContent: 'flex-start',
+                                gap: '16px',
+                            }}
+                        >
+                            <Link to={''}>
+                                <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
+                                    تغییر رمز عبور
+                                </Typography>
+                            </Link>
+                            <Link to={''}>
+                                <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
+                                    خروج
+                                </Typography>
+                            </Link>
+                            <Link to={''}>
+                                <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
+                                    به روز رسانی آمار
+                                </Typography>
+                            </Link>
+                        </animated.div>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

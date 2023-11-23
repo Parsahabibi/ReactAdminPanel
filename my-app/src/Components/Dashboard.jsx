@@ -28,7 +28,7 @@ const Dashboard = ({id  , marginLeft}) => {
 
 
     return (
-        <Grid pt={{xs: '', md: '40px'}} pb={{xs: '', md: '233px'}} bgcolor={'white'}
+        <Grid pt={{xs: '40px'}} pb={{xs: '394px', md: '233px'}} bgcolor={'white'}
               width={{xs: '230px', xxs: '290px'}}>
             <Grid className={'DashboardShoppingLogo'} px={'46px'} pb={'34px'} display={'flex'} alignItems={'center'}
                   justifyContent={'center'} gap={'8px'}>
@@ -55,8 +55,8 @@ const Dashboard = ({id  , marginLeft}) => {
                     )
                 }
             </Grid>
-            <Grid style={gradientStyle} mx={'31px'} mb={'233px'} borderRadius={'24px'} position={'relative'}>
-                <Grid className={'Logo'} position={'absolute'} width={'94px'} height={'94px'} borderRadius={'50%'} bgcolor={'white'} right={'30%'} top={'-25%'}>
+            <Grid style={gradientStyle} mx={'31px'} borderRadius={'24px'} position={'relative'}>
+                <Grid className={'Logo'} position={'absolute'} width={'94px'} height={'94px'} borderRadius={'50%'} bgcolor={'white'} right={{xs:'22%' , xxs:'30%'}} top={{xs:'-21%' , xxs:'-25%'}}>
                     <Grid position={'absolute'} right={'5%'} top={'5%'} width={'84px'} height={'84px'} borderRadius={'50%'} style={gradientStyle}></Grid>
                 </Grid>
                 <Grid className={'DescriptionDashboardLogo'} px={'18px'} pt={'72px'} pb={'49px'} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'} gap={'9px'}>

@@ -12,6 +12,7 @@ const MobileHeader = () => {
 
     const [openDashboard, setOpenDashboard] = useState(false)
 
+    const [closing, setClosing] = useState(false);
 
 
     const IconsData = [
@@ -27,17 +28,10 @@ const MobileHeader = () => {
         opacity: showOption ? 1 : 0,
     });
 
-    const dashboardAnimation = useSpring({
-        opacity: openDashboard ? 1 : 0,
-        transform: openDashboard ? 'translateY(0)' : 'translateY(-100%)',
-        onRest: () => {
-            // Set openDashboard to false after the animation is complete
-            if (!openDashboard) {
-                setOpenDashboard(false);
-            }
-        },
-    });
-
+    const [spring, setSpring] = useSpring(() => ({
+        opacity: 0,
+        transform: 'translateX(100%)',
+    }));
 
 
     const ref = useRef();
@@ -56,19 +50,21 @@ const MobileHeader = () => {
         };
     }, [ref]);
 
+    useEffect(() => {
+        if (!openDashboard) {
+            const timeoutId = setTimeout(() => {
+                setClosing(true);
+            }, 200);
+            return () => clearTimeout(timeoutId);
+        }
+    }, [openDashboard]);
+
+
+    setSpring({ opacity: openDashboard ? 1 : 0, transform: openDashboard ? 'translateX(0%)' : 'translateX(100%)' });
 
 
     return (
         <Grid className={'MobileHeader'}>
-            {openDashboard && (
-                <Grid>
-                    <Grid bgcolor={'rgba(0, 0, 0, 0.2)'} width={'100%'} height={'100%'} position={'fixed'} top={0} right={0} zIndex={10} onClick={()=>{setOpenDashboard(false)}}/>
-                        <Grid className={'dashboard'} position={'absolute'} top={0} right={0} zIndex={11}>
-                            <Dashboard />
-                        </Grid>
-                </Grid>
-            )}
-
             <Grid className={'mobileHeaderItems'} pt={'6px'} pr={'16px'} pb={'16px'} pl={'12px'} display={'flex'}
                   alignItems={'center'} justifyContent={'space-between'}>
                 <Grid onClick={() => {
@@ -76,6 +72,17 @@ const MobileHeader = () => {
                 }} className={'MobileDashboardMenu'} width={'28px'} height={'28px'}>
                     <MenuIcon fill={theme.palette.main}/>
                 </Grid>
+                {openDashboard && (
+                    <Grid>
+                        <Grid
+                            style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', position: 'fixed', top: 0, right: 0, zIndex: 10 }}
+                            onClick={() => setOpenDashboard(false)}
+                        />
+                        <animated.div className={'dashboard'} style={{ ...spring, position: 'absolute', top: 0, right: 0, zIndex: 11 }}>
+                            <Dashboard />
+                        </animated.div>
+                    </Grid>
+                )}
                 <Grid className={'ItemsTitle'} py={'10px'} px={'12px'} display={'flex'} alignItems={'center'}
                       justifyContent={'space-between'} gap={'15px'}>
                     <Grid className={'IconsItemsTitle'} display={'flex'} alignItems={'center'}

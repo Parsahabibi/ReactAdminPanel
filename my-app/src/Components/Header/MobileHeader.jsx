@@ -5,7 +5,7 @@ import {useSpring, animated} from "@react-spring/web";
 import {Link} from "react-router-dom";
 import Dashboard from "../Dashboard";
 
-const MobileHeader = () => {
+const MobileHeader = ({ id , marginLeft}) => {
 
 
     const [showOption, setShowOption] = useState(false)
@@ -79,7 +79,7 @@ const MobileHeader = () => {
                             onClick={() => setOpenDashboard(false)}
                         />
                         <animated.div className={'dashboard'} style={{ ...spring, position: 'absolute', top: 0, right: 0, zIndex: 11 }}>
-                            <Dashboard />
+                            <Dashboard  id={id} marginLeft={marginLeft}/>
                         </animated.div>
                     </Grid>
                 )}

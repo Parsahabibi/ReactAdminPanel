@@ -10,7 +10,7 @@ const HeaderLayout = ({id , marginLeft , MainTitle , SubTitle , title}) => {
 
     useEffect(() => {
         setComponentToShow(
-            matches ? <DesktopLayoutHeader id={id} marginLeft={marginLeft} SubTitle={SubTitle} MainTitle={MainTitle}/> : <MobileLayoutHeader title={title}/>
+            matches ? <DesktopLayoutHeader id={id} marginLeft={marginLeft} SubTitle={SubTitle} MainTitle={MainTitle}/> : <MobileLayoutHeader title={title} marginLeft={marginLeft} id={id}/>
         )
     }, [matches])
 

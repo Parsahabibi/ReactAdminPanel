@@ -17,6 +17,10 @@ const Dashboard = ({id  , marginLeft}) => {
         {id: 6, image: <LoginIcon />, title: 'ورود', link: '/Login'},
     ]
 
+
+    console.log( `${marginLeft}-60px`)
+
+
     const main = theme.palette.main
 
     const one = theme.palette.one
@@ -42,7 +46,7 @@ const Dashboard = ({id  , marginLeft}) => {
                     DashboardData.map(
                         item =>
                             <Link to={item.link} key={item.id} style={{display:'flex' , alignItems:'center' , justifyContent:'space-between'}}>
-                                <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'} gap={'12px'} ml={item.id === id ? marginLeft : 0}>
+                                <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'} gap={'12px'} ml={{xs:item.id === id ? `${marginLeft - 60}px` : 0 , xxs:item.id === id ?  `${marginLeft}px` : 0}}>
                                     <Grid>
                                         {item.image}
                                     </Grid>

@@ -10,7 +10,7 @@ const Home = () => {
 
     return (
       <Grid bgcolor={theme.palette.primary.one} height={'100vh'} width={'100%'}>
-         <HeaderLayout id={1} title={'داشبورد اصلی'} MainTitle={'داشبورد اصلی'} SubTitle={'منو / داشبورد'} marginLeft={'164px'}/>
+         <HeaderLayout id={1} title={'داشبورد اصلی'} MainTitle={'داشبورد اصلی'} SubTitle={'منو / داشبورد'} marginLeft={164}/>
       </Grid>
     )
 }

@@ -4,6 +4,7 @@ import {useMediaQuery} from '@mui/material';
 import {Info, Moon, Notification} from "../Icons";
 import {useSpring, animated} from "@react-spring/web";
 import {Link} from "react-router-dom";
+import zIndex from "@mui/material/styles/zIndex";
 
 
 const DesktopHeader = ({SubTitle, MainTitle }) => {
@@ -33,6 +34,7 @@ const DesktopHeader = ({SubTitle, MainTitle }) => {
 
     const optionAnimation = useSpring({
         opacity: showOption ? 1 : 0,
+        zIndex:showOption ? 5 : -1
     });
 
 

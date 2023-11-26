@@ -9,7 +9,7 @@ const MobileNavbarCard = ({icon, MobileTitle, notification, des, imageState, per
 
     return (
         <Grid className={'MobileNavbarCard'} bgcolor={'white'} borderRadius={'15px'} p={{xs:'8px 10px 19px 10px' , xxs:'8px 16px 19px 18px'}}
-              width={'136px'} height={'90px'}>
+              width={'100%'} height={'90px'}>
             <Grid pb={'12px'} display={'flex'} alignItems={'flex-end'} justifyContent={'flex-start'} gap={'8px'}>
                 {imageState ? icon : <></>}
                 <Typography variant={'h6'} fontWeight={700} color={theme.palette.light}>{MobileTitle}</Typography>

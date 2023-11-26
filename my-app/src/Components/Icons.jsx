@@ -233,6 +233,10 @@ const File = ({fill}) => {
 };
 
 
+
+
+
+
 export {
     HomeIcon,
     BasketIcon,
@@ -247,5 +251,5 @@ export {
     Income,
     Dollar,
     Tick,
-    File
+    File ,
 }

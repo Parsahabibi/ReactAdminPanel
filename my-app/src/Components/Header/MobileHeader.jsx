@@ -5,7 +5,7 @@ import {useSpring, animated} from "@react-spring/web";
 import {Link} from "react-router-dom";
 import Dashboard from "../Dashboard";
 
-const MobileHeader = ({ id , marginLeft}) => {
+const MobileHeader = ({id, marginLeft}) => {
 
 
     const [showOption, setShowOption] = useState(false)
@@ -60,7 +60,7 @@ const MobileHeader = ({ id , marginLeft}) => {
     }, [openDashboard]);
 
 
-    setSpring({ opacity: openDashboard ? 1 : 0, transform: openDashboard ? 'translateX(0%)' : 'translateX(100%)' });
+    setSpring({opacity: openDashboard ? 1 : 0, transform: openDashboard ? 'translateX(0%)' : 'translateX(100%)'});
 
 
     return (
@@ -75,11 +75,20 @@ const MobileHeader = ({ id , marginLeft}) => {
                 {openDashboard && (
                     <Grid>
                         <Grid
-                            style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', height: '100%', position: 'fixed', top: 0, right: 0, zIndex: 10 }}
+                            style={{
+                                backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                                width: '100%',
+                                height: '100%',
+                                position: 'fixed',
+                                top: 0,
+                                right: 0,
+                                zIndex: 10
+                            }}
                             onClick={() => setOpenDashboard(false)}
                         />
-                        <animated.div className={'dashboard'} style={{ ...spring, position: 'absolute', top: 0, right: 0, zIndex: 11 }}>
-                            <Dashboard  id={id} marginLeft={marginLeft}/>
+                        <animated.div className={'dashboard'}
+                                      style={{...spring, position: 'absolute', top: 0, right: 0, zIndex: 11}}>
+                            <Dashboard id={id} marginLeft={marginLeft}/>
                         </animated.div>
                     </Grid>
                 )}
@@ -109,6 +118,7 @@ const MobileHeader = ({ id , marginLeft}) => {
                                  setShowOption(!showOption)
                              }}
                         />
+
                         <animated.div
                             style={{
                                 ...optionAnimation,
@@ -130,17 +140,20 @@ const MobileHeader = ({ id , marginLeft}) => {
                             }}
                         >
                             <Link to={''}>
-                                <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
+                                <Typography variant={'h5'} color={theme.palette.dark}
+                                            style={{whiteSpace: 'nowrap'}}>
                                     تغییر رمز عبور
                                 </Typography>
                             </Link>
                             <Link to={''}>
-                                <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
+                                <Typography variant={'h5'} color={theme.palette.dark}
+                                            style={{whiteSpace: 'nowrap'}}>
                                     خروج
                                 </Typography>
                             </Link>
                             <Link to={''}>
-                                <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
+                                <Typography variant={'h5'} color={theme.palette.dark}
+                                            style={{whiteSpace: 'nowrap'}}>
                                     به روز رسانی آمار
                                 </Typography>
                             </Link>

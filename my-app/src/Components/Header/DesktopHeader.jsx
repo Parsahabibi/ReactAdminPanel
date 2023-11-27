@@ -34,7 +34,6 @@ const DesktopHeader = ({SubTitle, MainTitle }) => {
 
     const optionAnimation = useSpring({
         opacity: showOption ? 1 : 0,
-        zIndex:showOption ? 5 : -1
     });
 
 
@@ -116,42 +115,43 @@ const DesktopHeader = ({SubTitle, MainTitle }) => {
                              setShowOption(!showOption)
                          }}
                     />
-                    <animated.div
-                        style={{
-                            ...optionAnimation,
-                            position: 'absolute',
-                            top: '37px',
-                            left: 0,
-                            backgroundColor: 'white',
-                            borderRadius: '16px',
-                            boxShadow: '0px 5px 5px rgba(0, 0, 0, 0.25)',
-                            paddingTop: '35px',
-                            paddingBottom: '35px',
-                            paddingRight: '40px',
-                            paddingLeft: '154px',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'flex-start',
-                            justifyContent: 'flex-start',
-                            gap: '16px',
-                        }}
-                    >
-                        <Link to={''}>
-                            <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
-                                تغییر رمز عبور
-                            </Typography>
-                        </Link>
-                        <Link to={''}>
-                            <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
-                                خروج
-                            </Typography>
-                        </Link>
-                        <Link to={''}>
-                            <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
-                                به روز رسانی آمار
-                            </Typography>
-                        </Link>
-                    </animated.div>
+
+                        <animated.div
+                            style={{
+                                ...optionAnimation,
+                                position: 'absolute',
+                                top: '37px',
+                                left: 0,
+                                backgroundColor: 'white',
+                                borderRadius: '16px',
+                                boxShadow: '0px 5px 5px rgba(0, 0, 0, 0.25)',
+                                paddingTop: '35px',
+                                paddingBottom: '35px',
+                                paddingRight: '40px',
+                                paddingLeft: '154px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'flex-start',
+                                justifyContent: 'flex-start',
+                                gap: '16px',
+                            }}
+                        >
+                            <Link to={''}>
+                                <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
+                                    تغییر رمز عبور
+                                </Typography>
+                            </Link>
+                            <Link to={''}>
+                                <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
+                                    خروج
+                                </Typography>
+                            </Link>
+                            <Link to={''}>
+                                <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
+                                    به روز رسانی آمار
+                                </Typography>
+                            </Link>
+                        </animated.div>
                 </Grid>
             </Grid>
         </Grid>

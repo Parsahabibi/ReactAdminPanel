@@ -8,6 +8,7 @@ import MobileNavbarCard from "../Components/NavbarCard/MobileNavbarCard";
 import DesktopNavbarCard from "../Components/NavbarCard/DesktopNavbarCard";
 import Dashboard from "../Components/Dashboard";
 import WeeklyIncomeChart from "../Components/Charts/WeeklyIncomeChart";
+import MonthlyIncomeChart from "../Components/Charts/MonthlyIncomeChart";
 
 const Home = () => {
 
@@ -20,11 +21,23 @@ const Home = () => {
 
     let variant = 'h6';
 
+    let secondVariant = 'subtitle2'
+
+    let ThirdVariant = 'h6'
+
+    let FourthVariant = 'subtitle2'
+
 
     if (isXs) {
         variant = 'h6';
+        secondVariant = 'subtitle2'
+        ThirdVariant = 'h6'
+        FourthVariant = 'subtitle1'
     } else if (isMd) {
         variant = 'h2';
+        secondVariant = 'h6'
+        ThirdVariant = 'h2'
+        FourthVariant = 'subtitle2'
     }
 
 
@@ -188,23 +201,62 @@ const Home = () => {
                             )
                         }
                     </Grid>
-                    <Grid className={'IncomeChart'} style={{display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
+                    <Grid className={'IncomeChart'} sx={{display:{md:'grid'} , gridTemplateColumns:'1fr 1fr'}} gap={'16px'}>
                         <Grid className={'weeklyIncomeChart'} width={'100%'} bgcolor={'white'} borderRadius={'20px'}
                               p={'24px'} height={'345px'} mb={{xs: '24px', md: 0}}>
                             <Grid className={'HeaderWeeklyIncomeChart'} display={'flex'}
                                   alignItems={'center'} justifyContent={'space-between'} pb={'32px'}>
-                                <Typography variant={variant} color={theme.palette.dark} fontWeight={700}>درآمد هفتگی</Typography>
+                                <Typography variant={variant} color={theme.palette.dark} fontWeight={700}>درآمد
+                                    هفتگی</Typography>
                                 <Grid width={{xs: '32px', md: '36px'}} height={{xs: '28px', md: '33px'}}
                                       borderRadius={'10px'} bgcolor={theme.palette.one} display={'flex'}
                                       alignItems={'center'} justifyContent={'center'}>
                                     <Income fill={theme.palette.main}/>
                                 </Grid>
                             </Grid>
-                            <Grid className={'WeeklyChart'} width={{xs:'250px' , xxs:'300px' , sm:'335px' , md:'223px' , l:'90%'}} margin={'0 auto'}>
-                                <WeeklyIncomeChart />
+                            <Grid className={'WeeklyChart'}
+                                  width={{xs: '250px', xxs: '300px', sm: '335px', md: '223px', l: '90%'}}
+                                  mr={'auto'}>
+                                <WeeklyIncomeChart/>
                             </Grid>
                         </Grid>
-                        <Grid className={'MonthlyIncomeChart'}></Grid>
+                        <Grid className="MonthlyIncome" width={'100%'} bgcolor={'white'} borderRadius={'20px'}
+                              p={'24px'} height={'345px'} mb={{xs: '24px', md: 0}}>
+                            <Grid className="HeaderMonthlyIncome" pb={{xs: '32px', md: '13px'}} display={'flex'}
+                                  alignItems={'center'} justifyContent={'space-between'}>
+                                <Grid className="month" display={'flex'} alignItems={'flex-start'}
+                                      justifyContent={'flex-start'} gap={'6px'} p={'4px 6px'} borderRadius={'7px'}
+                                      bgcolor={theme.palette.one}>
+                                    <img src="/assets/images/calendarToday.svg" alt=""/>
+                                    <Typography variant={secondVariant} fontWeight={500} className="secondary">ماه
+                                        جاری</Typography>
+                                </Grid>
+                                <Grid width={{xs: '32px', md: '36px'}} height={{xs: '28px', md: '33px'}}
+                                      borderRadius={'10px'} bgcolor={theme.palette.one} display={'flex'}
+                                      alignItems={'center'} justifyContent={'center'}>
+                                    <Income fill={theme.palette.main}/>
+                                </Grid>
+                            </Grid>
+                            <Grid className="ChartInformation" pr={{xs: '0', md: '24px'}}>
+                                <Typography variant={ThirdVariant} fontWeight={700} color={theme.palette.dark}
+                                            lineHeight={{xs: '14px', md: '42px'}} pb={{xs:'8px' , md:'4px'}}>37 میلیون
+                                    تومان</Typography>
+                                <Grid className="details" display={'flex'} alignItems={'baseline'}
+                                      justifyContent={'flex-start'} gap={'8px'}>
+                                    <Typography variant={secondVariant} fontWeight={500} color={theme.palette.lihgt}>جمع
+                                        مخارج</Typography>
+                                    <Grid className="salary" display={'flex'} alignItems={'center'}
+                                          justifyContent={'flex-start'} gap={'4px'}>
+                                        <img src="/assets/images/Up.svg" alt=""/>
+                                        <Typography variant={FourthVariant} color={'#05CD99'}
+                                                    fontWeight={700}>+2.45%</Typography>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid className="ChartMonthlyIncome" width={{xs:'100%' , md:'90%'}} height={{xs:'190px' , md:'180px'}} mr={'auto'}>
+                               <MonthlyIncomeChart />
+                            </Grid>
+                        </Grid>
                     </Grid>
                     <Grid className={'CircleChart'}></Grid>
                     <Grid className={'Calender'}></Grid>

@@ -9,6 +9,7 @@ import DesktopNavbarCard from "../Components/NavbarCard/DesktopNavbarCard";
 import Dashboard from "../Components/Dashboard";
 import WeeklyIncomeChart from "../Components/Charts/WeeklyIncomeChart";
 import MonthlyIncomeChart from "../Components/Charts/MonthlyIncomeChart";
+import CircleChart from "../Components/Charts/CircleChart";
 
 const Home = () => {
 
@@ -201,7 +202,8 @@ const Home = () => {
                             )
                         }
                     </Grid>
-                    <Grid className={'IncomeChart'} sx={{display:{md:'grid'} , gridTemplateColumns:'1fr 1fr'}} gap={'16px'}>
+                    <Grid className={'IncomeChart'} sx={{display: {md: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
+                          gap={'16px'} pb={'16px'}>
                         <Grid className={'weeklyIncomeChart'} width={'100%'} bgcolor={'white'} borderRadius={'20px'}
                               p={'24px'} height={'345px'} mb={{xs: '24px', md: 0}}>
                             <Grid className={'HeaderWeeklyIncomeChart'} display={'flex'}
@@ -215,7 +217,7 @@ const Home = () => {
                                 </Grid>
                             </Grid>
                             <Grid className={'WeeklyChart'}
-                                  width={{xs: '250px', xxs: '300px', sm: '335px', md: '223px', l: '90%'}}
+                                  width={{xs: '100%', md: '90%'}}
                                   mr={'auto'}>
                                 <WeeklyIncomeChart/>
                             </Grid>
@@ -239,7 +241,7 @@ const Home = () => {
                             </Grid>
                             <Grid className="ChartInformation" pr={{xs: '0', md: '24px'}}>
                                 <Typography variant={ThirdVariant} fontWeight={700} color={theme.palette.dark}
-                                            lineHeight={{xs: '14px', md: '42px'}} pb={{xs:'8px' , md:'4px'}}>37 میلیون
+                                            lineHeight={{xs: '14px', md: '42px'}} pb={{xs: '8px', md: '4px'}}>37 میلیون
                                     تومان</Typography>
                                 <Grid className="details" display={'flex'} alignItems={'baseline'}
                                       justifyContent={'flex-start'} gap={'8px'}>
@@ -253,12 +255,95 @@ const Home = () => {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid className="ChartMonthlyIncome" width={{xs:'100%' , md:'90%'}} height={{xs:'190px' , md:'180px'}} mr={'auto'}>
-                               <MonthlyIncomeChart />
+                            <Grid className="ChartMonthlyIncome" width={{xs: '100%', md: '90%'}}
+                                  height={{xs: '190px', md: '180px'}} mr={'auto'}>
+                                <MonthlyIncomeChart/>
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid className={'CircleChart'}></Grid>
+                    <Grid className={'CircleChart'} sx={{display: 'grid', gridTemplateColumns: '1fr 1fr'}}
+                          gap={'16px'} pb={'24px'}>
+                        <Grid className={'circle'} p={{
+                            xs: '19px 12px 21px 8px',
+                            md: '27px 21px 36px 32px',
+                            lg: ' 27px 19px 36px 19px',
+                            xg: '27px 21px 36px 32px'
+                        }} height={{lg: '345px'}} width={'100%'} borderRadius={'15px'} bgcolor={'white'}>
+                            <Grid className="MobileHeaderCircleChart" display={{xs: 'flex', md: 'none'}}
+                                  alignItems={'center'} justifyContent={'space-between'} pb={'13px'}>
+                                <Typography variant={'subtitle1'} display={{xs: 'block', xxs: 'none'}} fontWeight={700}>نمودار
+                                    دایره ای</Typography>
+                                <Typography variant={'h6'} display={{xs: 'none', xxs: 'block'}} fontWeight={700}>نمودار
+                                    دایره ای</Typography>
+                                <Grid className="DropDown" display={'flex'} alignItems={'center'}
+                                      justifyContent={'flex-start'} gap={{xs: '2px', xxs: '8px'}}>
+                                    <img src="/assets/images/Arrow.svg" alt=""/>
+                                    <Typography variant={'subtitle2'} fontWeight={500}>ماهانه</Typography>
+                                </Grid>
+                            </Grid>
+                            <Grid className="HeaderCircleChart" display={{xs: 'none', md: 'flex'}} alignItems={'center'}
+                                  justifyContent={'space-between'} pb={'21px'}>
+                                <Typography variant={'h5'} fontWeight={700}>نمودار دایره ای</Typography>
+                                <Grid className="DropDown" display={'flex'} alignItems={'center'}
+                                      justifyContent={'flex-start'} gap={'8px'}>
+                                    <img src="/assets/images/Arrow.svg" alt=""/>
+                                    <Typography variant={'subtitle1'} fontWeight={500}>ماهانه</Typography>
+                                </Grid>
+                            </Grid>
+                            <Grid width={{xs: '92px', sm: '140px', md: '144px'}} mx={'auto'} pb={{xs:'5px' , md:'21px'}}>
+                                <CircleChart/>
+                            </Grid>
+                            <Grid className="chartInformation" p={{
+                                xs: '6px',
+                                xxs: '6px 9px',
+                                md: '17px 10px 22px 10px',
+                                lg: '8px',
+                                xg: '17px 57px 22px 40px'
+                            }} display={'flex'} alignItems={'center'} justifyContent={'space-between'} boxShadow={5} borderRadius={{xs:'10px' , md:'15px'}}>
+                                <Grid className="System" display={{xs: 'flex', md: 'none'}} alignItems={'center'}
+                                      justifyContent={'flex-start'} gap={'2px'}>
+                                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle id="Ellipse 61" cx="4" cy="4" r="4" fill="#6AD2FF"/>
+                                    </svg>
+                                    <Typography variant={'subtitle2'}>سیستم</Typography>
+                                </Grid>
+                                <Grid className="DesktopSystem" display={{xs: 'none', md: 'flex'}}
+                                      flexDirection={'column'} alignItems={'center'}>
+                                    <Grid className="percent" display={'flex'} alignItems={'center'}
+                                          justifyContent={'flex-start'} flexDirection={'row-reverse'} gap={'5px'}>
+                                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <circle id="Ellipse 61" cx="4" cy="4" r="4" fill="#6AD2FF"/>
+                                        </svg>
+                                        <Typography variant={'subtitle1'}>سیستم</Typography>
+                                    </Grid>
+                                    <Typography variant={'h5'} className="medium">25%</Typography>
+                                </Grid>
+                                <Grid className="File" display={{xs: 'flex', md: 'none'}} alignItems={'center'}
+                                      justifyContent={'flex-start'} gap={'2px'}>
+                                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle id="Ellipse 61" cx="4" cy="4" r="4" fill="#4318FF"/>
+                                    </svg>
+                                    <Typography variant={'subtitle2'} whiteSpace={'nowrap'}>فایل های شما</Typography>
+                                </Grid>
+                                <Grid className="DesktopFile" display={{xs: 'none', md: 'flex'}}
+                                      flexDirection={'column'} alignItems={'center'}>
+                                    <Grid className="percent" display={'flex'} alignItems={'center'}
+                                          justifyContent={'flex-start'} flexDirection={'row-reverse'} gap={'5px'}>
+                                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <circle id="Ellipse 61" cx="4" cy="4" r="4" fill="#4318FF"/>
+                                        </svg>
+                                        <Typography variant={'subtitle1'}>فایل های شما</Typography>
+                                    </Grid>
+                                    <Typography variant={'h5'} className="medium">63%</Typography>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid className={'traffic'}></Grid>
+                    </Grid>
                     <Grid className={'Calender'}></Grid>
                     <Grid className={'ButtonNotification'}></Grid>
                 </Grid>

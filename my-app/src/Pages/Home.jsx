@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Grid, useTheme, useMediaQuery, Typography} from "@mui/material";
 import Header from "../Components/Header/Header";
 import DesktopLayoutHeader from "../Components/Layout/DesktopLayoutHeader";
 import HeaderLayout from "../Components/Layout/HeaderLayout";
-import {Dollar, File, Income, LeftCircle, RightCircle, Tick} from "../Components/Icons";
+import {Dollar, File, Income, LeftCircle, MoreHoriz, RightCircle, Tick} from "../Components/Icons";
 import MobileNavbarCard from "../Components/NavbarCard/MobileNavbarCard";
 import DesktopNavbarCard from "../Components/NavbarCard/DesktopNavbarCard";
 import Dashboard from "../Components/Dashboard";
@@ -11,12 +11,15 @@ import WeeklyIncomeChart from "../Components/Charts/WeeklyIncomeChart";
 import MonthlyIncomeChart from "../Components/Charts/MonthlyIncomeChart";
 import CircleChart from "../Components/Charts/CircleChart";
 import BarChart from "../Components/Charts/BarChart";
+import ChartMoreOption from "../Components/ChartMoreOption";
 
 const Home = () => {
 
     const theme = useTheme()
 
     const linearOne = `linear-gradient(180deg, ${theme.palette.main}, ${theme.palette.main} 0%, ${theme.palette.one} 100%)`;
+
+    const [option , setOption] = useState(false)
 
 
     const isXs = useMediaQuery(theme.breakpoints.down('xs'));
@@ -374,7 +377,7 @@ const Home = () => {
                                 md: '25px 15px 39px 15px',
                                 lg: '25px 19px 39px 19px',
                                 xg: '25px 37px 39px 37px'
-                            }} height={{lg: '345px'}} width={'100%'} borderRadius={'15px'} bgcolor={'white'} >
+                            }} height={{lg: '345px'}} width={'100%'} borderRadius={'15px'} bgcolor={'white'}>
                                 <Grid className="HeaderBarChart" display={'flex'} alignItems={'center'}
                                       justifyContent={'space-between'} pb={{xs: '8px', md: '16px'}}>
                                     <Typography color={theme.palette.light} fontWeight={500} variant={secondVariant}>ترافیک
@@ -386,7 +389,7 @@ const Home = () => {
                                     </Grid>
                                 </Grid>
                                 <Grid className="InformationBarChart" display={'flex'} alignItems={'center'}
-                                      gap={{xs: '8px', md: '16px'}} pb={{xs:'8px' , md:'25px'}}>
+                                      gap={{xs: '8px', md: '16px'}} pb={{xs: '8px', md: '25px'}}>
                                     <Typography variant={FiveVariant} color={theme.palette.dark}
                                                 fontWeight={700}>1258</Typography>
                                     <Typography variant={secondVariant} color={theme.palette.light} fontWeight={500}>بازدید
@@ -402,8 +405,10 @@ const Home = () => {
                                                       flexDirection={'column'} alignItems={'center'}
                                                       justifyContent={'center'} gap={{xs: '8px', md: '16px'}}>
                                                     <Grid className={'Bar'} width={{xs: '10px', xxs: '13px'}}
-                                                          style={{background: linearOne}} borderRadius={'60px 60px 0 0'} height={`${item.value}px`}></Grid>
-                                                    <Typography variant={FourthVariant} color={theme.palette.two} fontWeight={700}>
+                                                          style={{background: linearOne}} borderRadius={'60px 60px 0 0'}
+                                                          height={`${item.value}px`}></Grid>
+                                                    <Typography variant={FourthVariant} color={theme.palette.two}
+                                                                fontWeight={700}>
                                                         {toPersianNum(item.number)}
                                                     </Typography>
                                                 </Grid>
@@ -412,7 +417,25 @@ const Home = () => {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid className={'CheckTable'}></Grid>
+                        <Grid className={'CheckTable'}
+                              p={{xs: '21px 12px', xxs: '21px 24px', xg: '21px 60px 35px 32px'}} height={{lg: '345px'}}
+                              bgcolor={'white'} borderRadius={'15px'} width={'100%'}>
+                            <Grid className={'HeaderCheckTable'} display={'flex'} alignItems={'center'}
+                                  justifyContent={'space-between'}>
+                                <Typography variant={ThirdVariant} color={theme.palette.dark}
+                                            fontWeight={700}>جدول بررسی</Typography>
+                                <Grid className={'option'} position={'relative'} bgcolor={theme.palette.one}
+                                      display={'flex'} alignItems={'center'} justifyContent={'center'}
+                                      style={{cursor: 'pointer'}} width={{xs: '32px', md: '37px'}} borderRadius={'12px'}
+                                      height={{xs: '28px', md: '37px'}}
+                                      onClick={()=>{setOption(!option)}}
+                                >
+                                    <MoreHoriz fill={theme.palette.main}/>
+                                    <ChartMoreOption display={option}/>
+                                </Grid>
+                            </Grid>
+                            <Grid></Grid>
+                        </Grid>
                     </Grid>
                     <Grid className={'Calender'}></Grid>
                     <Grid className={'ButtonNotification'}></Grid>

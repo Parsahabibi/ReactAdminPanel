@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useRef} from 'react'
 import { Pie } from 'react-chartjs-2';
 import {Grid, useTheme} from "@mui/material";
 import Chart from 'chart.js/auto';
@@ -6,6 +6,7 @@ import Chart from 'chart.js/auto';
 const CircleChart = () => {
 
     const theme = useTheme()
+    const chartContainer = useRef(null);
 
     useEffect(() => {
         const ctx = document.getElementById('myPieChart').getContext('2d');
@@ -58,7 +59,10 @@ const CircleChart = () => {
     }, []); // Empty dependency array ensures useEffect runs only once
 
     return (
+        <Grid ref={chartContainer} width={{xs:'92px' , sm:'140px' , md:'144px'}} mx={'auto'} pb={{ xs: '5px', md: '21px' }}>
             <canvas id="myPieChart" style={{width:'100%' , height:'144px'}}/>
+        </Grid>
+
     )
 }
 export default CircleChart

@@ -1,3 +1,5 @@
+import React from "react";
+
 const HomeIcon = ({fill}) => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="Icon" clip-path="url(#clip0_1_4637)">
@@ -79,6 +81,25 @@ const ProfileIcon = ({fill}) => {
             </clipPath>
         </defs>
     </svg>)
+};
+
+const LeftCircle = ({fill}) => {
+    return (
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <circle id="Ellipse 61" cx="4" cy="4" r="4" fill={fill}/>
+        </svg>
+    )
+};
+
+
+const RightCircle = ({fill}) => {
+    return (
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <circle id="Ellipse 61" cx="4" cy="4" r="4" fill={fill}/>
+        </svg>
+    )
 };
 
 
@@ -252,4 +273,6 @@ export {
     Dollar,
     Tick,
     File ,
+    LeftCircle ,
+    RightCircle
 }

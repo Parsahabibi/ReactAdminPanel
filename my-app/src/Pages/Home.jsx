@@ -10,10 +10,13 @@ import Dashboard from "../Components/Dashboard";
 import WeeklyIncomeChart from "../Components/Charts/WeeklyIncomeChart";
 import MonthlyIncomeChart from "../Components/Charts/MonthlyIncomeChart";
 import CircleChart from "../Components/Charts/CircleChart";
+import BarChart from "../Components/Charts/BarChart";
 
 const Home = () => {
 
     const theme = useTheme()
+
+    const linearOne = `linear-gradient(180deg, ${theme.palette.main}, ${theme.palette.main} 0%, ${theme.palette.one} 100%)`;
 
 
     const isXs = useMediaQuery(theme.breakpoints.down('xs'));
@@ -28,17 +31,38 @@ const Home = () => {
 
     let FourthVariant = 'subtitle2'
 
+    let FiveVariant = 'h6'
+
 
     if (isXs) {
         variant = 'h6';
         secondVariant = 'subtitle2'
         ThirdVariant = 'h6'
         FourthVariant = 'subtitle1'
+        FiveVariant = 'h6'
     } else if (isMd) {
         variant = 'h2';
         secondVariant = 'h6'
         ThirdVariant = 'h2'
         FourthVariant = 'subtitle2'
+        FiveVariant = 'h1'
+    }
+
+
+    const BarChartData = [
+        {number: 0, value: 50},
+        {number: 4, value: 100},
+        {number: 8, value: 60},
+        {number: 12, value: 80},
+        {number: 14, value: 50},
+        {number: 16, value: 70},
+        {number: 18, value: 30},
+    ];
+
+
+    function toPersianNum(englishNumber) {
+        const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        return englishNumber.toString().split('').map(d => persianDigits[parseInt(d, 10)]).join('');
     }
 
 
@@ -230,7 +254,8 @@ const Home = () => {
                                       justifyContent={'flex-start'} gap={'6px'} p={'4px 6px'} borderRadius={'7px'}
                                       bgcolor={theme.palette.one}>
                                     <img src="/assets/images/calendarToday.svg" alt=""/>
-                                    <Typography color={theme.palette.light} variant={secondVariant} fontWeight={500} className="secondary">ماه
+                                    <Typography color={theme.palette.light} variant={secondVariant} fontWeight={500}
+                                                className="secondary">ماه
                                         جاری</Typography>
                                 </Grid>
                                 <Grid width={{xs: '32px', md: '36px'}} height={{xs: '28px', md: '33px'}}
@@ -273,23 +298,29 @@ const Home = () => {
                             }} height={{lg: '345px'}} width={'100%'} borderRadius={'15px'} bgcolor={'white'}>
                                 <Grid className="MobileHeaderCircleChart" display={{xs: 'flex', md: 'none'}}
                                       alignItems={'center'} justifyContent={'space-between'} pb={'13px'}>
-                                    <Typography color={theme.palette.dark} variant={'subtitle1'} display={{xs: 'block', xxs: 'none'}} fontWeight={700}>نمودار
+                                    <Typography color={theme.palette.dark} variant={'subtitle1'}
+                                                display={{xs: 'block', xxs: 'none'}} fontWeight={700}>نمودار
                                         دایره ای</Typography>
-                                    <Typography color={theme.palette.dark} variant={'h6'} display={{xs: 'none', xxs: 'block'}} fontWeight={700}>نمودار
+                                    <Typography color={theme.palette.dark} variant={'h6'}
+                                                display={{xs: 'none', xxs: 'block'}} fontWeight={700}>نمودار
                                         دایره ای</Typography>
                                     <Grid className="DropDown" display={'flex'} alignItems={'center'}
                                           justifyContent={'flex-start'} gap={{xs: '2px', xxs: '8px'}}>
                                         <img src="/assets/images/Arrow.svg" alt=""/>
-                                        <Typography color={theme.palette.light}  variant={'subtitle2'} fontWeight={500}>ماهانه</Typography>
+                                        <Typography color={theme.palette.light} variant={'subtitle2'}
+                                                    fontWeight={500}>ماهانه</Typography>
                                     </Grid>
                                 </Grid>
-                                <Grid className="HeaderCircleChart" display={{xs: 'none', md: 'flex'}} alignItems={'center'}
+                                <Grid className="HeaderCircleChart" display={{xs: 'none', md: 'flex'}}
+                                      alignItems={'center'}
                                       justifyContent={'space-between'} pb={'21px'}>
-                                    <Typography color={theme.palette.dark} variant={'h5'} fontWeight={700}>نمودار دایره ای</Typography>
+                                    <Typography color={theme.palette.dark} variant={'h5'} fontWeight={700}>نمودار دایره
+                                        ای</Typography>
                                     <Grid className="DropDown" display={'flex'} alignItems={'center'}
                                           justifyContent={'flex-start'} gap={'8px'}>
                                         <img src="/assets/images/Arrow.svg" alt=""/>
-                                        <Typography color={theme.palette.light} variant={'subtitle1'} fontWeight={500}>ماهانه</Typography>
+                                        <Typography color={theme.palette.light} variant={'subtitle1'}
+                                                    fontWeight={500}>ماهانه</Typography>
                                     </Grid>
                                 </Grid>
                                 <Grid>
@@ -301,38 +332,85 @@ const Home = () => {
                                     md: '17px 10px 22px 10px',
                                     lg: '8px',
                                     xg: '17px 57px 22px 40px'
-                                }} display={'flex'} alignItems={'center'} justifyContent={'space-between'} boxShadow={5} borderRadius={{xs:'10px' , md:'15px'}}>
+                                }} display={'flex'} alignItems={'center'} justifyContent={'space-between'} boxShadow={5}
+                                      borderRadius={{xs: '10px', md: '15px'}}>
                                     <Grid className="System" display={{xs: 'flex', md: 'none'}} alignItems={'center'}
                                           justifyContent={'flex-start'} gap={'2px'}>
-                                        <RightCircle fill={theme.palette.main} />
+                                        <RightCircle fill={theme.palette.main}/>
                                         <Typography color={theme.palette.light} variant={'subtitle2'}>سیستم</Typography>
                                     </Grid>
                                     <Grid className="DesktopSystem" display={{xs: 'none', md: 'flex'}}
                                           flexDirection={'column'} alignItems={'center'}>
                                         <Grid className="percent" display={'flex'} alignItems={'center'}
                                               justifyContent={'flex-start'} flexDirection={'row-reverse'} gap={'5px'}>
-                                            <RightCircle fill={theme.palette.main} />
-                                            <Typography color={theme.palette.light} variant={'subtitle1'}>سیستم</Typography>
+                                            <RightCircle fill={theme.palette.main}/>
+                                            <Typography color={theme.palette.light}
+                                                        variant={'subtitle1'}>سیستم</Typography>
                                         </Grid>
-                                        <Typography color={theme.palette.dark} variant={'h5'} className="medium">25%</Typography>
+                                        <Typography color={theme.palette.dark} variant={'h5'}
+                                                    className="medium">25%</Typography>
                                     </Grid>
                                     <Grid className="File" display={{xs: 'flex', md: 'none'}} alignItems={'center'}
                                           justifyContent={'flex-start'} gap={'2px'}>
-                                        <LeftCircle fill={theme.palette.five} />
-                                        <Typography color={theme.palette.light} variant={'subtitle2'} whiteSpace={'nowrap'}>فایل های شما</Typography>
+                                        <LeftCircle fill={theme.palette.five}/>
+                                        <Typography color={theme.palette.light} variant={'subtitle2'}
+                                                    whiteSpace={'nowrap'}>فایل های شما</Typography>
                                     </Grid>
                                     <Grid className="DesktopFile" display={{xs: 'none', md: 'flex'}}
                                           flexDirection={'column'} alignItems={'center'}>
                                         <Grid className="percent" display={'flex'} alignItems={'center'}
                                               justifyContent={'flex-start'} flexDirection={'row-reverse'} gap={'5px'}>
-                                            <LeftCircle fill={theme.palette.five} />
-                                            <Typography color={theme.palette.light} variant={'subtitle1'}>فایل های شما</Typography>
+                                            <LeftCircle fill={theme.palette.five}/>
+                                            <Typography color={theme.palette.light} variant={'subtitle1'}>فایل های
+                                                شما</Typography>
                                         </Grid>
-                                        <Typography color={theme.palette.dark} variant={'h5'} className="medium">63%</Typography>
+                                        <Typography color={theme.palette.dark} variant={'h5'}
+                                                    className="medium">63%</Typography>
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid className={'traffic'}></Grid>
+                            <Grid className={'traffic'} p={{
+                                xs: '8px 12px',
+                                md: '25px 15px 39px 15px',
+                                lg: '25px 19px 39px 19px',
+                                xg: '25px 37px 39px 37px'
+                            }} height={{lg: '345px'}} width={'100%'} borderRadius={'15px'} bgcolor={'white'} >
+                                <Grid className="HeaderBarChart" display={'flex'} alignItems={'center'}
+                                      justifyContent={'space-between'} pb={{xs: '8px', md: '16px'}}>
+                                    <Typography color={theme.palette.light} fontWeight={500} variant={secondVariant}>ترافیک
+                                        روزانه</Typography>
+                                    <Grid className="Up" display={'flex'} alignItems={'center'} gap={'4px'}>
+                                        <Typography variant={FourthVariant} fontWeight={700}
+                                                    color={'#05CD99'}>+2.45%</Typography>
+                                        <img src="/assets/images/Up.svg" alt=""/>
+                                    </Grid>
+                                </Grid>
+                                <Grid className="InformationBarChart" display={'flex'} alignItems={'center'}
+                                      gap={{xs: '8px', md: '16px'}} pb={{xs:'8px' , md:'25px'}}>
+                                    <Typography variant={FiveVariant} color={theme.palette.dark}
+                                                fontWeight={700}>1258</Typography>
+                                    <Typography variant={secondVariant} color={theme.palette.light} fontWeight={500}>بازدید
+                                        کننده </Typography>
+                                </Grid>
+                                <Grid className="BarChartSingle" display={'flex'} flexDirection={'row-reverse'}
+                                      alignItems={'flex-end'} justifyContent={'center'}
+                                      gap={{xs: '3px', xxs: '10px', sm: '25px', lg: '10px', g: '25px', xg: '28px'}}>
+                                    {
+                                        BarChartData.map(
+                                            item =>
+                                                <Grid key={item.number} className={'BarCharts'} display={'flex'}
+                                                      flexDirection={'column'} alignItems={'center'}
+                                                      justifyContent={'center'} gap={{xs: '8px', md: '16px'}}>
+                                                    <Grid className={'Bar'} width={{xs: '10px', xxs: '13px'}}
+                                                          style={{background: linearOne}} borderRadius={'60px 60px 0 0'} height={`${item.value}px`}></Grid>
+                                                    <Typography variant={FourthVariant} color={theme.palette.two} fontWeight={700}>
+                                                        {toPersianNum(item.number)}
+                                                    </Typography>
+                                                </Grid>
+                                        )
+                                    }
+                                </Grid>
+                            </Grid>
                         </Grid>
                         <Grid className={'CheckTable'}></Grid>
                     </Grid>

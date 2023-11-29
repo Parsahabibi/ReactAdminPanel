@@ -5,7 +5,8 @@ const DesktopNavbarCard = ({icon , DesktopTitle , DesktopNotification , percentS
 
     const theme = useTheme()
 
-    const gradient =linearState? `linear-gradient(90deg, ${theme.palette.dark}, ${theme.palette.two} 0%, ${theme.palette.five} 100%)`:'white'
+    const gradient =linearState? `linear-gradient(90deg, ${theme.palette.dark}, ${theme.palette.two} 0%,  ${theme.palette.five} 100%)`:'white'
+
 
     return (
         <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'} gap={'16px'} p={'21px 16px'} borderRadius={'20px'} bgcolor={'white'} width={'219px'} height={'98px'}>

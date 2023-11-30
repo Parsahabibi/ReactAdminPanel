@@ -12,6 +12,7 @@ import MonthlyIncomeChart from "../Components/Charts/MonthlyIncomeChart";
 import CircleChart from "../Components/Charts/CircleChart";
 import BarChart from "../Components/Charts/BarChart";
 import ChartMoreOption from "../Components/ChartMoreOption";
+import CheckTable from "../Components/Tables/CheckTable";
 
 const Home = () => {
 
@@ -19,7 +20,7 @@ const Home = () => {
 
     const linearOne = `linear-gradient(180deg, ${theme.palette.main}, ${theme.palette.main} 0%, ${theme.palette.one} 100%)`;
 
-    const [option , setOption] = useState(false)
+
 
 
     const isXs = useMediaQuery(theme.breakpoints.down('xs'));
@@ -421,20 +422,16 @@ const Home = () => {
                               p={{xs: '21px 12px', xxs: '21px 24px', xg: '21px 60px 35px 32px'}} height={{lg: '345px'}}
                               bgcolor={'white'} borderRadius={'15px'} width={'100%'}>
                             <Grid className={'HeaderCheckTable'} display={'flex'} alignItems={'center'}
-                                  justifyContent={'space-between'}>
+                                  justifyContent={'space-between'} pb={{xs:'12px' , md:'25px'}}>
                                 <Typography variant={ThirdVariant} color={theme.palette.dark}
                                             fontWeight={700}>جدول بررسی</Typography>
-                                <Grid className={'option'} position={'relative'} bgcolor={theme.palette.one}
-                                      display={'flex'} alignItems={'center'} justifyContent={'center'}
-                                      style={{cursor: 'pointer'}} width={{xs: '32px', md: '37px'}} borderRadius={'12px'}
-                                      height={{xs: '28px', md: '37px'}}
-                                      onClick={()=>{setOption(!option)}}
-                                >
-                                    <MoreHoriz fill={theme.palette.main}/>
-                                    <ChartMoreOption display={option}/>
-                                </Grid>
+                                <ChartMoreOption />
                             </Grid>
-                            <Grid></Grid>
+                            <Grid maxHeight={{xs:'126px' , md:'232px'}} sx={{overflowY:'auto' , scrollbarWidth:'none'  ,'&::-webkit-scrollbar': {
+                                    display: 'none',
+                                },}} >
+                                <CheckTable />
+                            </Grid>
                         </Grid>
                     </Grid>
                     <Grid className={'Calender'}></Grid>

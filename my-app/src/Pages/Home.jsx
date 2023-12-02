@@ -13,14 +13,13 @@ import CircleChart from "../Components/Charts/CircleChart";
 import BarChart from "../Components/Charts/BarChart";
 import ChartMoreOption from "../Components/ChartMoreOption";
 import CheckTable from "../Components/Tables/CheckTable";
+import Calender from "../Components/Calender/Calender";
 
 const Home = () => {
 
     const theme = useTheme()
 
     const linearOne = `linear-gradient(180deg, ${theme.palette.main}, ${theme.palette.main} 0%, ${theme.palette.one} 100%)`;
-
-
 
 
     const isXs = useMediaQuery(theme.breakpoints.down('xs'));
@@ -293,7 +292,7 @@ const Home = () => {
                     <Grid className={'CircleChart'} sx={{display: {lg: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
                           gap={'16px'}>
                         <Grid sx={{display: 'grid', gridTemplateColumns: '1fr 1fr'}}
-                              gap={'16px'} pb={'24px'}>
+                              gap={'16px'} pb={'16px'}>
                             <Grid className={'circle'} p={{
                                 xs: '19px 12px 21px 8px',
                                 md: '27px 21px 36px 32px',
@@ -419,22 +418,33 @@ const Home = () => {
                             </Grid>
                         </Grid>
                         <Grid className={'CheckTable'}
+                              mb={{xs:'16px' , md:0}}
                               p={{xs: '21px 12px', xxs: '21px 24px', xg: '21px 60px 35px 32px'}} height={{lg: '345px'}}
-                              bgcolor={'white'} borderRadius={'15px'} width={'100%'}>
+                              bgcolor={'white'} borderRadius={{xs:'15px' , md:'20px'}} width={'100%'}>
                             <Grid className={'HeaderCheckTable'} display={'flex'} alignItems={'center'}
-                                  justifyContent={'space-between'} pb={{xs:'12px' , md:'25px'}}>
+                                  justifyContent={'space-between'} pb={{xs: '12px', md: '25px'}}>
                                 <Typography variant={ThirdVariant} color={theme.palette.dark}
                                             fontWeight={700}>جدول بررسی</Typography>
-                                <ChartMoreOption />
+                                <ChartMoreOption/>
                             </Grid>
-                            <Grid maxHeight={{xs:'126px' , md:'232px'}} sx={{overflowY:'auto' , scrollbarWidth:'none'  ,'&::-webkit-scrollbar': {
+                            <Grid maxHeight={{xs: '126px', md: '232px'}} sx={{
+                                overflowY: 'auto', scrollbarWidth: 'none', '&::-webkit-scrollbar': {
                                     display: 'none',
-                                },}} >
-                                <CheckTable />
+                                },
+                            }}>
+                                <CheckTable/>
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid className={'Calender'}></Grid>
+                    <Grid className={'Calender'} sx={{display: {lg: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
+                          gap={'16px'}>
+                        <Grid className={'CalenderAndTasks'} sx={{display: {md: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
+                              gap={'16px'}>
+                            <Calender/>
+                            <Grid></Grid>
+                        </Grid>
+                        <Grid className={'ComplexTable'}></Grid>
+                    </Grid>
                     <Grid className={'ButtonNotification'}></Grid>
                 </Grid>
             </Grid>

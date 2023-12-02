@@ -1,0 +1,97 @@
+
+
+.Calender .monthsContainer .month-days {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.Calender .monthsContainer .month-days .day {
+    font-size: 12px;
+    font-weight: 700;
+    color: #591B1B;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Calender .monthsContainer .month-days .day.empty {
+    visibility: hidden;
+}
+ .Calender .monthsContainer .month-days .day.day-weekend {
+    color: red;
+}
+ .Calender .monthsContainer .month-days .day.day-special {
+    color: red !important;
+}
+ .Calender .monthsContainer .month-days .day.daySelected {
+    border-radius: 50%;
+    color: white !important;
+}
+@media screen and (min-width: 900px) {
+ .Calender .monthsContainer .month-days .day {
+        width: 40px;
+    }
+}
+@media screen and (min-width: 1536px) {
+ .Calender .monthsContainer .month-days .day {
+        width: 26px;
+        height: 26px;
+        margin: 8px 0;
+    }
+}
+@media screen and (min-width: 1788px) {
+.Calender .monthsContainer .month-days .day {
+        width: 40px;
+    }
+}
+ .Calender .monthsContainer .month-days.first-day-offset {
+    margin-top: 40px;
+}
+
+@media screen and (min-width: 1536px) {
+    .Calender .monthsContainer .month-days.first-day-offset {
+       margin-top: 42px;
+    }
+}
+
+
+@media screen and (min-width: 400px) {
+ .Calender .monthsContainer {
+        justify-content: space-between;
+    }
+}
+@media screen and (min-width: 1788px) {
+ .Calender .monthsContainer {
+        gap: 16px;
+    }
+}
+ .Calender .weekday-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ .Calender .weekday-container p {
+    color: #591B1B;
+    padding-bottom: 16px;
+    font-size: 10px;
+    font-weight: 700;
+}
+@media screen and (min-width: 1000px) {
+ .Calender .weekday-container p {
+        font-size: 12px;
+    }
+}
+
+
+.custom-select {
+    border: none;
+    /* Other styles */
+}
+.custom-select:focus,
+.custom-select:active {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+

@@ -19,6 +19,45 @@ const Home = () => {
 
     const theme = useTheme()
 
+    const CheckedColor = theme.palette.dark;
+
+    const dataTask = [
+        {id: 1, text: "لورم ایپسوم ", checked: false},
+        {id: 2, text: "لورم ایپسوم ", checked: false},
+        {id: 3, text: "لورم ایپسوم ", checked: false},
+        {id: 4, text: "لورم ایپسوم ", checked: false},
+        {id: 5, text: "لورم ایپسوم ", checked: false},
+        {id: 6, text: "لورم ایپسوم ", checked: false},
+        {id: 7, text: "لورم ایپسوم ", checked: false},
+        {id: 8, text: "لورم ایپسوم ", checked: false},
+        {id: 9, text: "لورم ایپسوم ", checked: false},
+        {id: 10, text: "لورم ایپسوم ", checked: false},
+        {id: 11, text: "لورم ایپسوم ", checked: false},
+        {id: 12, text: "لورم ایپسوم ", checked: false},
+        {id: 13, text: "لورم ایپسوم ", checked: false},
+        {id: 14, text: "لورم ایپسوم ", checked: false},
+    ];
+
+
+    const [mainCheckboxTask, setMainCheckboxTask] = useState(false);
+    const [taskStates, setTaskStates] = useState(dataTask.map(() => false));
+
+    const handleMainCheckboxChange = () => {
+        setMainCheckboxTask(!mainCheckboxTask);
+        setTaskStates(dataTask.map(() => !mainCheckboxTask));
+    };
+
+    const handleCheckboxChange = (id, checked) => {
+        const updatedTaskStates = [...taskStates];
+        updatedTaskStates[id - 1] = checked;
+
+        setTaskStates(updatedTaskStates);
+
+        const allChecked = updatedTaskStates.every((isChecked) => isChecked);
+        setMainCheckboxTask(allChecked);
+    };
+
+
     const linearOne = `linear-gradient(180deg, ${theme.palette.main}, ${theme.palette.main} 0%, ${theme.palette.one} 100%)`;
 
 
@@ -36,6 +75,12 @@ const Home = () => {
 
     let FiveVariant = 'h6'
 
+    let SixVariant = 'h6'
+
+    let sevenVariant = 'h6'
+
+    let width = '14px'
+
 
     if (isXs) {
         variant = 'h6';
@@ -43,12 +88,18 @@ const Home = () => {
         ThirdVariant = 'h6'
         FourthVariant = 'subtitle1'
         FiveVariant = 'h6'
+        SixVariant = 'h6'
+        sevenVariant = 'h6'
+        width = '14px'
     } else if (isMd) {
         variant = 'h2';
         secondVariant = 'h6'
         ThirdVariant = 'h2'
         FourthVariant = 'subtitle2'
         FiveVariant = 'h1'
+        SixVariant = 'h4'
+        sevenVariant = 'h5'
+        width = '20px'
     }
 
 
@@ -196,6 +247,7 @@ const Home = () => {
         },
     ]
 
+
     return (
         <Grid bgcolor={theme.palette.primary.one} height={'100vh'} width={'100%'} display={'flex'}
               alignItems={'flex-start'} justifyContent={'space-between'}>
@@ -290,7 +342,7 @@ const Home = () => {
                         </Grid>
                     </Grid>
                     <Grid className={'CircleChart'} sx={{display: {lg: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
-                          gap={'16px'}>
+                          gap={'16px'} pb={{md: '16px'}}>
                         <Grid sx={{display: 'grid', gridTemplateColumns: '1fr 1fr'}}
                               gap={'16px'} pb={'16px'}>
                             <Grid className={'circle'} p={{
@@ -418,9 +470,9 @@ const Home = () => {
                             </Grid>
                         </Grid>
                         <Grid className={'CheckTable'}
-                              mb={{xs:'16px' , md:0}}
+                              mb={{xs: '16px', md: 0}}
                               p={{xs: '21px 12px', xxs: '21px 24px', xg: '21px 60px 35px 32px'}} height={{lg: '345px'}}
-                              bgcolor={'white'} borderRadius={{xs:'15px' , md:'20px'}} width={'100%'}>
+                              bgcolor={'white'} borderRadius={{xs: '15px', md: '20px'}} width={'100%'}>
                             <Grid className={'HeaderCheckTable'} display={'flex'} alignItems={'center'}
                                   justifyContent={'space-between'} pb={{xs: '12px', md: '25px'}}>
                                 <Typography variant={ThirdVariant} color={theme.palette.dark}
@@ -438,10 +490,74 @@ const Home = () => {
                     </Grid>
                     <Grid className={'Calender'} sx={{display: {lg: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
                           gap={'16px'}>
-                        <Grid className={'CalenderAndTasks'} sx={{display: {md: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
+                        <Grid className={'CalenderAndTasks'}
+                              sx={{display: {md: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
                               gap={'16px'}>
                             <Calender/>
-                            <Grid></Grid>
+                            <Grid className={'TasksTable'} bgcolor={'white'} borderRadius={'15px'}
+                                  p={{
+                                      xs: '8px 12px',
+                                      md: '25px 15px 39px 15px',
+                                      lg: '25px 19px 39px 19px',
+                                      xg: '30px 36px 30px 48px'
+                                  }}
+                                  height={{lg: '345px'}} width={'100%'}
+                            >
+                                <Grid className="HeaderTasks" display={'flex'} alignItems={'center'}
+                                      justifyContent={'space-between'} pb={'32px'}>
+                                    <Grid className="CheckTask" display={'flex'} alignItems={'center'}
+                                          justifyContent={'center'} gap={{xs: '3px', xxs: '12px'}}>
+                                        <Grid className="CheckInput" width={{xs: '38px', xxs: '38px'}}
+                                              height={{xs: '38px', xxs: '38px'}} borderRadius={'50%'} display={'flex'}
+                                              alignItems={'center'} justifyContent={'center'}
+                                              bgcolor={theme.palette.six}>
+                                            <label htmlFor="Tasks"></label>
+                                            <input type="checkbox" id="Tasks" style={{width: '20px', height: '20px'}}
+                                                   checked={mainCheckboxTask}
+                                                   onChange={handleMainCheckboxChange}
+                                                   color={theme.palette.main}
+                                            />
+                                        </Grid>
+                                        <Typography variant={SixVariant} fontWeight={700} color={theme.palette.dark}
+                                                    className="TaskTextMax">تسک ها</Typography>
+                                    </Grid>
+                                    <ChartMoreOption/>
+                                </Grid>
+                                <Grid className={'AllTask'} maxHeight={'216px'} sx={{
+                                    overflowY: 'auto', scrollbarWidth: 'none', '&::-webkit-scrollbar': {
+                                        display: 'none',
+                                    },
+                                }}>
+                                    {
+                                        dataTask.map(
+                                            (item, index) =>
+                                                <Grid key={item.id} pb={'24px'} display={'flex'} alignItems={'center'}
+                                                      justifyContent={'space-between'}>
+                                                    <Grid display={'flex'} alignItems={'center'}
+                                                          justifyContent={'flex-start'} gap={{xs: '8px', xxs: '16px'}}>
+                                                        <input type={'checkbox'} id={`input-${item.id}`}
+                                                               style={{width: width, height: width}}
+                                                               checked={taskStates[index]}
+                                                               onChange={(e) => handleCheckboxChange(item.id, e.target.checked)}
+                                                        />
+                                                        <label htmlFor={`input-${item.id}`}>
+                                                            <Typography variant={sevenVariant}
+                                                                        color={taskStates[index] ? theme.palette.dark : theme.palette.three}
+                                                                        fontWeight={taskStates[index] ? 700 : 400}
+                                                            >
+                                                                {item.text}
+                                                            </Typography>
+                                                        </label>
+                                                    </Grid>
+                                                    <Grid display={'flex'} alignItems={'center'}
+                                                          justifyContent={'center'}>
+                                                        <img src={'/assets/images/dragIndicator.svg'}/>
+                                                    </Grid>
+                                                </Grid>
+                                        )
+                                    }
+                                </Grid>
+                            </Grid>
                         </Grid>
                         <Grid className={'ComplexTable'}></Grid>
                     </Grid>

@@ -14,6 +14,7 @@ import BarChart from "../Components/Charts/BarChart";
 import ChartMoreOption from "../Components/ChartMoreOption";
 import CheckTable from "../Components/Tables/CheckTable";
 import Calender from "../Components/Calender/Calender";
+import ComplexTable from "../Components/Tables/ComplexTable";
 
 const Home = () => {
 
@@ -492,7 +493,7 @@ const Home = () => {
                           gap={'16px'}>
                         <Grid className={'CalenderAndTasks'}
                               sx={{display: {md: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
-                              gap={'16px'}>
+                              gap={'16px'} pb={{md:'16px'}}>
                             <Calender/>
                             <Grid className={'TasksTable'} bgcolor={'white'} borderRadius={'15px'}
                                   p={{
@@ -502,6 +503,7 @@ const Home = () => {
                                       xg: '30px 36px 30px 48px'
                                   }}
                                   height={{lg: '345px'}} width={'100%'}
+                                  mb={{xs:'16px' , md:'0px'}}
                             >
                                 <Grid className="HeaderTasks" display={'flex'} alignItems={'center'}
                                       justifyContent={'space-between'} pb={'32px'}>
@@ -559,7 +561,10 @@ const Home = () => {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid className={'ComplexTable'}></Grid>
+                        {/*complex*/}
+                        <>
+                            <ComplexTable />
+                        </>
                     </Grid>
                     <Grid className={'ButtonNotification'}></Grid>
                 </Grid>

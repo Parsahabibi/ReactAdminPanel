@@ -42,7 +42,8 @@
 }
 @media screen and (min-width: 1788px) {
 .Calender .monthsContainer .month-days .day {
-        width: 40px;
+        width: 26px;
+    height: 26px;
     }
 }
  .Calender .monthsContainer .month-days.first-day-offset {
@@ -63,7 +64,7 @@
 }
 @media screen and (min-width: 1788px) {
  .Calender .monthsContainer {
-        gap: 16px;
+        gap: 5px;
     }
 }
  .Calender .weekday-container {

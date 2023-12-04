@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Grid, useTheme } from "@mui/material";
+import {Grid, useTheme} from "@mui/material";
 import theme from "../../Theme/Theme";
 import './Calender.css'
 
@@ -15,12 +15,9 @@ const Calender = () => {
     const weekDays = ['شنبه', 'یک‌شنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
 
 
-
-
     useEffect(() => {
         updateMonthDays();
     }, [selectedYear, selectedMonth]);
-
 
 
     const handleDayClick = (event) => {
@@ -111,7 +108,7 @@ const Calender = () => {
     return (
         <Grid className={'Calender'}
               p={{xs: '16px 13px', md: '16px 0', lg: '16px 13px', g: '16px 4px', xg: '16px 13px'}}
-              mb={{xs: '16px', md: '0'}} bgcolor={'white'} borderRadius={'20px'}>
+              mb={{xs: '16px', md: '0'}} bgcolor={'white'} borderRadius={'20px'} height={{lg: '345px'}}>
             <Grid className={'select'} display={'flex'} alignItems={'baseline'} justifyContent={'center'}
                   flexWrap={'nowrap'} gap={'16px'}>
                 <label htmlFor="yearSelector"></label>
@@ -147,7 +144,12 @@ const Calender = () => {
                     }}
                 >
                     {Array.from({length: 10}, (_, i) => (
-                        <option key={1402 + i} value={1402 + i} style={{display:'flex' , alignItems:'center' , justifyContent:'center' , marginRight:'0 auto'}}>
+                        <option key={1402 + i} value={1402 + i} style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginRight: '0 auto'
+                        }}>
                             {1402 + i}
                         </option>
                     ))}

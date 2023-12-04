@@ -105,7 +105,11 @@ const ComplexTable = () => {
                 <Typography variant={variant} color={theme.palette.dark} fontWeight={700}>جدول کمپلکس</Typography>
                 <ChartMoreOption/>
             </Grid>
-            <div className="BodyTable">
+            <Grid className="BodyTable" maxHeight={{xs: '126px', md: '232px'}} sx={{
+                overflowY: 'auto', scrollbarWidth: 'none', '&::-webkit-scrollbar': {
+                    display: 'none',
+                },
+            }}>
                 <table>
                     <thead style={{paddingBottom: '12px'}}>
                     <tr>
@@ -113,8 +117,8 @@ const ComplexTable = () => {
                             <Grid pl={{
                                 xs: '53px',
                                 xxs: '63px',
-                                sm: '200px',
-                                md: '168px',
+                                sm: '250px',
+                                md: '220px',
                                 l: '186px',
                                 lg: '250px',
                                 g: '161px',
@@ -131,7 +135,7 @@ const ComplexTable = () => {
                                   pl={{
                                       xs: '41px',
                                       xxs: '49px',
-                                      sm: '90px',
+                                      sm: '110px',
                                       l: '115px',
                                       lg: '160px',
                                       g: '60px',
@@ -148,7 +152,7 @@ const ComplexTable = () => {
                                   pl={{
                                       xs: '40px',
                                       xxs: '49px',
-                                      sm: '70px',
+                                      sm: '90px',
                                       l: '95px',
                                       lg: '170px',
                                       g: '100px',
@@ -171,7 +175,7 @@ const ComplexTable = () => {
 
                     </tr>
                     </thead>
-                    <tbody className="tbody">
+                    <tbody className="tbody" style={{height:'88px' , overflowY:'auto'}}>
                     {dataTableComplex.map((item, index) => (
                         <tr key={index} className="rowTable">
                             <td className="titleTable" style={{paddingBottom:paddingBottom}}>
@@ -195,7 +199,7 @@ const ComplexTable = () => {
                 </table>
 
 
-            </div>
+            </Grid>
         </Grid>
     )
 }

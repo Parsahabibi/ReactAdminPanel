@@ -343,7 +343,7 @@ const Home = () => {
                         </Grid>
                     </Grid>
                     <Grid className={'CircleChart'} sx={{display: {lg: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
-                          gap={'16px'} pb={{md: '16px'}}>
+                          gap={'16px'} pb={{md: '16px' , lg:'0px'}}>
                         <Grid sx={{display: 'grid', gridTemplateColumns: '1fr 1fr'}}
                               gap={'16px'} pb={'16px'}>
                             <Grid className={'circle'} p={{
@@ -489,7 +489,7 @@ const Home = () => {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid className={'Calender'} sx={{display: {lg: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
+                    <Grid className={'Calender'} sx={{display: {g: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
                           gap={'16px'}>
                         <Grid className={'CalenderAndTasks'}
                               sx={{display: {md: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
@@ -562,9 +562,9 @@ const Home = () => {
                             </Grid>
                         </Grid>
                         {/*complex*/}
-                        <>
+                        <Grid>
                             <ComplexTable />
-                        </>
+                        </Grid>
                     </Grid>
                     <Grid className={'ButtonNotification'}></Grid>
                 </Grid>

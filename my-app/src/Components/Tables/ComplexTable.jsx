@@ -115,8 +115,8 @@ const ComplexTable = () => {
                     <tr>
                         <th className="Name">
                             <Grid pl={{
-                                xs: '53px',
-                                xxs: '63px',
+                                xs: '49px',
+                                xxs: '55px',
                                 sm: '250px',
                                 md: '220px',
                                 l: '186px',
@@ -133,7 +133,7 @@ const ComplexTable = () => {
                         <th>
                             <Grid className="Advance"
                                   pl={{
-                                      xs: '41px',
+                                      xs: '39px',
                                       xxs: '49px',
                                       sm: '110px',
                                       l: '115px',
@@ -150,7 +150,7 @@ const ComplexTable = () => {
                         <th>
                             <Grid className="Count"
                                   pl={{
-                                      xs: '40px',
+                                      xs: '36px',
                                       xxs: '49px',
                                       sm: '90px',
                                       l: '95px',
@@ -181,7 +181,7 @@ const ComplexTable = () => {
                             <td className="titleTable" style={{paddingBottom:paddingBottom}}>
                                 <Typography variant={secondVariant} fontWeight={700}>{item.title}</Typography>
                             </td>
-                            <td className="status" style={{display:'flex' , alignItems:'center' , justifyContent:'flex-start' , gap:'5px' , paddingBottom:paddingBottom}}>
+                            <td className="status" style={{display:'flex' , alignItems:'center' , justifyContent:'flex-start' , gap:'4px' , paddingBottom:paddingBottom}}>
                                 <img src={item.statusImage} alt=""/>
                                 <Typography variant={secondVariant} className="medium" fontWeight={700}>{item.statusText}</Typography>
                             </td>

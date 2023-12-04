@@ -60,6 +60,7 @@ const Home = () => {
 
 
     const linearOne = `linear-gradient(180deg, ${theme.palette.main}, ${theme.palette.main} 0%, ${theme.palette.one} 100%)`;
+    const linearSecond = `linear-gradient(359.88deg,${theme.palette.dark} -31.39%, ${theme.palette.dark}00  96.52%)`;
 
 
     const isXs = useMediaQuery(theme.breakpoints.down('xs'));
@@ -343,7 +344,7 @@ const Home = () => {
                         </Grid>
                     </Grid>
                     <Grid className={'CircleChart'} sx={{display: {lg: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
-                          gap={'16px'} pb={{md: '16px' , lg:'0px'}}>
+                          gap={'16px'} pb={{md: '16px', lg: '0px'}}>
                         <Grid sx={{display: 'grid', gridTemplateColumns: '1fr 1fr'}}
                               gap={'16px'} pb={'16px'}>
                             <Grid className={'circle'} p={{
@@ -493,7 +494,7 @@ const Home = () => {
                           gap={'16px'}>
                         <Grid className={'CalenderAndTasks'}
                               sx={{display: {md: 'grid'}, gridTemplateColumns: '1fr 1fr'}}
-                              gap={'16px'} pb={{md:'16px'}}>
+                              gap={'16px'} pb={{md: '16px'}}>
                             <Calender/>
                             <Grid className={'TasksTable'} bgcolor={'white'} borderRadius={'15px'}
                                   p={{
@@ -503,7 +504,7 @@ const Home = () => {
                                       xg: '30px 36px 30px 48px'
                                   }}
                                   height={{lg: '345px'}} width={'100%'}
-                                  mb={{xs:'16px' , md:'0px'}}
+                                  mb={{xs: '16px', md: '0px'}}
                             >
                                 <Grid className="HeaderTasks" display={'flex'} alignItems={'center'}
                                       justifyContent={'space-between'} pb={'32px'}>
@@ -562,11 +563,73 @@ const Home = () => {
                             </Grid>
                         </Grid>
                         {/*complex*/}
-                        <Grid>
-                            <ComplexTable />
+                        <Grid pb={'16px'}>
+                            <ComplexTable/>
                         </Grid>
                     </Grid>
-                    <Grid className={'ButtonNotification'}></Grid>
+                    <Grid className={'ButtonNotification'}
+                          sx={{
+                              display: {md: 'grid'},
+                              gridTemplateColumns: {md: '1fr 1fr', xg: '1fr 1fr 1fr 1fr'},
+                              gap: '16px'
+                          }}>
+                        <Grid className={'StarBox'} bgcolor={'white'} p={'26px 14px'} borderRadius={'20px'} mb={'16px'}
+                              height={{md: '345px'}} width={'100%'}>
+                            <Grid mb={'30px'} position={'relative'} top={0} right={0} height={'175px'} width={'100%'}
+                                  style={{background: linearSecond}} borderRadius={'20px'}>
+                                <Grid width={'100%'} height={'100%'}>
+                                    {/*<img src={''} alt={''}*/}
+                                    {/*     width={'100%'}*/}
+                                    {/*     height={'100%'}*/}
+                                    {/*     style={{position: 'absolute', top: '0px', right: '0px'}}/>*/}
+                                </Grid>
+                                <Grid position={'absolute'} top={{xs: '140px'}} right={'23px'}
+                                      height={'56px'}
+                                      width={'56px'} zIndex={12}>
+                                    <img src={'/assets/images/Star.svg'} alt={''} width={'100%'} height={'100%'}/>
+                                </Grid>
+                                <Grid width={'40px'} height={'40px'} borderRadius={'12px'}
+                                      bgcolor={'rgba(255, 255, 255, 0.47)'} position={'absolute'} top={'15px'}
+                                      left={'15px'}
+                                      display={'flex'} alignItems={'center'} justifyContent={'center'}>
+                                    <img src={'/assets/images/watchLater.svg'} alt={''} width={'24px'} height={'24px'}/>
+                                </Grid>
+                            </Grid>
+                            <Grid pb={'8px'}>
+                                <Typography variant={'h2'} fontWeight={700}
+                                            color={theme.palette.dark}>استارباکس</Typography>
+                            </Grid>
+                            <Grid display={'flex'} alignItems={'flex-start'} justifyContent={'flex-start'} gap={'10px'}>
+                                <Grid width={'24px'} height={'24px'}>
+                                    <img src={'/assets/images/fastfood.svg'} alt={''} width={'100%'} height={'100%'}/>
+                                </Grid>
+                                <Typography variant={'h4'} color={theme.palette.light} fontWeight={500} pt={'5px'}>10%
+                                    cashback</Typography>
+                            </Grid>
+                        </Grid>
+                        <Grid className={'Security'} bgcolor={'white'} p={'32px 30px 23px 30px'} borderRadius={'20px'}
+                              mb={'16px'} width={'100%'} height={{md: '345px'}}>
+                            <img src={'/assets/images/FingerPrint.svg'} alt={''} style={{paddingBottom: '17px'}}/>
+                            <Typography variant={'h2'} color={theme.palette.dark} fontWeight={700} pr={'10px'}
+                                        pb={'14px'} width={{md: '198px'}}>کنترل امنیت کارت لمس کنید </Typography>
+                            <Typography pr={'10px'} pb={'35px'} variant={'h6'} color={theme.palette.light} fontWeight={500}>مزایای کارت های ما
+                                را امتحان کنید.
+                            </Typography>
+                            <Grid width={'100%'}>
+                                <button style={{
+                                    padding: '11px 0px',
+                                    width: '100%',
+                                    borderRadius: '16px',
+                                    backgroundColor: theme.palette.main,
+                                    border: 'none',
+                                    color: 'white',
+                                    cursor: 'pointer'
+                                }}>کارت ها</button>
+                            </Grid>
+                        </Grid>
+                        <Grid className={''}></Grid>
+                        <Grid className={''}></Grid>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

@@ -588,7 +588,7 @@ const Home = () => {
                               gridTemplateColumns: {md: '1fr 1fr', xg: '1fr 1fr 1fr 1fr'},
                               gap: '16px'
                           }}>
-                        <Grid className={'StarBox'} bgcolor={'white'} p={'26px 14px'} borderRadius={'20px'} mb={'16px'}
+                        <Grid className={'StarBox'} bgcolor={'white'} p={'26px 14px'} borderRadius={'20px'} mb={{xs:'16px' , md:'0px'}}
                               height={{md: '345px'}} width={'100%'}>
                             <Grid mb={'30px'} position={'relative'} top={0} right={0} height={'175px'} width={'100%'}
                                   style={{background: linearSecond}} borderRadius={'20px'}>
@@ -623,7 +623,7 @@ const Home = () => {
                             </Grid>
                         </Grid>
                         <Grid className={'Security'} bgcolor={'white'} p={'32px 30px 23px 30px'} borderRadius={'20px'}
-                              mb={'16px'} width={'100%'} height={{md: '345px'}}>
+                              mb={{xs:'16px' , md:'0px'}} width={'100%'} height={{md: '345px'}}>
                             <img src={'/assets/images/FingerPrint.svg'} alt={''} style={{paddingBottom: '17px'}}/>
                             <Typography variant={'h2'} color={theme.palette.dark} fontWeight={700} pr={'10px'}
                                         pb={'14px'} width={{md: '198px'}}>کنترل امنیت کارت لمس کنید </Typography>
@@ -645,7 +645,7 @@ const Home = () => {
                             </Grid>
                         </Grid>
                         <Grid className={'Team'} bgcolor={'white'} p={'18px 23px 26px 23px'} borderRadius={'20px'}
-                              width={'100%'} height={{lg: '345px'}} mb={'16px'}>
+                              width={'100%'} height={{md: '345px'}} mb={'16px'}>
                             <Grid className={'HeaderTeam'} display={'flex'} alignItems={'center'}
                                   justifyContent={'space-between'} pb={'22px'}>
                                 <Typography variant={'h4'} color={theme.palette.dark} fontWeight={700}>اعضای

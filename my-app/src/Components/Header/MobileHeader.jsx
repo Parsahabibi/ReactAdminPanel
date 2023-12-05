@@ -8,6 +8,7 @@ import Dashboard from "../Dashboard";
 const MobileHeader = ({id, marginLeft}) => {
 
 
+
     const [showOption, setShowOption] = useState(false)
 
     const [openDashboard, setOpenDashboard] = useState(false)
@@ -28,13 +29,17 @@ const MobileHeader = ({id, marginLeft}) => {
         opacity: showOption ? 1 : 0,
     });
 
-    const [spring, setSpring] = useSpring(() => ({
-        opacity: 0,
-        transform: 'translateX(100%)',
-    }));
-
-
     const ref = useRef();
+
+
+    const overlayAnimation = useSpring({
+        opacity: openDashboard ? 1 : 0,
+        visibility: openDashboard ? 'visible' : 'hidden',
+    });
+
+    const dashboardAnimation = useSpring({
+        transform: openDashboard ? 'translateX(0%)' : 'translateX(100%)',
+    });
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -50,48 +55,43 @@ const MobileHeader = ({id, marginLeft}) => {
         };
     }, [ref]);
 
-    useEffect(() => {
-        if (!openDashboard) {
-            const timeoutId = setTimeout(() => {
-                setClosing(true);
-            }, 200);
-            return () => clearTimeout(timeoutId);
-        }
-    }, [openDashboard]);
-
-
-    setSpring({opacity: openDashboard ? 1 : 0, transform: openDashboard ? 'translateX(0%)' : 'translateX(100%)'});
 
 
     return (
         <Grid className={'MobileHeader'}>
+            <>
+                <animated.div
+                    style={{
+                        ...overlayAnimation,
+                        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                        width: '100%',
+                        height: '100%',
+                        position: 'fixed',
+                        top: 0,
+                        right: 0,
+                        zIndex: 10,
+                    }}
+                    onClick={() => setOpenDashboard(false)}
+                ></animated.div>
+                <animated.div
+                    style={{
+                        ...dashboardAnimation,
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        zIndex: 11,
+                    }}
+                >
+                    <Dashboard id={id} marginLeft={marginLeft}/>
+                </animated.div>
+            </>
             <Grid className={'mobileHeaderItems'} pt={'6px'} pr={'16px'} pb={'16px'} pl={'12px'} display={'flex'}
                   alignItems={'center'} justifyContent={'space-between'}>
                 <Grid onClick={() => {
-                    setOpenDashboard(!openDashboard)
+                    setOpenDashboard(true)
                 }} className={'MobileDashboardMenu'} width={'28px'} height={'28px'}>
                     <MenuIcon fill={theme.palette.main}/>
                 </Grid>
-                {openDashboard && (
-                    <Grid>
-                        <Grid
-                            style={{
-                                backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                                width: '100%',
-                                height: '100%',
-                                position: 'fixed',
-                                top: 0,
-                                right: 0,
-                                zIndex: 10
-                            }}
-                            onClick={() => setOpenDashboard(false)}
-                        />
-                        <animated.div className={'dashboard'}
-                                      style={{...spring, position: 'absolute', top: 0, right: 0, zIndex: 11}}>
-                            <Dashboard id={id} marginLeft={marginLeft}/>
-                        </animated.div>
-                    </Grid>
-                )}
                 <Grid className={'ItemsTitle'} py={'10px'} px={'12px'} display={'flex'} alignItems={'center'}
                       justifyContent={'space-between'} gap={'15px'}>
                     <Grid className={'IconsItemsTitle'} display={'flex'} alignItems={'center'}

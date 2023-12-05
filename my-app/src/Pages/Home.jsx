@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
-import {Grid, useTheme, useMediaQuery, Typography} from "@mui/material";
+import React, {useEffect, useState} from 'react'
+import {Grid, useTheme, useMediaQuery, Typography, Button} from "@mui/material";
 import Header from "../Components/Header/Header";
 import DesktopLayoutHeader from "../Components/Layout/DesktopLayoutHeader";
 import HeaderLayout from "../Components/Layout/HeaderLayout";
-import {Dollar, File, Income, LeftCircle, MoreHoriz, RightCircle, Tick} from "../Components/Icons";
+import {AddMemberIcon, Dollar, File, Income, LeftCircle, MoreHoriz, RightCircle, Tick} from "../Components/Icons";
 import MobileNavbarCard from "../Components/NavbarCard/MobileNavbarCard";
 import DesktopNavbarCard from "../Components/NavbarCard/DesktopNavbarCard";
 import Dashboard from "../Components/Dashboard";
@@ -15,10 +15,15 @@ import ChartMoreOption from "../Components/ChartMoreOption";
 import CheckTable from "../Components/Tables/CheckTable";
 import Calender from "../Components/Calender/Calender";
 import ComplexTable from "../Components/Tables/ComplexTable";
+import Users from "../Components/Users";
 
 const Home = () => {
 
     const theme = useTheme()
+
+
+    const screenWidth = window.innerWidth;
+    const isLargeScreen = screenWidth >= 1000;
 
     const CheckedColor = theme.palette.dark;
 
@@ -247,6 +252,16 @@ const Home = () => {
             percentState: false,
             percent: ''
         },
+    ]
+
+
+    const AddMemberData = [
+        {id: 1, name: 'سحر محمدی ', position: 'مدیر هنری', image: '/assets/images/TeamMemberImage.svg'},
+        {id: 2, name: 'سحر محمدی ', position: 'مدیر هنری', image: '/assets/images/TeamMemberImage.svg'},
+        {id: 3, name: 'سحر محمدی ', position: 'مدیر هنری', image: '/assets/images/TeamMemberImage.svg'},
+        {id: 4, name: 'سحر محمدی ', position: 'مدیر هنری', image: '/assets/images/TeamMemberImage.svg'},
+        {id: 5, name: 'سحر محمدی ', position: 'مدیر هنری', image: '/assets/images/TeamMemberImage.svg'},
+        {id: 6, name: 'سحر محمدی ', position: 'مدیر هنری', image: '/assets/images/TeamMemberImage.svg'},
     ]
 
 
@@ -612,7 +627,8 @@ const Home = () => {
                             <img src={'/assets/images/FingerPrint.svg'} alt={''} style={{paddingBottom: '17px'}}/>
                             <Typography variant={'h2'} color={theme.palette.dark} fontWeight={700} pr={'10px'}
                                         pb={'14px'} width={{md: '198px'}}>کنترل امنیت کارت لمس کنید </Typography>
-                            <Typography pr={'10px'} pb={'35px'} variant={'h6'} color={theme.palette.light} fontWeight={500}>مزایای کارت های ما
+                            <Typography pr={'10px'} pb={'35px'} variant={'h6'} color={theme.palette.light}
+                                        fontWeight={500}>مزایای کارت های ما
                                 را امتحان کنید.
                             </Typography>
                             <Grid width={'100%'}>
@@ -624,11 +640,107 @@ const Home = () => {
                                     border: 'none',
                                     color: 'white',
                                     cursor: 'pointer'
-                                }}>کارت ها</button>
+                                }}>کارت ها
+                                </button>
                             </Grid>
                         </Grid>
-                        <Grid className={''}></Grid>
-                        <Grid className={''}></Grid>
+                        <Grid className={'Team'} bgcolor={'white'} p={'18px 23px 26px 23px'} borderRadius={'20px'}
+                              width={'100%'} height={{lg: '345px'}} mb={'16px'}>
+                            <Grid className={'HeaderTeam'} display={'flex'} alignItems={'center'}
+                                  justifyContent={'space-between'} pb={'22px'}>
+                                <Typography variant={'h4'} color={theme.palette.dark} fontWeight={700}>اعضای
+                                    تیم </Typography>
+                                <Grid width={'37px'} height={'37px'} borderRadius={'10px'} bgcolor={theme.palette.one}
+                                      display={'flex'} alignItems={'center'} justifyContent={'center'}
+                                      style={{cursor: 'pointer'}}>
+                                    <AddMemberIcon fill={theme.palette.main}/>
+                                </Grid>
+                            </Grid>
+                            <Grid className={'CardTeam'} maxHeight={'250px'} sx={{
+                                overflowY: "scroll", scrollbarWidth: 'none', '&::-webkit-scrollbar': {
+                                    display: 'none',
+                                }
+                            }}>
+                                {
+                                    AddMemberData.map(
+                                        item =>
+                                            <Grid key={item.id} display={'flex'} alignItems={'center'}
+                                                  justifyContent={'space-between'} mb={'17px'} p={'11px 36px 11px 0px'}
+                                                  borderRadius={'16px'} boxShadow={4} mx={'5px'} mt={'5px'}>
+                                                <Grid className={'InformationMember'} display={'flex'}
+                                                      alignItems={'center'} justifyContent={'flex-start'} gap={'18px'}>
+                                                    <img src={item.image} alt={''}/>
+                                                    <Grid>
+                                                        <Typography variant={'h5'}
+                                                                    color={theme.palette.dark}>{item.name}</Typography>
+                                                        <Typography variant={'subtitle1'}
+                                                                    color={theme.palette.light}>{item.position}</Typography>
+                                                    </Grid>
+                                                </Grid>
+                                                <Grid className={'option'}>
+                                                    <img src={'/assets/images/more.svg'} alt={''}/>
+                                                </Grid>
+                                            </Grid>
+                                    )
+                                }
+                            </Grid>
+                        </Grid>
+                        <Grid className={'CreateProduct'} mb={'75px'} height={{lg: '345px'}}>
+                            <Grid bgcolor={'white'} p={{xs: '18px 33px 24px 33px', md: '18px 32px 24px 32px'}}
+                                  borderRadius={'20px 20px 0 0'}>
+                                <Grid className={'fire'} pb={'47px'} display={'flex'} alignItems={'center'}
+                                      justifyContent={'flex-start'} gap={'12px'}>
+                                    <Grid width={'38px'} height={'38px'} borderRadius={'15px'} bgcolor={'#FEEFEE'}
+                                          display={'flex'} alignItems={'center'} justifyContent={'center'}>
+                                        <img src={'/assets/images/fire.svg'} alt={''}/>
+                                    </Grid>
+                                    <Grid>
+                                        <Typography variant={'subtitle1'} color={theme.palette.light} fontWeight={500}>طراحی
+                                            بیزینس</Typography>
+                                        <Typography variant={'h6'} color={theme.palette.dark} fontWeight={700}>دروس جدید
+                                            در دسترس است</Typography>
+                                    </Grid>
+                                </Grid>
+                                <Grid pb={'40px'}>
+                                    <Typography variant={'h3'} fontWeight={700} color={theme.palette.dark}>برای ایجاد
+                                        محصول بهتر چه نیازهایی دارید؟</Typography>
+                                </Grid>
+                                <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'} gap={'26px'}>
+                                    <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'}
+                                          gap={'6px'}>
+                                        <img src={'/assets/images/timer.svg'} alt={''}/>
+                                        <Typography variant={'h6'} fontWeight={700} color={theme.palette.dark}>85
+                                            دقیقه</Typography>
+                                    </Grid>
+                                    <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'}
+                                          gap={'6px'}>
+                                        <img src={'/assets/images/slowMotion.svg'} alt={''}/>
+                                        <Typography variant={'h6'} fontWeight={700} color={theme.palette.dark}>فرمت
+                                            ویدیو</Typography>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid bgcolor={theme.palette.seven}
+                                  p={{xs: '50px 33px 22px 33px', md: '50px 32px 22px 32px'}}
+                                  borderRadius={'0 0 20px 20px'}>
+                                <Grid className={'StartButton'} display={'flex'} alignItems={'center'}
+                                      justifyContent={'space-between'}>
+                                    <button style={{
+                                        backgroundColor: theme.palette.main,
+                                        color: 'white',
+                                        borderRadius: '16px',
+                                        border: 'none',
+                                        fontSize: '14px',
+                                        fontWeight: 700,
+                                        padding: isLargeScreen ? '8px 34px' : '8px 17px'
+                                    }}>
+                                        شروع کنید!
+                                    </button>
+                                    <Users count={18}/>
+                                </Grid>
+                                <Grid></Grid>
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

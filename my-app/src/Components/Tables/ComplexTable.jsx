@@ -197,8 +197,6 @@ const ComplexTable = () => {
                     ))}
                     </tbody>
                 </table>
-
-
             </Grid>
         </Grid>
     )

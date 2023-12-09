@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
 import {Button, Grid, Typography, useTheme} from "@mui/material";
 
-const ShoppingCard = ({price = 123 , Title = 'لورم ایپسوم' , subTitle = 'لورم ایپسوم' , img = 'assets/images/ShoppingImage.png' , count = 15}) => {
+const ShoppingCard = ({price, Title, subTitle, img, count}) => {
 
     const theme = useTheme()
 
 
     return (
         <Grid className={'ShoppingCard'} p={'17px 21px 27px 21px'} bgcolor={'white'} borderRadius={'20px'}
-              width={{xs: '300px', xxs: '350px', md: '259px', xl: '350px'}}>
+              width={{xs: '300px', xxs: '350px', sm: '320px', md: '275px', xl: '350px'}}>
             <Grid className={'ShoppingImage'} position={'relative'} width={'100%'}>
                 <img className={'ShoppingImages'} width={'100%'} height={'100%'} style={{borderRadius: '20px'}}
                      src={img} alt={''}/>
@@ -18,7 +18,8 @@ const ShoppingCard = ({price = 123 , Title = 'لورم ایپسوم' , subTitle 
             <Grid className={'ShoppingTitle'} pt={'12px'} pb={'25px'} display={'flex'} alignItems={'center'}
                   justifyContent={'space-between'}>
                 <Grid className={'title'}>
-                    <Typography variant={'h4'} color={theme.palette.dark} fontWeight={700} lineHeight={'30px'}>{Title}</Typography>
+                    <Typography variant={'h4'} color={theme.palette.dark} fontWeight={700}
+                                lineHeight={'30px'}>{Title}</Typography>
                     <Typography variant={'h6'} color={theme.palette.light} fontWeight={500}>{subTitle}</Typography>
                 </Grid>
                 <Grid className={'users'} display={'flex'} alignItems={'center'} justifyContent={'flex-start'}

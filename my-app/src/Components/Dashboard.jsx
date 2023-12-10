@@ -52,7 +52,7 @@ const Dashboard = ({id  , marginLeft}) => {
                                     </Grid>
                                     <Typography fontWeight={item.id === id ? 900 : 700}
                                                 color={item.id === id ? theme.palette.dark : theme.palette.light}
-                                                variant={'h5'}>{item.title}</Typography>
+                                                variant={'h5'} whiteSpace={'nowrap'}>{item.title}</Typography>
                                 </Grid>
                                 <Grid display={item.id === id ? 'block' : 'none'} className={'ActiveBorder'} width={'4px'} height={'36px'} bgcolor={theme.palette.main} borderRadius={'25px'}></Grid>
                             </Link>

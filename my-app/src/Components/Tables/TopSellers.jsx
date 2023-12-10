@@ -37,10 +37,15 @@ const TopSellers = () => {
         {id:5 , name:'البرز سیستم' , image:'/assets/images/TopSellers.png' , lorem:'9821' , grade:'30%'},
         {id:6 , name:'البرز سیستم' , image:'/assets/images/TopSellers.png' , lorem:'9821' , grade:'30%'},
         {id:7 , name:'البرز سیستم' , image:'/assets/images/TopSellers.png' , lorem:'9821' , grade:'70%'},
+        {id:7 , name:'البرز سیستم' , image:'/assets/images/TopSellers.png' , lorem:'9821' , grade:'70%'},
+        {id:7 , name:'البرز سیستم' , image:'/assets/images/TopSellers.png' , lorem:'9821' , grade:'70%'},
+        {id:7 , name:'البرز سیستم' , image:'/assets/images/TopSellers.png' , lorem:'9821' , grade:'70%'},
+        {id:7 , name:'البرز سیستم' , image:'/assets/images/TopSellers.png' , lorem:'9821' , grade:'70%'},
+        {id:7 , name:'البرز سیستم' , image:'/assets/images/TopSellers.png' , lorem:'9821' , grade:'70%'},
     ]
 
     return (
-        <Grid className="BodyTable" maxHeight={{xs: '126px', md: '232px'}} sx={{
+        <Grid className="BodyTable" maxHeight={{xs: '300px', lg: '392px'}} sx={{
             overflowY: 'auto', scrollbarWidth: 'none', '&::-webkit-scrollbar': {
                 display: 'none',
             },
@@ -55,9 +60,10 @@ const TopSellers = () => {
                             sm: '350px',
                             md: '220px',
                             l: '290px',
-                            lg: '110px',
-                            g: '161px',
-                            xg: '203px'
+                            lg: '105px',
+                            g: '135px',
+                            xg: '190px' ,
+                            xl:'210px'
                         }}
                               pb={{xs: '12px', l: '28px'}}>
                             <Typography textAlign={'right'} variant={secondVariant} fontWeight={500}
@@ -72,9 +78,10 @@ const TopSellers = () => {
                                   xxs: '49px',
                                   sm: '150px',
                                   l: '165px',
-                                  lg: '30px',
-                                  g: '60px',
-                                  xg: '116px'
+                                  lg: '17px',
+                                  g: '55px',
+                                  xg: '76px' ,
+                                  xl:'85px'
                               }}
                               pb={{xs: '12px', l: '28px'}}>
                             <Typography textAlign={'right'} variant={secondVariant} fontWeight={500}

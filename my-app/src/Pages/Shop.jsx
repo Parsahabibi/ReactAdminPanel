@@ -94,7 +94,7 @@ const Shop = () => {
                 <Header id={2} marginLeft={157} MainTitle={'فروشگاه'} SubTitle={'صفحات / فروشگاه'}/>
                 <Grid className={'MainShop'} width={'100%'} p={'6px 18px 32px 18px'} display={{xs: 'block', lg: 'flex'}}
                       alignItems={'flex-start'} justifyContent={'space-between'} gap={{lg: '20px'}}>
-                    <Grid className={'MarketBody'} width={{xs: '100%', lg: '68%'}} height={'100%'}
+                    <Grid className={'MarketBody'} width={{xs: '100%', lg:'68%'}} height={'100%'}
                           mb={{xs: '32px', lg: '0px'}}>
                         <Grid className={'Banner'} height={{xs: '137px', md: '350px'}} width={'100%'}
                               mb={{xs: '20px', lg: '40px'}}
@@ -239,11 +239,12 @@ const Shop = () => {
                         </Grid>
                         <Grid className={'More'}></Grid>
                     </Grid>
-                    <Grid className={'SideBarBody'} width={{xs: '100%', lg: '32%'}} height={'100%'}>
+                    <Grid className={'SideBarBody'}  height={'100%'}>
                         <Grid className={'TopSellers'} p={{xs: '16px 21px', md: '18px 32px 62px 21px'}}
-                              bgcolor={'white'} borderRadius={'20px'} mb={'20px'}>
+                              bgcolor={'white'} borderRadius={'20px'} mb={'20px'} width={{lg: '100%'}}>
                             <Grid className={'HeaderTableTopSellers'} display={'flex'}
-                                  alignItems={'flex-start'} justifyContent={'space-between'} pb={{xs:'24px' , lg:'30px'}}>
+                                  alignItems={'flex-start'} justifyContent={'space-between'}
+                                  pb={{xs: '24px', lg: '30px'}}>
                                 <Typography variant={TopSellersVariant} fontWeight={700} color={theme.palette.dark}>فروشندگان
                                     برتر</Typography>
                                 <button style={{
@@ -258,9 +259,7 @@ const Shop = () => {
                                 }}>همه
                                 </button>
                             </Grid>
-                            <Grid>
-                                <TopSellers />
-                            </Grid>
+                            <TopSellers/>
                         </Grid>
                         <Grid className={'History'}></Grid>
                     </Grid>

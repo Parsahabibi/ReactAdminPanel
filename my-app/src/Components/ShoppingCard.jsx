@@ -8,7 +8,7 @@ const ShoppingCard = ({price, Title, subTitle, img, count}) => {
 
     return (
         <Grid className={'ShoppingCard'} p={'17px 21px 27px 21px'} bgcolor={'white'} borderRadius={'20px'}
-              width={{xs: '300px', xxs: '350px', sm: '320px', md: '275px', xl: '350px'}}>
+              width={{xs: '300px', xxs: '350px', sm: '320px', md:'259px' , xl: '345px'}}>
             <Grid className={'ShoppingImage'} position={'relative'} width={'100%'}>
                 <img className={'ShoppingImages'} width={'100%'} height={'100%'} style={{borderRadius: '20px'}}
                      src={img} alt={''}/>

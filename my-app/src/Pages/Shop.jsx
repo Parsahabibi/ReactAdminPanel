@@ -10,6 +10,17 @@ import TopSellers from "../Components/Tables/TopSellers";
 const Shop = () => {
 
 
+    const [hoveredItem, setHoveredItem] = useState(null);
+
+    const handleMouseEnter = (itemId) => {
+        setHoveredItem(itemId);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredItem(null);
+    };
+
+
     const [active, setActive] = useState(1)
 
 
@@ -23,6 +34,95 @@ const Shop = () => {
         {id: 4, title: 'موسیقی'},
         {id: 5, title: 'خانواده'},
         {id: 6, title: 'ورزش'},
+    ]
+
+
+    const HistoryData = [
+        {
+            id: 1,
+            title: 'لورم ایپسوم',
+            subTitle: 'لورم ایپسوم متن',
+            price: '120 تومان',
+            Time: '30ثانیه قبل',
+            image: '/assets/images/HistoryImage.png'
+        },
+        {
+            id: 2,
+            title: 'لورم ایپسوم',
+            subTitle: 'لورم ایپسوم متن',
+            price: '120 تومان',
+            Time: '30ثانیه قبل',
+            image: '/assets/images/HistoryImage.png'
+        },
+        {
+            id: 3,
+            title: 'لورم ایپسوم',
+            subTitle: 'لورم ایپسوم متن',
+            price: '120 تومان',
+            Time: '30ثانیه قبل',
+            image: '/assets/images/HistoryImage.png'
+        },
+        {
+            id: 4,
+            title: 'لورم ایپسوم',
+            subTitle: 'لورم ایپسوم متن',
+            price: '120 تومان',
+            Time: '30ثانیه قبل',
+            image: '/assets/images/HistoryImage.png'
+        },
+        {
+            id: 5,
+            title: 'لورم ایپسوم',
+            subTitle: 'لورم ایپسوم متن',
+            price: '120 تومان',
+            Time: '30ثانیه قبل',
+            image: '/assets/images/HistoryImage.png'
+        },
+        {
+            id: 6,
+            title: 'لورم ایپسوم',
+            subTitle: 'لورم ایپسوم متن',
+            price: '120 تومان',
+            Time: '30ثانیه قبل',
+            image: '/assets/images/HistoryImage.png'
+        },
+        {
+            id: 7,
+            title: 'لورم ایپسوم',
+            subTitle: 'لورم ایپسوم متن',
+            price: '120 تومان',
+            Time: '30ثانیه قبل',
+            image: '/assets/images/HistoryImage.png'
+        },
+        {
+            id: 8,
+            title: 'لورم ایپسوم',
+            subTitle: 'لورم ایپسوم متن',
+            price: '120 تومان',
+            Time: '30ثانیه قبل',
+            image: '/assets/images/HistoryImage.png'
+        },
+        {
+            id: 9,
+            title: 'لورم ایپسوم',
+            subTitle: 'لورم ایپسوم متن',
+            price: '120 تومان',
+            Time: '30ثانیه قبل',
+            image: '/assets/images/HistoryImage.png'
+        },
+        {
+            id: 10,
+            title: 'لورم ایپسوم',
+            subTitle: 'لورم ایپسوم متن',
+            price: '120 تومان',
+            Time: '30ثانیه قبل',
+            image: '/assets/images/HistoryImage.png'
+        },
+        // {id:11 , title:'لورم ایپسوم' , subTitle:'لورم ایپسوم متن' , price:'120 تومان' , Time:'30ثانیه قبل'},
+        // {id:12 , title:'لورم ایپسوم' , subTitle:'لورم ایپسوم متن' , price:'120 تومان' , Time:'30ثانیه قبل'},
+        // {id:13 , title:'لورم ایپسوم' , subTitle:'لورم ایپسوم متن' , price:'120 تومان' , Time:'30ثانیه قبل'},
+        // {id:14 , title:'لورم ایپسوم' , subTitle:'لورم ایپسوم متن' , price:'120 تومان' , Time:'30ثانیه قبل'},
+        // {id:15 , title:'لورم ایپسوم' , subTitle:'لورم ایپسوم متن' , price:'120 تومان' , Time:'30ثانیه قبل'},
     ]
 
 
@@ -59,6 +159,7 @@ const Shop = () => {
     const isUp400px = useMediaQuery((theme) => theme.breakpoints.up('xxs'));
     const isUpXl = useMediaQuery((theme) => theme.breakpoints.up('xl'));
     const isUpLg = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+    const isUpG = useMediaQuery((theme) => theme.breakpoints.up('g'));
     const isXs = useMediaQuery(theme.breakpoints.down('xs'));
     const isMd = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -75,6 +176,12 @@ const Shop = () => {
     let TopSellersVariant = isUpLg ? 'h3' : 'h5';
 
     let AllButton = isUpLg ? 'h6' : 'subtitle1';
+
+    let TitleHistoryCard = isUpG ? 'h6' : 'subtitle1';
+
+    let SubTitleHistoryCard = isUpG ? 'h6' : 'subtitle2'
+
+    let PriceAndTimeHistoryCard = isUpG ? 'h5' : 'subtitle1'
 
     let padding = isMd ? '11px 32px' : '4px 10px'
 
@@ -94,7 +201,7 @@ const Shop = () => {
                 <Header id={2} marginLeft={157} MainTitle={'فروشگاه'} SubTitle={'صفحات / فروشگاه'}/>
                 <Grid className={'MainShop'} width={'100%'} p={'6px 18px 32px 18px'} display={{xs: 'block', lg: 'flex'}}
                       alignItems={'flex-start'} justifyContent={'space-between'} gap={{lg: '20px'}}>
-                    <Grid className={'MarketBody'} width={{xs: '100%', lg:'68%'}} height={'100%'}
+                    <Grid className={'MarketBody'} width={{xs: '100%', g: '68%'}} height={'100%'}
                           mb={{xs: '32px', lg: '0px'}}>
                         <Grid className={'Banner'} height={{xs: '137px', md: '350px'}} width={'100%'}
                               mb={{xs: '20px', lg: '40px'}}
@@ -103,7 +210,7 @@ const Shop = () => {
                                  style={{borderRadius: '15px', display: displayXs, width: '100%', height: '100%'}}/>
                             <img src={'/assets/images/DesktopBanner.png'} alt={''}
                                  style={{borderRadius: '15px', display: display, width: '100%', height: '100%'}}/>
-                            <Grid position={'absolute'} top={{xs: '26px', md: '80px'}} right={{xs: '15px', g: '45px'}}>
+                            <Grid position={'absolute'} top={{xs: '26px', md: '80px' , xl:'45px'}} right={{xs: '15px', g: '45px'}}>
                                 <Typography variant={fontSizeTitle} display={{xs: 'block', md: 'none'}}
                                             width={{xs: '143px', xxs: '172px'}} color={'white'} lineHeight={'25px'}
                                             pb={'20px'} fontWeight={700}>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
@@ -225,21 +332,32 @@ const Shop = () => {
                             </Grid>
 
 
-                            <Grid className={'ShoppingCard'} display={{xs: 'none', md: 'flex'}} alignItems={'center'}
-                                  justifyContent={{xs: 'center', sm: 'space-between'}} flexWrap={'wrap'} gap={'16px'}>
-                                {
-                                    ShoppingCardData.map(
-                                        item =>
-                                            <ShoppingCard count={item.count} price={item.price} img={item.img}
-                                                          subTitle={item.subTitle} Title={item.title}/>
-                                    )
-                                }
+                            <Grid display={{xs:'none' , md:'block'}}>
+                                <Grid display={{lg: 'flex'}} alignItems={'center'}
+                                      justifyContent={'space-between'}
+                                      pb={{lg: '20px'}}>
+                                    <Typography variant={FontSizeTrendOfTheDays} fontWeight={700}
+                                                pb={{xs: '8px', lg: '0px'}}
+                                                color={theme.palette.dark}>بازدیدهای اخیر</Typography>
+                                </Grid>
+                                <Grid className={'ShoppingCard'} display={{xs: 'none', md: 'flex'}} alignItems={'center'}
+                                      justifyContent={{xs: 'center', sm: 'space-between'}} flexWrap={'wrap'} gap={'16px'}>
+                                    {
+                                        ShoppingCardData.map(
+                                            item =>
+                                                <ShoppingCard count={item.count} price={item.price} img={item.img}
+                                                              subTitle={item.subTitle} Title={item.title}/>
+                                        )
+                                    }
+                                </Grid>
                             </Grid>
+
+
 
                         </Grid>
                         <Grid className={'More'}></Grid>
                     </Grid>
-                    <Grid className={'SideBarBody'}  height={'100%'}>
+                    <Grid className={'SideBarBody'} height={'100%'} width={{g:'32%'}}>
                         <Grid className={'TopSellers'} p={{xs: '16px 21px', md: '18px 32px 62px 21px'}}
                               bgcolor={'white'} borderRadius={'20px'} mb={'20px'} width={{lg: '100%'}}>
                             <Grid className={'HeaderTableTopSellers'} display={'flex'}
@@ -261,7 +379,74 @@ const Shop = () => {
                             </Grid>
                             <TopSellers/>
                         </Grid>
-                        <Grid className={'History'}></Grid>
+                        <Grid className={'History'} p={{xs: '16px 21px', md: '18px 18px 47px 18px'}}
+                              bgcolor={'white'} borderRadius={'20px'} mb={'20px'} width={{lg: '100%'}}>
+                            <Grid className={'HeaderTableTopSellers'} display={'flex'}
+                                  alignItems={'flex-start'} justifyContent={'space-between'}
+                                  pb={{xs: '24px', lg: '30px'}}>
+                                <Typography variant={TopSellersVariant} fontWeight={700}
+                                            color={theme.palette.dark}>تاریخچه</Typography>
+                                <button style={{
+                                    fontSize: AllButton,
+                                    fontWeight: 500,
+                                    cursor: 'pointer',
+                                    backgroundColor: theme.palette.one,
+                                    color: theme.palette.main,
+                                    borderRadius: '70px',
+                                    border: 'none',
+                                    padding: '4px 29px'
+                                }}>همه
+                                </button>
+                            </Grid>
+                            <Grid className={'HistoryCards'}
+                                  maxHeight={{xs: '180px', lg: '586px', g: '497px', xl: '618px'}} sx={{
+                                overflowY: 'auto', scrollbarWidth: 'none', '&::-webkit-scrollbar': {
+                                    display: 'none',
+                                },
+                            }}>
+                                {
+                                    HistoryData.map(
+                                        item =>
+                                            <Grid key={item.id} p={{lg: '21px 7px 21px 7px', xl: '21px 7px 21px 21px'}}
+                                                  mx={'5px'} mb={'38px'} borderRadius={'20px'}
+                                                  mt={item.id === 1 ? '5px' : '0px'} display={'flex'}
+                                                  alignItems={'center'} justifyContent={'space-between'}
+                                                  style={{
+                                                      cursor: 'pointer',
+                                                      boxShadow: hoveredItem === item.id
+                                                          ? '0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)'
+                                                          : 'none',
+                                                  }}
+                                                  onMouseEnter={() => handleMouseEnter(item.id)}
+                                                  onMouseLeave={handleMouseLeave}>
+                                                <Grid display={'flex'} alignItems={'center'}
+                                                      justifyContent={'flex-start'} gap={{xs: '8px', xl: '18px'}}>
+                                                    <Grid className={'ImageCard'}
+                                                          width={{xs: '40px', xxs: '66px', lg: '40px', xl: '66px'}}
+                                                          height={{xs: '40px', xxs: '66px', lg: '40px', xl: '66px'}}>
+                                                        <img src={item.image} alt={''} width={'100%'} height={'100%'}/>
+                                                    </Grid>
+                                                    <Grid>
+                                                        <Typography variant={TitleHistoryCard} fontWeight={700}
+                                                                    color={theme.palette.dark}
+                                                                    lineHeight={'20px'}>{item.title}</Typography>
+                                                        <Typography variant={SubTitleHistoryCard} fontWeight={500}
+                                                                    color={theme.palette.light}>{item.subTitle}</Typography>
+                                                    </Grid>
+                                                </Grid>
+                                                <Grid>
+                                                    <Typography variant={PriceAndTimeHistoryCard} fontWeight={700}
+                                                                color={theme.palette.dark}>{item.price}</Typography>
+                                                </Grid>
+                                                <Grid>
+                                                    <Typography variant={PriceAndTimeHistoryCard} fontWeight={500}
+                                                                color={theme.palette.light}>{item.Time}</Typography>
+                                                </Grid>
+                                            </Grid>
+                                    )
+                                }
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

@@ -4,6 +4,7 @@ import Dashboard from "../Components/Dashboard";
 import Header from "../Components/Header/Header";
 import ChartMoreOption from "../Components/ChartMoreOption";
 import ReviewTable from "../Components/Tables/ReviewTable";
+import DevelopTables from "../Components/Tables/DevelopTables";
 
 const Tables = () => {
 
@@ -76,12 +77,12 @@ const Tables = () => {
                                   borderRadius={'20px'} width={{xs: '100%', lg: '49%', g: '50%'}}
                                   height={{xs: '420px', lg: '579px'}}>
                                 <Grid className={'HeaderDevelopmentTable'} display={'flex'} alignItems={'center'}
-                                      justifyContent={'space-between'}>
+                                      justifyContent={'space-between'} pb={'16px'}>
                                     <Typography variant={HeaderTables} fontWeight={700} color={theme.palette.dark}>جدول
                                         توسعه</Typography>
                                     <ChartMoreOption/>
                                 </Grid>
-                                <Grid className={'TableDevelopment'}></Grid>
+                                <DevelopTables />
                             </Grid>
                         </Grid>
                         <Grid className={'ComplexAndColumnTable'} display={'flex'} alignItems={'flex-start'}

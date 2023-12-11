@@ -110,7 +110,7 @@ const DesktopHeader = ({SubTitle, MainTitle }) => {
                 <Grid className={'OptionItemsTitle'} width={'4px'} height={'16px'} display={'flex'}
                       alignItems={'center'} justifyContent={'center'} position={'relative'} ref={ref}
                 >
-                    <img src={'assets/images/HeaderOption.svg'} width={'100%'} height={'100%'} alt={''}
+                    <img src={'assets/images/HeaderOption.svg'} width={'100%'} height={'100%'} alt={''} style={{cursor:'pointer'}}
                          onClick={() => {
                              setShowOption(!showOption)
                          }}
@@ -134,6 +134,7 @@ const DesktopHeader = ({SubTitle, MainTitle }) => {
                                 alignItems: 'flex-start',
                                 justifyContent: 'flex-start',
                                 gap: '16px',
+                                zIndex:50
                             }}
                         >
                             <Link to={''}>

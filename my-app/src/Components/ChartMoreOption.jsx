@@ -18,7 +18,7 @@ const ChartMoreOption = () => {
 
     let variant = 'subtitle1';
 
-    const padding = isXs ? '20px 20px 20px 100px' : '40px 40px 34px 166px';
+    const padding = !isMd ? '20px 20px 20px 100px' : '40px 40px 34px 166px';
     const positionTop = isXs ? '28px' : '37px';
 
     if (isXs) {

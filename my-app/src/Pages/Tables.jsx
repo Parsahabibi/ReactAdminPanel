@@ -5,6 +5,7 @@ import Header from "../Components/Header/Header";
 import ChartMoreOption from "../Components/ChartMoreOption";
 import ReviewTable from "../Components/Tables/ReviewTable";
 import DevelopTables from "../Components/Tables/DevelopTables";
+import ComplexTable from "../Components/Tables/ComplexTable";
 
 const Tables = () => {
 
@@ -72,7 +73,7 @@ const Tables = () => {
                                 </Grid>
                                 <ReviewTable/>
                             </Grid>
-                            <Grid className={'DevelopmentTable'} mb={{xs:'20px' , md:'0px'}}
+                            <Grid className={'DevelopmentTable'} mb={{xs: '20px', lg: '0px'}}
                                   p={{xs: '16px 21px 24px 21px', xxs: '16px 30px 24px 21px'}} bgcolor={'white'}
                                   borderRadius={'20px'} width={{xs: '100%', lg: '49%', g: '50%'}}
                                   height={{xs: '420px', lg: '579px'}}>
@@ -82,21 +83,41 @@ const Tables = () => {
                                         توسعه</Typography>
                                     <ChartMoreOption/>
                                 </Grid>
-                                <DevelopTables />
+                                <DevelopTables/>
                             </Grid>
                         </Grid>
                         <Grid className={'ComplexAndColumnTable'} display={'flex'} alignItems={'flex-start'}
                               justifyContent={'space-between'} flexDirection={{xs: 'column', lg: 'row'}} gap={'20px'}>
-                            <Grid className={'ComplexTable'} p={{xs: '16px 21px 24px 21px', xxs: '16px 30px 24px 21px'}}
-                                  bgcolor={'white'} borderRadius={'20px'} width={{xs: '100%', lg: '49%', g: '50%'}}
-                                  height={{xs: '250px', md: '280px', lg: '345px'}}>
-                                <Grid className={'HeaderComplexTable'} display={'flex'} alignItems={'center'}
-                                      justifyContent={'space-between'}>
-                                    <Typography variant={HeaderTables} fontWeight={700} color={theme.palette.dark}> جدول
-                                        کمپلکس</Typography>
-                                    <ChartMoreOption/>
-                                </Grid>
-                                <Grid className={'TableComplex'}></Grid>
+                            <Grid width={{xs: '100%', lg: '49%', g: '50%'}}>
+                                <ComplexTable
+                                    paddingLeftName={{
+                                        xs: '49px',
+                                        xxs: '52px',
+                                        sm: '250px',
+                                        md: '220px',
+                                        l: '186px',
+                                        lg: '75px',
+                                        g: '161px',
+                                        xg: '203px'
+                                    }}
+                                    paddingLeftStatus={{
+                                        xs: '35px',
+                                        xxs: '49px',
+                                        sm: '110px',
+                                        l: '115px',
+                                        lg: '45px',
+                                        g: '60px',
+                                        xg: '116px'
+                                    }}
+                                    paddingLeftDate={{
+                                        xs: '36px',
+                                        xxs: '49px',
+                                        sm: '90px',
+                                        l: '95px',
+                                        lg: '50px',
+                                        g: '100px',
+                                        xg: '141px'
+                                    }} flag={true}/>
                             </Grid>
                             <Grid className={'ColumnTable'} p={{xs: '16px 21px 24px 21px', xxs: '16px 30px 24px 21px'}}
                                   bgcolor={'white'} borderRadius={'20px'} width={{xs: '100%', lg: '49%', g: '50%'}}

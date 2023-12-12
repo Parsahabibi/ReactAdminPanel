@@ -579,7 +579,32 @@ const Home = () => {
                         </Grid>
                         {/*complex*/}
                         <Grid pb={'16px'}>
-                            <ComplexTable/>
+                            <ComplexTable paddingLeftName={{
+                                xs: '49px',
+                                xxs: '52px',
+                                sm: '250px',
+                                md: '220px',
+                                l: '186px',
+                                lg: '250px',
+                                g: '161px',
+                                xg: '203px'
+                            }} paddingLeftStatus={{
+                                xs: '39px',
+                                xxs: '49px',
+                                sm: '110px',
+                                l: '115px',
+                                lg: '160px',
+                                g: '60px',
+                                xg: '116px'
+                            }} paddingLeftDate={{
+                                xs: '36px',
+                                xxs: '49px',
+                                sm: '90px',
+                                l: '95px',
+                                lg: '170px',
+                                g: '100px',
+                                xg: '141px'
+                            }} flag={false}/>
                         </Grid>
                     </Grid>
                     <Grid className={'ButtonNotification'}

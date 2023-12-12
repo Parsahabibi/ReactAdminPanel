@@ -6,6 +6,7 @@ import ChartMoreOption from "../Components/ChartMoreOption";
 import ReviewTable from "../Components/Tables/ReviewTable";
 import DevelopTables from "../Components/Tables/DevelopTables";
 import ComplexTable from "../Components/Tables/ComplexTable";
+import ColumnTables from "../Components/Tables/ColumnTables";
 
 const Tables = () => {
 
@@ -121,14 +122,14 @@ const Tables = () => {
                             </Grid>
                             <Grid className={'ColumnTable'} p={{xs: '16px 21px 24px 21px', xxs: '16px 30px 24px 21px'}}
                                   bgcolor={'white'} borderRadius={'20px'} width={{xs: '100%', lg: '49%', g: '50%'}}
-                                  height={{xs: '250px', md: '280px', lg: '345px'}}>
+                                  height={{xs: '420px', lg: '345px'}}>
                                 <Grid className={'HeaderColumnTable'} display={'flex'} alignItems={'center'}
-                                      justifyContent={'space-between'}>
+                                      justifyContent={'space-between'} pb={{xs:'12px' , md:'28px'}}>
                                     <Typography variant={HeaderTables} fontWeight={700} color={theme.palette.dark}>جدول
                                         ستونی</Typography>
                                     <ChartMoreOption/>
                                 </Grid>
-                                <Grid className={'TableColumn'}></Grid>
+                                <ColumnTables />
                             </Grid>
                         </Grid>
                     </Grid>

@@ -111,6 +111,11 @@ const ComplexTable = ({paddingLeftName , paddingLeftStatus , paddingLeftDate , f
         },
     ];
 
+
+    let style = isMd ? {borderCollapse: 'separate', borderSpacing: '0 16px', paddingRight: paddingRight} : {borderCollapse: 'separate', borderSpacing: '0 10px', paddingRight: paddingRight}
+
+
+
     return (
         <Grid className={'ComplexTable'} bgcolor={'white'}
               p={{xs: '21px 12px', xxs: '21px 24px'}}
@@ -128,12 +133,12 @@ const ComplexTable = ({paddingLeftName , paddingLeftStatus , paddingLeftDate , f
                     display: 'none',
                 },
             }}>
-                <table style={{paddingRight:paddingRight}}>
-                    <thead style={{paddingBottom: '12px'}}>
+                <table style={style} >
+                    <thead>
                     <tr>
                         <th className="Name">
                             <Grid pl={paddingLeftName}
-                                  pb={{xs: '12px', l: '28px'}}>
+                                  >
                                 <Typography textAlign={'right'} variant={secondVariant} fontWeight={500}
                                             color={theme.palette.light}>نام
                                 </Typography>
@@ -142,7 +147,7 @@ const ComplexTable = ({paddingLeftName , paddingLeftStatus , paddingLeftDate , f
                         <th>
                             <Grid className="Advance"
                                   pl={paddingLeftStatus}
-                                  pb={{xs: '12px', l: '28px'}}>
+                                  >
                                 <Typography textAlign={'right'} variant={secondVariant} fontWeight={500}
                                             color={theme.palette.light}>وضعیت
                                 </Typography>
@@ -151,15 +156,14 @@ const ComplexTable = ({paddingLeftName , paddingLeftStatus , paddingLeftDate , f
                         <th>
                             <Grid className="Count"
                                   pl={paddingLeftDate}
-                                  pb={{xs: '12px', l: '28px'}}>
+                                 >
                                 <Typography textAlign={'right'} variant={secondVariant} fontWeight={500}
                                             color={theme.palette.light}>تاریخ
                                 </Typography>
                             </Grid>
                         </th>
                         <th>
-                            <Grid className="Date"
-                                  pb={{xs: '12px', l: '28px'}}>
+                            <Grid className="Date">
                                 <Typography textAlign={'right'} variant={secondVariant} fontWeight={500}
                                             color={theme.palette.light}>پیشرفت
                                 </Typography>
@@ -168,20 +172,21 @@ const ComplexTable = ({paddingLeftName , paddingLeftStatus , paddingLeftDate , f
 
                     </tr>
                     </thead>
-                    <tbody className="tbody" style={{height:'88px' , overflowY:'auto'}}>
+                    <tr className="Spacing" style={{width:'100%' ,  height:'5px' , backgroundColor:'transparent'}}></tr>
+                    <tbody className="tbody">
                     {dataTableComplex.map((item, index) => (
                         <tr key={index} className="rowTable">
-                            <td className="titleTable" style={{paddingBottom:paddingBottom}}>
+                            <td className="titleTable" >
                                 <Typography variant={thirdVariant} fontWeight={700}>{item.title}</Typography>
                             </td>
-                            <td className="status" style={{display:'flex' , alignItems:'center' , justifyContent:'flex-start' , gap:gap , paddingBottom:paddingBottom}}>
+                            <td className="status" style={{display:'flex' , alignItems:'center' , justifyContent:'flex-start' , gap:gap}}>
                                 <img src={item.statusImage} alt=""/>
                                 <Typography variant={thirdVariant} className="medium" fontWeight={700}>{item.statusText}</Typography>
                             </td>
-                            <td className="DateTable" style={{paddingBottom:paddingBottom}}>
+                            <td className="DateTable" >
                                 <Typography variant={thirdVariant} className="medium" fontWeight={700}>{item.dateText}</Typography>
                             </td>
-                            <td className="ProgressTable" style={{paddingBottom:paddingBottom}}>
+                            <td className="ProgressTable" >
                                 <Grid className="background" position={'relative'} width={{xs:'40px' , xxs:'70px' , md:'100px'}} height={'8px'} bgcolor={theme.palette.six} borderRadius={'21px'}>
                                     <Grid className="progress" style={{width: item.progressWidth}} position={'absolute'} top={0} right={0} bgcolor={theme.palette.main} borderRadius={'21px'} height={'8px'}></Grid>
                                 </Grid>

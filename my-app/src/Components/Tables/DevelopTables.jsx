@@ -156,7 +156,7 @@ const DevelopTables = () => {
                            xs: '60px',
                            xxs: '60px',
                            sm: '195px',
-                           md: '135px',
+                           md: '170px',
                            lg: '45px',
                            g: '130px',
                            xl: '114px'
@@ -171,7 +171,7 @@ const DevelopTables = () => {
                             xs: '65px',
                             xxs: '55px',
                             sm: '140px',
-                            md: '70px',
+                            md: '100px',
                             lg: '25px',
                             g: '70px',
                             xl: '132px'
@@ -186,7 +186,7 @@ const DevelopTables = () => {
                             xs: '55px',
                             xxs: '65px',
                             sm: '100px',
-                            md: '50px',
+                            md: '90px',
                             lg: '40px',
                             g: '55px',
                             xl: '125px'
@@ -205,6 +205,7 @@ const DevelopTables = () => {
                    </th>
                </tr>
                </thead>
+               <tr className="Spacing" style={{width:'100%' ,  height:'0px' , backgroundColor:'transparent'}}></tr>
                <tbody className="Develop">
                <>
                    {DevelopTable.map((item, index) => (

@@ -134,13 +134,25 @@ const ReviewTable = () => {
 
     const theme = useTheme()
 
+    const isXs = useMediaQuery(theme.breakpoints.down('xs'));
+
     const isMd = useMediaQuery(theme.breakpoints.up('md'));
 
-    const isUp400px = useMediaQuery((theme) => theme.breakpoints.up('xxs'));
+    const isUp400px = useMediaQuery('(min-width: 400px)');
 
     const isUpXl = useMediaQuery((theme) => theme.breakpoints.up('xl'));
 
-    let ItemsFont = isUp400px ? 'subtitle1' : 'subtitle2'
+    let ItemsFont = 'subtitle2'
+
+    if (isXs){
+        ItemsFont = 'subtitle2'
+    }
+    if (isUp400px){
+        ItemsFont = 'subtitle1'
+    }
+    if (isMd){
+        ItemsFont = 'h6'
+    }
 
     let HeaderTables = isMd ? 'h6' : 'subtitle1'
 
@@ -164,7 +176,7 @@ const ReviewTable = () => {
                             xs: '60px',
                             xxs: '95px',
                             sm: '200px',
-                            md: '135px',
+                            md: '175px',
                             lg: '65px',
                             g: '155px',
                             xl: '160px'
@@ -180,7 +192,7 @@ const ReviewTable = () => {
                             xs: '10px',
                             xxs: '25px',
                             sm: '140px',
-                            md: '70px',
+                            md: '90px',
                             lg: '25px',
                             g: '70px',
                             xl: '110px'
@@ -196,7 +208,7 @@ const ReviewTable = () => {
                             xs: '10px',
                             xxs: '20px',
                             sm: '100px',
-                            md: '50px',
+                            md: '80px',
                             lg: '20px',
                             g: '40px',
                             xl: '100px'
@@ -216,6 +228,7 @@ const ReviewTable = () => {
                     </th>
                 </tr>
                 </thead>
+                <tr className="Spacing" style={{width:'100%' ,  height:'0px' , backgroundColor:'transparent'}}></tr>
                 <tbody>
                 <>
                     {rowData.map((item, index) => (

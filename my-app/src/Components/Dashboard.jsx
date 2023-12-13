@@ -40,12 +40,12 @@ const Dashboard = ({id  , marginLeft}) => {
                 <img src={'assets/images/ShoppingLogo.svg'} alt={''}/>
             </Grid>
             <Grid className={'Divider'} width={'100%'} height={'1px'} bgcolor={theme.palette.one}></Grid>
-            <Grid className={'DashboardItems'} px={'32px'} pt={'40px'} pb={'200px'} display={'flex'}
+            <Grid className={'DashboardItems'} pr={'32px'} pt={'40px'} pb={'200px'} display={'flex'}
                   flexDirection={'column'} alignItems={'flex-start'} gap={'32px'}>
                 {
                     DashboardData.map(
                         item =>
-                            <Link to={item.link} key={item.id} style={{display:'flex' , alignItems:'center' , justifyContent:'space-between'}}>
+                            <Link to={item.link} key={item.id} style={{display:'flex' , alignItems:'center' , justifyContent:'space-between' , width:'100%'}}>
                                 <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'} gap={'12px'} ml={{xs:item.id === id ? `${marginLeft - 60}px` : 0 , xxs:item.id === id ?  `${marginLeft}px` : 0}}>
                                     <Grid>
                                         {item.image}

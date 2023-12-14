@@ -83,6 +83,66 @@ const Profile = () => {
     };
 
 
+    const projectsData = [
+        {
+            id:1 ,
+            imageSrc: "/assets/images/shubham.png",
+            title: "مورد نیاز، و کاربردهای متنوع با هدف",
+            projectDetails: " دیدن جزییات پروژه" ,
+            projectName:'پروژه #1 '
+        },
+        {
+            id:2 ,
+            imageSrc: "/assets/images/shubham.png",
+            title: "مورد نیاز، و کاربردهای متنوع با هدف",
+            projectDetails: " دیدن جزییات پروژه" ,
+            projectName:'پروژه #1 '
+        },
+        {
+            id:3 ,
+            imageSrc: "/assets/images/shubham.png",
+            title: "مورد نیاز، و کاربردهای متنوع با هدف",
+            projectDetails: " دیدن جزییات پروژه" ,
+            projectName:'پروژه #1 '
+        },
+        {
+            id:4 ,
+            imageSrc: "/assets/images/shubham.png",
+            title: "مورد نیاز، و کاربردهای متنوع با هدف",
+            projectDetails: " دیدن جزییات پروژه" ,
+            projectName:'پروژه #1 '
+        },
+        {
+            id:5 ,
+            imageSrc: "/assets/images/shubham.png",
+            title: "مورد نیاز، و کاربردهای متنوع با هدف",
+            projectDetails: " دیدن جزییات پروژه" ,
+            projectName:'پروژه #1 '
+        },
+        {
+            id:6 ,
+            imageSrc: "/assets/images/shubham.png",
+            title: "مورد نیاز، و کاربردهای متنوع با هدف",
+            projectDetails: " دیدن جزییات پروژه" ,
+            projectName:'پروژه #1 '
+        },
+        {
+            id:7 ,
+            imageSrc: "/assets/images/shubham.png",
+            title: "مورد نیاز، و کاربردهای متنوع با هدف",
+            projectDetails: " دیدن جزییات پروژه" ,
+            projectName:'پروژه #1 '
+        },
+        {
+            id:8 ,
+            imageSrc: "/assets/images/shubham.png",
+            title: "مورد نیاز، و کاربردهای متنوع با هدف",
+            projectDetails: " دیدن جزییات پروژه" ,
+            projectName:'پروژه #1 '
+        },
+    ];
+
+
 
     return (
         <Grid bgcolor={theme.palette.primary.one} height={'100vh'} width={'100%'} display={'flex'}
@@ -264,7 +324,56 @@ const Profile = () => {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid></Grid>
+                        <Grid display={{xs: 'block', llg: 'flex'}} alignItems={'flex-start'}
+                              justifyContent={'space-between'} gap={{lg: '20px'}}>
+                            <Grid className={'AllProjects'} p={{xs:'16px 24px' , lg:'23px 31px 31px 31px'}} borderRadius={{xs:'15px'}} height={{lg:'554px'}} width={{xs:'100%' , llg:'33%'}}  mb={'16px'} bgcolor={'white'}>
+                                <Typography variant={Information} color={theme.palette.dark} fontWeight={700} pb={{xs:'13px' , md:'16px'}}>همه پروژه ها</Typography>
+                                <Typography variant={desPersonal} color={theme.palette.light} fontWeight={700} pb={{xs:'24px' , md:'42px'}}>مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+                                    باشد، کتابهای زیادی در شصن را می طلبد،</Typography>
+                                <Grid maxHeight={{xs:'266px' , lg:'360px'}} sx={{
+                                    overflow: 'auto', scrollbarWidth: 'none', '&::-webkit-scrollbar': {
+                                        display: 'none',
+                                    },
+                                }}>
+                                    {
+                                        projectsData.map(
+                                            item =>
+                                                <Grid key={item.id} mt={item.id === 1 ? '5px' : '0px'} p={{xs:'8px' , md:'14px' , llg:'14px 7px'}} mb={'16px'} borderRadius={'10px'} boxShadow={2} mx={'2px'} display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
+                                                    <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'} gap={{xs:'4px' , xxs:'16px' , llg:'6px' , g:'12px' , xl:'16px'}}>
+                                                        <Grid className={'image'} width={{xs:'40px' , xxs:'60px' , g:'50px' , xl:'60px'}} height={{xs:'40px' , xxs:'60px' , g:'50px' , xl:'60px'}}>
+                                                            <img src={item.imageSrc} alt={''} width={"100%"} height={"100%"} style={{borderRadius:'10px'}}/>
+                                                        </Grid>
+                                                        <Grid className={'description'}>
+                                                            <Typography variant={HeaderTitleCard} color={theme.palette.dark} fontWeight={500}>مورد نیاز، و کاربردهای متنوع با هدف</Typography>
+                                                            <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'} gap={'6px'}>
+                                                                <Typography variant={HeaderTitleCard} color={theme.palette.light} fontWeight={500}>{item.projectName}</Typography>
+                                                                <Typography variant={'h6'} color={theme.palette.light} fontWeight={500}>•</Typography>
+                                                                <a href={'#'} style={{color:theme.palette.main}}><Typography variant={HeaderTitleCard} color={theme.palette.main} fontWeight={500}>{item.projectDetails}</Typography></a>
+                                                            </Grid>
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Grid className={'pen'} width={'18px'} height={'18px'}>
+                                                        <img src={'/assets/images/edit.svg'} alt={''} width={'100%'} height={'100%'}/>
+                                                    </Grid>
+                                                </Grid>
+                                        )
+                                    }
+                                </Grid>
+                            </Grid>
+                            <Grid className={'LoremProfileProjects'} bgcolor={'white'} p={{xs:'16px 24px' , lg:'27px 31px 31px 31px'}} borderRadius={{xs:'15px'}} height={{lg:'554px'}} width={{xs:'100%' , llg:'44%' , g:'40%'}}  mb={'16px'}>
+                                <Typography variant={Information} color={theme.palette.dark}
+                                            fontWeight={700} pb={'10px'}>لورم ایپسوم متن</Typography>
+                                <Typography variant={desPersonal} color={theme.palette.light}
+                                            fontWeight={500} pb={'20px'} lineHeight={'24px'} textAlign={'justify'}>لورم ایپسوم متن ساختگی با تولید سادگی
+                                    نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+                                    ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
+                                    بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته نیاز، و کاربردهای متنوع با
+                                    هدف
+                                </Typography>
+                                <Grid></Grid>
+                            </Grid>
+                            <Grid></Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

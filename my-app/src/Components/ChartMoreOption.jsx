@@ -41,7 +41,12 @@ const ChartMoreOption = () => {
 
     const optionAnimation = useSpring({
         opacity: option ? 1 : 0,
+        zIndex: option ? 20 : -1,
     });
+
+    let zIndex = option ? 20 : -1
+
+
 
     const handleClickOutside = (event) => {
         if (containerRef.current && !containerRef.current.contains(event.target)) {
@@ -83,7 +88,7 @@ const ChartMoreOption = () => {
                     top: positionTop,
                     left: 0,
                     padding,
-                    zIndex: 20,
+                    zIndex,
                 }}
                 ref={menuRef}
             >

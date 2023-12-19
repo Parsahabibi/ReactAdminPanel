@@ -2,6 +2,7 @@ import React from 'react'
 import {Grid, useMediaQuery, useTheme} from "@mui/material";
 import MobileLogin from "./MobileLogin";
 import DesktopLogin from "./DesktopLogin";
+import BannerLogin from "../BannerLogin";
 
 const Login = () => {
 
@@ -13,9 +14,9 @@ const Login = () => {
         <Grid>
             {
                 isMd ?
-                    <DesktopLogin/>
+                    <DesktopLogin />
                     :
-                    <MobileLogin/>
+                    <BannerLogin flag={true}/>
             }
         </Grid>
     )

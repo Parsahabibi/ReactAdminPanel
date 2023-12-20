@@ -6,7 +6,8 @@ import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 import 'react-toastify/dist/ReactToastify.css';
 import {toast, ToastContainer} from 'react-toastify';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+// import { GoogleLogin } from 'react-google-login';
+
 
 const MobileLogin = ({flag}) => {
 
@@ -63,6 +64,29 @@ const MobileLogin = ({flag}) => {
     };
 
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setInputValues((prevValues) => ({
+            ...prevValues,
+            [name]: value,
+        }));
+    };
+
+
+    {/* todo for login whit google*/}
+    // const handleGoogleLoginSuccess = (response) => {
+    //     console.log('Google login successful:', response);
+    //     // Handle the successful login, you may want to perform additional actions.
+    // };
+    //
+    // const handleGoogleLoginFailure = (error) => {
+    //     console.error('Google login failed:', error);
+    //     // Handle the login failure, you may want to show an error message.
+    // };
+
+
+
+
 
 
     useEffect(() => {
@@ -76,7 +100,7 @@ const MobileLogin = ({flag}) => {
     const onSubmitForm = async (data) => {
         try {
             if (isValid) {
-                if(inputValues.email === 'parsa@gmail.com' && inputValues.password === '123'){
+                if(inputValues.email === 'parsa@gmail.com' && inputValues.password === '1234'){
                     setLogin(true)
                     navigate('/')
                     reset({
@@ -102,10 +126,10 @@ const MobileLogin = ({flag}) => {
 
     return (
         <Grid p={'88px 40px 120px 40px'} bgcolor={theme.palette.one} width={flag ? '100%' : '50%'}>
+            <ToastContainer />
             <Link to={'/'} style={{cursor: 'pointer'}}>
                 <Grid className={'return'} display={'flex'} alignItems={'center'} justifyContent={'flex-end'}
                       pb={'32px'}>
-                    <ToastContainer />
                     <Typography variant={'h6'} color={theme.palette.light} fontWeight={500}>برگشت به
                         داشبورد</Typography>
                     <img src={'/assets/images/arrowDown.svg'} alt={''}/>
@@ -121,6 +145,14 @@ const MobileLogin = ({flag}) => {
                     <img src={'/assets/images/GoogleLogo.svg'} alt={''}/>
                     <Typography variant={'h6'} color={theme.palette.dark} fontWeight={500}>ورود با ایمیل</Typography>
                 </Grid>
+                {/* todo for login whit google*/}
+                {/*<GoogleLogin*/}
+                {/*    clientId="YOUR_GOOGLE_CLIENT_ID"*/}
+                {/*    buttonText="Login with Google"*/}
+                {/*    onSuccess={handleGoogleLoginSuccess}*/}
+                {/*    onFailure={handleGoogleLoginFailure}*/}
+                {/*    cookiePolicy={'single_host_origin'}*/}
+                {/*/>*/}
             </Grid>
             <Grid display={'flex'} alignItems={'center'} justifyContent={'space-between'} pb={'16px'}>
                 <Grid width={'40%'} height={'1px'} bgcolor={theme.palette.light}></Grid>
@@ -142,13 +174,7 @@ const MobileLogin = ({flag}) => {
                                 <Typography variant={'h6'} color={theme.palette.dark} fontWeight={500}>*</Typography>
                             </label>
                             <input name={'email'} id={'Email'} {...register('email')}
-                                   onChange={(e) => {
-                                       const {name, value} = e.target;
-                                       setInputValues((prevValues) => ({
-                                           ...prevValues,
-                                           [name]: value,
-                                       }));
-                                   }}
+                                   onInput={handleInputChange}
                                    value={inputValues.email || ''}
                                    style={{
                                        position: 'relative',
@@ -176,13 +202,7 @@ const MobileLogin = ({flag}) => {
                                 <Typography variant={'h6'} color={theme.palette.dark} fontWeight={500}>*</Typography>
                             </label>
                             <input name={'password'} {...register('password')}
-                                   onChange={(e) => {
-                                       const {name, value} = e.target;
-                                       setInputValues((prevValues) => ({
-                                           ...prevValues,
-                                           [name]: value,
-                                       }));
-                                   }}
+                                   onInput={handleInputChange}
                                    value={inputValues.password || ''}
                                    id={'Password'}
                                    style={{

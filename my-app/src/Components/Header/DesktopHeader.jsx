@@ -137,12 +137,12 @@ const DesktopHeader = ({SubTitle, MainTitle }) => {
                                 zIndex:50
                             }}
                         >
-                            <Link to={''}>
+                            <Link to={'/ChangePassword'}>
                                 <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
                                     تغییر رمز عبور
                                 </Typography>
                             </Link>
-                            <Link to={''}>
+                            <Link to={'/Login'}>
                                 <Typography variant={'h5'} color={theme.palette.dark} style={{whiteSpace: 'nowrap'}}>
                                     خروج
                                 </Typography>

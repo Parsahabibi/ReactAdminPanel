@@ -6,6 +6,7 @@ import Kanban from "../Pages/Kanban";
 import Profile from "../Pages/Profile";
 import Login from "../Pages/Login/Login";
 import MobileLogin from "../Pages/Login/MobileLogin";
+import ChangePassword from "../Pages/ChangePassword/ChangePassword";
 
 
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
     {
         path: "/Login/MobileLogin",
         element: <MobileLogin flag={true}/>,
+    },
+    {
+        path: "/ChangePassword",
+        element: <ChangePassword/>,
     },
 ])
 export default router

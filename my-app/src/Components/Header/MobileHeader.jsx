@@ -139,13 +139,13 @@ const MobileHeader = ({id, marginLeft}) => {
                                 gap: '16px',
                             }}
                         >
-                            <Link to={''}>
+                            <Link to={'/ChangePassword'}>
                                 <Typography variant={'h5'} color={theme.palette.dark}
                                             style={{whiteSpace: 'nowrap'}}>
                                     تغییر رمز عبور
                                 </Typography>
                             </Link>
-                            <Link to={''}>
+                            <Link to={'/Login'}>
                                 <Typography variant={'h5'} color={theme.palette.dark}
                                             style={{whiteSpace: 'nowrap'}}>
                                     خروج

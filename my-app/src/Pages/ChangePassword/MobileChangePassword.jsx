@@ -1,25 +1,20 @@
 import React, {useEffect, useRef, useState} from 'react'
-import {Grid, Typography, useMediaQuery, useTheme} from "@mui/material";
+import {toast, ToastContainer} from "react-toastify";
 import {Link, useNavigate} from "react-router-dom";
+import {Grid, Typography, useMediaQuery, useTheme} from "@mui/material";
+import * as yup from "yup";
 import {useForm} from "react-hook-form";
-import * as yup from 'yup'
-import {yupResolver} from '@hookform/resolvers/yup'
-import 'react-toastify/dist/ReactToastify.css';
-import {toast, ToastContainer} from 'react-toastify';
-// import { GoogleLogin } from 'react-google-login';
+import {yupResolver} from "@hookform/resolvers/yup";
 
-
-const MobileLogin = ({flag}) => {
+const MobileChangePassword = ({flag}) => {
 
     const [isFormComplete, setIsFormComplete] = useState(false);
     const [inputValues, setInputValues] = useState({});
     const [selected, setSelected] = useState('yes');
     const [show, setShow] = useState(false)
-
     const [password, setPassword] = useState(true)
-
-
-    const [login , setLogin] = useState(false)
+    const [login, setLogin] = useState(false)
+    const [repetition , setRepetition] = useState(true)
 
     const navigate = useNavigate()
 
@@ -35,12 +30,13 @@ const MobileLogin = ({flag}) => {
 
 
     const validation = yup.object().shape({
+        current: yup.string().required('پر کردن این فیلد اجباری است'),
         password: yup.string().required('پر کردن این فیلد اجباری است'),
-        email: yup.string().email('ایمیل نا معتبر است').required('پر کردن این فیلد اجباری است'),
+        repetition:yup.string().required('پر کردن این فیلد اجباری است')
     })
 
 
-    const {register ,watch ,   handleSubmit, formState: { errors, isValid }, reset } = useForm({
+    const {register, watch, handleSubmit, formState: {errors, isValid}, reset} = useForm({
         resolver: yupResolver(validation),
         mode: 'onChange', // Enable onChange mode for real-time validation
     });
@@ -50,6 +46,7 @@ const MobileLogin = ({flag}) => {
 
 
     const CustomToast = ({closeToast, message}) => {
+
         return (
             <Grid display={"flex"} alignItems={'start'} justifyContent={'end'} gap={'5px'} style={{
                 backgroundColor: 'white',
@@ -57,6 +54,27 @@ const MobileLogin = ({flag}) => {
                 fontSize: '14px',
                 padding: '15px 10px',
                 fontWeight: 900,
+                width:'250px',
+                marginRight:'-10px'
+            }}>
+                {message}
+            </Grid>
+        );
+    };
+
+
+
+    const SuccessToast = ({closeToast, message}) => {
+
+        return (
+            <Grid display={"flex"} alignItems={'start'} justifyContent={'end'} gap={'5px'} style={{
+                backgroundColor: 'white',
+                color: 'green',
+                fontSize: '14px',
+                padding: '15px 10px',
+                fontWeight: 900,
+                width:'250px',
+                marginRight:'-10px'
             }}>
                 {message}
             </Grid>
@@ -65,7 +83,7 @@ const MobileLogin = ({flag}) => {
 
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setInputValues((prevValues) => ({
             ...prevValues,
             [name]: value,
@@ -73,7 +91,8 @@ const MobileLogin = ({flag}) => {
     };
 
 
-    {/* todo for login whit google*/}
+    {/* todo for login whit google*/
+    }
     // const handleGoogleLoginSuccess = (response) => {
     //     console.log('Google login successful:', response);
     //     // Handle the successful login, you may want to perform additional actions.
@@ -85,12 +104,8 @@ const MobileLogin = ({flag}) => {
     // };
 
 
-
-
-
-
     useEffect(() => {
-        if ((watchedValues.email && watchedValues.email.trim() !== '') && (watchedValues.password && watchedValues.password.trim() !== '')) {
+        if ((watchedValues.email && watchedValues.email.trim() !== '') && (watchedValues.password && watchedValues.password.trim() !== '') && (watchedValues.current && watchedValues.current.trim()!=='')) {
             setIsFormComplete(true);
         } else {
             setIsFormComplete(false);
@@ -100,16 +115,26 @@ const MobileLogin = ({flag}) => {
     const onSubmitForm = async (data) => {
         try {
             if (isValid) {
-                if(inputValues.email === 'parsa@gmail.com' && inputValues.password === '1234'){
+                if (inputValues.current === '123' && inputValues.password === inputValues.repetition && inputValues.current !== inputValues.password) {
                     setLogin(true)
-                    navigate('/')
+                    toast.success(<SuccessToast message="تغییر رمز عبور با موفقیت انجام شد"/>);
+                   setTimeout(
+                       ()=>{ navigate('/')}, 6000
+                   )
                     reset({
-                        email: '',
+                        current: '',
                         password: '',
+                        repetition :''
                     });
                     setInputValues({});
-                }else {
-                    toast.error(<CustomToast message="رمز عبور یا ایمیل اشتباه است" />);
+                } else {
+                    if(inputValues.current !== '123'){
+                        toast.error(<CustomToast message="رمز عبور فعلی اشتباه است"/>);
+                    } else if (inputValues.password !== inputValues.repetition){
+                        toast.error(<CustomToast message="رمز عبور جدید با تکرار آن یکسان نیست"/>);
+                    } else if (inputValues.current === inputValues.password){
+                        toast.error(<CustomToast message="رمز عبور جدید با رمز عبور فعلی نباید یکسان باشد"/>);
+                    }
                     setLogin(false)
                 }
                 setSelected(null);
@@ -123,10 +148,10 @@ const MobileLogin = ({flag}) => {
         }
     };
 
-
     return (
+
         <Grid p={'88px 40px 120px 40px'} bgcolor={theme.palette.one} width={flag ? '100%' : '50%'}>
-            <ToastContainer />
+            <ToastContainer/>
             <Link to={'/'} style={{cursor: 'pointer'}}>
                 <Grid className={'return'} display={'flex'} alignItems={'center'} justifyContent={'flex-end'}
                       pb={'32px'}>
@@ -137,32 +162,13 @@ const MobileLogin = ({flag}) => {
             </Link>
             <Grid className={'Enter'} pb={'24px'}>
                 <Typography variant={'h2'} color={theme.palette.dark} fontWeight={700} pb={'8px'}
-                            lineHeight={'56px'}>ورود</Typography>
-                <Typography variant={'h6'} color={theme.palette.light} fontWeight={500} pb={'32px'}>ایمیل و رمز عبور را
-                    وارد کنید.</Typography>
-                <Grid bgcolor={'white'} py={'15px'} width={'100%'} borderRadius={'16px'} display={'flex'}
-                      alignItems={'center'} justifyContent={'center'} gap={'8px'}>
-                    <img src={'/assets/images/GoogleLogo.svg'} alt={''}/>
-                    <Typography variant={'h6'} color={theme.palette.dark} fontWeight={500}>ورود با ایمیل</Typography>
-                </Grid>
-                {/* todo for login whit google*/}
-                {/*<GoogleLogin*/}
-                {/*    clientId="YOUR_GOOGLE_CLIENT_ID"*/}
-                {/*    buttonText="Login with Google"*/}
-                {/*    onSuccess={handleGoogleLoginSuccess}*/}
-                {/*    onFailure={handleGoogleLoginFailure}*/}
-                {/*    cookiePolicy={'single_host_origin'}*/}
-                {/*/>*/}
-            </Grid>
-            <Grid display={'flex'} alignItems={'center'} justifyContent={'space-between'} pb={'16px'}>
-                <Grid width={'40%'} height={'1px'} bgcolor={theme.palette.light}></Grid>
-                <Typography variant={'h6'} fontWeight={500} color={theme.palette.light}>یا</Typography>
-                <Grid width={'40%'} height={'1px'} bgcolor={theme.palette.light}></Grid>
+                            lineHeight={'56px'}>تغییر رمز عبور
+                </Typography>
             </Grid>
             <Grid>
                 <form onSubmit={handleSubmit(onSubmitForm)} ref={formRef}>
                     <Grid pb={'24px'}>
-                        <Grid pb={'16px'} position={'relative'}>
+                        <Grid pb={'25px'} position={'relative'}>
                             <label htmlFor={'Email'} style={{
                                 display: 'flex',
                                 alignItems: 'center',
@@ -170,12 +176,12 @@ const MobileLogin = ({flag}) => {
                                 paddingBottom: '8px'
                             }}>
                                 <Typography variant={'h6'} color={theme.palette.dark}
-                                            fontWeight={500}>ایمیل</Typography>
+                                            fontWeight={500}>رمز عبور فعلی</Typography>
                                 <Typography variant={'h6'} color={theme.palette.main} fontWeight={500}>*</Typography>
                             </label>
-                            <input name={'email'} id={'Email'} {...register('email')}
+                            <input name={'current'} id={'Email'} {...register('current')}
                                    onInput={handleInputChange}
-                                   value={inputValues.email || ''}
+                                   value={inputValues.current || ''}
                                    style={{
                                        position: 'relative',
                                        padding: '12px',
@@ -183,22 +189,23 @@ const MobileLogin = ({flag}) => {
                                        border: '1px solid #E0E5F2',
                                        borderRadius: '16px',
                                        backgroundColor: 'transparent'
-                                   }} type={"email"}/>
-                            <Grid position={'absolute'} right={'0px'} top={'85%'}>
+                                   }} type={"text"}/>
+                            <Grid position={'absolute'} right={'0px'} top={'80%'}>
                                 <Typography fontWeight={700} color='#F24C3D' variant={'subtitle2'}>
-                                    {errors.email && errors.email.message}
+                                    {errors.current && errors.current.message}
                                 </Typography>
                             </Grid>
                         </Grid>
-                        <Grid position={'relative'}>
+                        <Grid position={'relative'} pb={'25px'}>
                             <label htmlFor={'Password'} style={{
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'flex-start',
                                 paddingBottom: '8px'
                             }}>
-                                <Typography variant={'h6'} color={theme.palette.dark} fontWeight={500}>رمز
-                                    عبور</Typography>
+                                <Typography variant={'h6'} color={theme.palette.dark} fontWeight={500}>
+                                    رمز عبور جدید
+                                </Typography>
                                 <Typography variant={'h6'} color={theme.palette.main} fontWeight={500}>*</Typography>
                             </label>
                             <input name={'password'} {...register('password')}
@@ -219,10 +226,46 @@ const MobileLogin = ({flag}) => {
                             }} style={{cursor: 'pointer'}}>
                                 <img src={'/assets/images/showOrHide.svg'} alt={''}/>
                             </Grid>
-                            <Grid position={'absolute'} right={'0px'} top={'110%'}>
+                            <Grid position={'absolute'} right={'0px'} top={'80%'}>
                                 {errors.password && (
                                     <Typography fontWeight={700} color='#F24C3D'
                                                 variant={'subtitle2'}>{errors.password.message}</Typography>)}
+                            </Grid>
+                        </Grid>
+                        <Grid position={'relative'} pb={'0px'}>
+                            <label htmlFor={'Password'} style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'flex-start',
+                                paddingBottom: '8px'
+                            }}>
+                                <Typography variant={'h6'} color={theme.palette.dark} fontWeight={500}>
+                                    تکرار رمز عبور جدید
+                                </Typography>
+                                <Typography variant={'h6'} color={theme.palette.main} fontWeight={500}>*</Typography>
+                            </label>
+                            <input name={'repetition'} {...register('repetition')}
+                                   onInput={handleInputChange}
+                                   value={inputValues.repetition || ''}
+                                   id={'Repetition'}
+                                   style={{
+                                       position: 'relative',
+                                       padding: '12px',
+                                       paddingRight: '40px',
+                                       width: '100%',
+                                       border: '1px solid #E0E5F2',
+                                       borderRadius: '16px',
+                                       backgroundColor: 'transparent'
+                                   }} type={repetition ? 'password' : 'text'}/>
+                            <Grid position={'absolute'} top={'45px'} right={'16px'} onClick={() => {
+                                setRepetition(!repetition)
+                            }} style={{cursor: 'pointer'}}>
+                                <img src={'/assets/images/showOrHide.svg'} alt={''}/>
+                            </Grid>
+                            <Grid position={'absolute'} right={'0px'} top={'105%'}>
+                                {errors.repetition && (
+                                    <Typography fontWeight={700} color='#F24C3D'
+                                                variant={'subtitle2'}>{errors.repetition.message}</Typography>)}
                             </Grid>
                         </Grid>
                     </Grid>
@@ -235,10 +278,9 @@ const MobileLogin = ({flag}) => {
                                 accentColor: theme.palette.main
                             }}/>
                             <Typography variant={Variant} fontWeight={500} color={theme.palette.dark}>ذخیره در
-                                سیستم</Typography>
+                                سیستم
+                            </Typography>
                         </Grid>
-                            <Typography variant={Variant} fontWeight={500} color={theme.palette.main}>رمز عبور را فراموش
-                                کردید؟</Typography>
                     </Grid>
                     <Grid>
                         <button
@@ -253,21 +295,15 @@ const MobileLogin = ({flag}) => {
                             width: '100%',
                             borderRadius: '16px',
                             fontSize: '14px',
-                            fontWeight: 700 ,
-                            cursor:'pointer'
+                            fontWeight: 700,
+                            cursor: 'pointer'
                         }}
-                        >ورود
+                        >تایید
                         </button>
-                        <Grid display={'flex'} alignItems={'center'} justifyContent={flag ? 'flex-end' : 'flex-start'}>
-                            <Typography variant={'subtitle1'} fontWeight={700} color={theme.palette.light}>هنوز ثبت نام
-                                نکردید؟ </Typography>
-                            <Typography variant={'subtitle1'} fontWeight={700} color={theme.palette.main}>ساختن
-                                اکانت</Typography>
-                        </Grid>
                     </Grid>
                 </form>
             </Grid>
         </Grid>
     )
 }
-export default MobileLogin
+export default MobileChangePassword

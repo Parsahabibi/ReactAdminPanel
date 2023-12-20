@@ -1,10 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {Grid, Typography, useMediaQuery, useTheme} from "@mui/material";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
-import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import {toast, ToastContainer} from 'react-toastify';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const MobileLogin = ({flag}) => {
@@ -15,6 +16,11 @@ const MobileLogin = ({flag}) => {
     const [show, setShow] = useState(false)
 
     const [password, setPassword] = useState(true)
+
+
+    const [login , setLogin] = useState(false)
+
+    const navigate = useNavigate()
 
 
     const formRef = useRef(null);
@@ -33,9 +39,10 @@ const MobileLogin = ({flag}) => {
     })
 
 
-    const {
-        register, handleSubmit, formState: {errors}, watch, setValue, reset
-    } = useForm({resolver: yupResolver(validation)}) // for react-hook-form
+    const {register ,watch ,   handleSubmit, formState: { errors, isValid }, reset } = useForm({
+        resolver: yupResolver(validation),
+        mode: 'onChange', // Enable onChange mode for real-time validation
+    });
 
 
     const watchedValues = watch();
@@ -45,29 +52,46 @@ const MobileLogin = ({flag}) => {
         return (
             <Grid display={"flex"} alignItems={'start'} justifyContent={'end'} gap={'5px'} style={{
                 backgroundColor: 'white',
-                color: 'green',
-                fontSize: '16px',
+                color: 'red',
+                fontSize: '14px',
                 padding: '15px 10px',
                 fontWeight: 900,
             }}>
-                <CheckCircleIcon fontSize={'large'}/>
                 {message}
             </Grid>
         );
     };
 
 
+
+
+    useEffect(() => {
+        if ((watchedValues.email && watchedValues.email.trim() !== '') && (watchedValues.password && watchedValues.password.trim() !== '')) {
+            setIsFormComplete(true);
+        } else {
+            setIsFormComplete(false);
+        }
+    }, [watchedValues]);
+
     const onSubmitForm = async (data) => {
         try {
-            if (isFormComplete) {
-                console.log('Form is complete.');
-                toast(<CustomToast message="فرم با موفقیت ارسال شد" />);
-                console.log('hello');
-                console.log(data);
-                await reset(); // Use await to ensure the form is reset before updating state
+            if (isValid) {
+                if(inputValues.email === 'parsa@gmail.com' && inputValues.password === '123'){
+                    setLogin(true)
+                    navigate('/')
+                    reset({
+                        email: '',
+                        password: '',
+                    });
+                    setInputValues({});
+                }else {
+                    toast.error(<CustomToast message="رمز عبور یا ایمیل اشتباه است" />);
+                    setLogin(false)
+                }
                 setSelected(null);
             } else {
                 console.log('Form is not complete.');
+                setLogin(false)
             }
         } catch (error) {
             console.error('Error submitting form:', error);
@@ -76,26 +100,14 @@ const MobileLogin = ({flag}) => {
     };
 
 
-
-    console.log(watchedValues.email , 'kjjkjkjkjkjkjkj')
-
-
-    useEffect(() => {
-        const isComplete = watchedValues.email && watchedValues.password;
-        setIsFormComplete(isComplete);
-    }, [watchedValues]);
-
-
-    console.log(inputValues  ,'ihytr')
-
-    console.log(errors , 'kjk')
-
-
     return (
-        <Grid p={'88px 40px 120px 40px'} bgcolor={theme.palette.one} width={flag? '100%':'50%'}>
-            <Link to={'/'} style={{cursor:'pointer'}}>
-                <Grid className={'return'} display={'flex'} alignItems={'center'} justifyContent={'flex-end'} pb={'32px'}>
-                    <Typography variant={'h6'} color={theme.palette.light} fontWeight={500}>برگشت به داشبورد</Typography>
+        <Grid p={'88px 40px 120px 40px'} bgcolor={theme.palette.one} width={flag ? '100%' : '50%'}>
+            <Link to={'/'} style={{cursor: 'pointer'}}>
+                <Grid className={'return'} display={'flex'} alignItems={'center'} justifyContent={'flex-end'}
+                      pb={'32px'}>
+                    <ToastContainer />
+                    <Typography variant={'h6'} color={theme.palette.light} fontWeight={500}>برگشت به
+                        داشبورد</Typography>
                     <img src={'/assets/images/arrowDown.svg'} alt={''}/>
                 </Grid>
             </Link>
@@ -131,7 +143,7 @@ const MobileLogin = ({flag}) => {
                             </label>
                             <input name={'email'} id={'Email'} {...register('email')}
                                    onChange={(e) => {
-                                       const { name, value } = e.target;
+                                       const {name, value} = e.target;
                                        setInputValues((prevValues) => ({
                                            ...prevValues,
                                            [name]: value,
@@ -165,7 +177,7 @@ const MobileLogin = ({flag}) => {
                             </label>
                             <input name={'password'} {...register('password')}
                                    onChange={(e) => {
-                                       const { name, value } = e.target;
+                                       const {name, value} = e.target;
                                        setInputValues((prevValues) => ({
                                            ...prevValues,
                                            [name]: value,
@@ -176,7 +188,7 @@ const MobileLogin = ({flag}) => {
                                    style={{
                                        position: 'relative',
                                        padding: '12px',
-                                       paddingRight:'40px',
+                                       paddingRight: '40px',
                                        width: '100%',
                                        border: '1px solid #E0E5F2',
                                        borderRadius: '16px',
@@ -184,7 +196,7 @@ const MobileLogin = ({flag}) => {
                                    }} type={password ? 'password' : 'text'}/>
                             <Grid position={'absolute'} top={'45px'} right={'16px'} onClick={() => {
                                 setPassword(!password)
-                            }} style={{cursor:'pointer'}}>
+                            }} style={{cursor: 'pointer'}}>
                                 <img src={'/assets/images/showOrHide.svg'} alt={''}/>
                             </Grid>
                             <Grid position={'absolute'} right={'0px'} top={'110%'}>
@@ -221,11 +233,12 @@ const MobileLogin = ({flag}) => {
                             width: '100%',
                             borderRadius: '16px',
                             fontSize: '14px',
-                            fontWeight: 700
+                            fontWeight: 700 ,
+                            cursor:'pointer'
                         }}
                         >ورود
                         </button>
-                        <Grid display={'flex'} alignItems={'center'} justifyContent={flag ? 'flex-end' :'flex-start'}>
+                        <Grid display={'flex'} alignItems={'center'} justifyContent={flag ? 'flex-end' : 'flex-start'}>
                             <Typography variant={'subtitle1'} fontWeight={700} color={theme.palette.light}>هنوز ثبت نام
                                 نکردید؟ </Typography>
                             <Typography variant={'subtitle1'} fontWeight={700} color={theme.palette.main}>ساختن

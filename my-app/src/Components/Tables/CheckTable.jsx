@@ -38,7 +38,7 @@ const CheckTable = () => {
                 {/*<th className="CheckBox"></th>*/}
 
                 <th className="Name">
-                    <Grid pl={{xs: '82px', xxs: '95px', sm: '250px', md:'200px' ,  l: '215px', lg: '100px', g: '210px', xg: '196px'}}
+                    <Grid pl={{xs: '82px', xxs: '95px', sm: '250px', md:'200px' ,  l: '215px', lg: '130px', g: '210px', xg: '196px'}}
                           pb={{xs: '12px', l: '28px'}}>
                         <Typography textAlign={'right'} variant={variant} fontWeight={500}
                                     color={theme.palette.light}>نام

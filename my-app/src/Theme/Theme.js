@@ -31,36 +31,37 @@ const Theme = createTheme({
         },
     },
     palette: {
-            main: '#4318FF',
-            dark: '#2B3674',
-            light: '#A3AED0',
-            one: '#F4F7FE',
-            two: '#B0BBD5',
-            three: '#6D7175',
-            four: '#775FFC',
-            five: '#6AD2FF',
-            six: '#EFF4FB',
-            seven: '#FAFCFE',
-            eight: '#707EAE'
-        // primary: {
-        // main: '#08A6A6',
-        // primary : '#036666',
-        // secondary : '#8E9D9D',
-        // one: '#F9FAFA',
-        // two:'#B2BEBE',
-        // three: '#7A7A7A',
-        // four: '#2D96B7' ,
-        // five:'#22C1C1',
-        // six:'#DDF5EE' ,
-        // seven:'#F9FFFF' ,
-        // eight:'#92A9A9'
-        // },
+            // main: '#4318FF',
+            // dark: '#2B3674',
+            // light: '#A3AED0',
+            // one: '#F4F7FE',
+            // two: '#B0BBD5',
+            // three: '#6D7175',
+            // four: '#775FFC',
+            // five: '#6AD2FF',
+            // six: '#EFF4FB',
+            // seven: '#FAFCFE',
+            // eight: '#707EAE'
 
 
-        // primary: {
+
+        main: '#08A6A6',
+        dark : '#036666',
+        light : '#8E9D9D',
+        one: '#F9FAFA',
+        two:'#B2BEBE',
+        three: '#7A7A7A',
+        four: '#2D96B7' ,
+        five:'#22C1C1',
+        six:'#DDF5EE' ,
+        seven:'#F9FFFF' ,
+        eight:'#92A9A9'
+
+
+
         // main:'#FD6A00',
-        // primary : '#6B472B',
-        // secondary : '#B2ADA8',
+        // dark : '#6B472B',
+        // light : '#B2ADA8',
         // one: '#FFFAF4',
         // two:'#B4A89C',
         // three: '#726A64',
@@ -69,13 +70,12 @@ const Theme = createTheme({
         // six:'#FFE4CA' ,
         // seven:'#FFF5EA' ,
         // eight:'#948D87'
-        // },
 
 
-        // primary: {
+
         // main: '#8F1010',
-        // primary: '#591B1B',
-        // secondary: '#DAB1B1',
+        // dark: '#591B1B',
+        // light: '#DAB1B1',
         // one: '#FFF4F4',
         // two: '#EED1D1',
         // three: '#5B4848',
@@ -84,7 +84,6 @@ const Theme = createTheme({
         // six: '#FFDDDD',
         // seven: '#FFEBEB',
         // eight: '#B79191'
-        // },
     },
 
 

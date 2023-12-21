@@ -530,7 +530,11 @@ const Home = () => {
                                               alignItems={'center'} justifyContent={'center'}
                                               bgcolor={theme.palette.six}>
                                             <label htmlFor="Tasks"></label>
-                                            <input type="checkbox" id="Tasks" style={{width: '20px', height: '20px'}}
+                                            <input type="checkbox" id="Tasks" style={{
+                                                width: '20px',
+                                                height: '20px',
+                                                accentColor: theme.palette.main
+                                            }}
                                                    checked={mainCheckboxTask}
                                                    onChange={handleMainCheckboxChange}
                                                    color={theme.palette.main}
@@ -554,7 +558,11 @@ const Home = () => {
                                                     <Grid display={'flex'} alignItems={'center'}
                                                           justifyContent={'flex-start'} gap={{xs: '8px', xxs: '16px'}}>
                                                         <input type={'checkbox'} id={`input-${item.id}`}
-                                                               style={{width: width, height: width}}
+                                                               style={{
+                                                                   width: width,
+                                                                   height: width,
+                                                                   accentColor: theme.palette.main
+                                                               }}
                                                                checked={taskStates[index]}
                                                                onChange={(e) => handleCheckboxChange(item.id, e.target.checked)}
                                                         />
@@ -613,7 +621,8 @@ const Home = () => {
                               gridTemplateColumns: {md: '1fr 1fr', xg: '1fr 1fr 1fr 1fr'},
                               gap: '16px'
                           }}>
-                        <Grid className={'StarBox'} bgcolor={'white'} p={'26px 14px'} borderRadius={'20px'} mb={{xs:'16px' , md:'0px'}}
+                        <Grid className={'StarBox'} bgcolor={'white'} p={'26px 14px'} borderRadius={'20px'}
+                              mb={{xs: '16px', md: '0px'}}
                               height={{md: '345px'}} width={'100%'}>
                             <Grid mb={'30px'} position={'relative'} top={0} right={0} height={'175px'} width={'100%'}
                                   style={{background: linearSecond}} borderRadius={'20px'}>
@@ -648,7 +657,7 @@ const Home = () => {
                             </Grid>
                         </Grid>
                         <Grid className={'Security'} bgcolor={'white'} p={'32px 30px 23px 30px'} borderRadius={'20px'}
-                              mb={{xs:'16px' , md:'0px'}} width={'100%'} height={{md: '345px'}}>
+                              mb={{xs: '16px', md: '0px'}} width={'100%'} height={{md: '345px'}}>
                             <img src={'/assets/images/FingerPrint.svg'} alt={''} style={{paddingBottom: '17px'}}/>
                             <Typography variant={'h2'} color={theme.palette.dark} fontWeight={700} pr={'10px'}
                                         pb={'14px'} width={{md: '198px'}}>کنترل امنیت کارت لمس کنید </Typography>
@@ -710,60 +719,55 @@ const Home = () => {
                                 }
                             </Grid>
                         </Grid>
-                        <Grid className={'CreateProduct'} mb={'75px'} height={{lg: '345px'}}>
-                            <Grid bgcolor={'white'} p={{xs: '18px 33px 24px 33px', md: '18px 32px 24px 32px'}}
-                                  borderRadius={'20px 20px 0 0'}>
-                                <Grid className={'fire'} pb={'47px'} display={'flex'} alignItems={'center'}
-                                      justifyContent={'flex-start'} gap={'12px'}>
-                                    <Grid width={'38px'} height={'38px'} borderRadius={'15px'} bgcolor={'#FEEFEE'}
-                                          display={'flex'} alignItems={'center'} justifyContent={'center'}>
-                                        <img src={'/assets/images/fire.svg'} alt={''}/>
-                                    </Grid>
-                                    <Grid>
-                                        <Typography variant={'subtitle1'} color={theme.palette.light} fontWeight={500}>طراحی
-                                            بیزینس</Typography>
-                                        <Typography variant={'h6'} color={theme.palette.dark} fontWeight={700}>دروس جدید
-                                            در دسترس است</Typography>
-                                    </Grid>
+                        <Grid className={'CreateProduct'} mb={'75px'} height={'345px'} bgcolor={'white'}
+                              p={{xs: '18px 33px 24px 33px', md: '18px 32px 24px 32px'}}
+                              borderRadius={'20px'}>
+                            <Grid className={'fire'} pb={'47px'} display={'flex'} alignItems={'center'}
+                                  justifyContent={'flex-start'} gap={'12px'}>
+                                <Grid width={'38px'} height={'38px'} borderRadius={'15px'} bgcolor={'#FEEFEE'}
+                                      display={'flex'} alignItems={'center'} justifyContent={'center'}>
+                                    <img src={'/assets/images/fire.svg'} alt={''}/>
                                 </Grid>
-                                <Grid pb={'40px'}>
-                                    <Typography variant={'h3'} fontWeight={700} color={theme.palette.dark}>برای ایجاد
-                                        محصول بهتر چه نیازهایی دارید؟</Typography>
-                                </Grid>
-                                <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'} gap={'26px'}>
-                                    <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'}
-                                          gap={'6px'}>
-                                        <img src={'/assets/images/timer.svg'} alt={''}/>
-                                        <Typography variant={'h6'} fontWeight={700} color={theme.palette.dark}>85
-                                            دقیقه</Typography>
-                                    </Grid>
-                                    <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'}
-                                          gap={'6px'}>
-                                        <img src={'/assets/images/slowMotion.svg'} alt={''}/>
-                                        <Typography variant={'h6'} fontWeight={700} color={theme.palette.dark}>فرمت
-                                            ویدیو</Typography>
-                                    </Grid>
+                                <Grid>
+                                    <Typography variant={'subtitle1'} color={theme.palette.light} fontWeight={500}>طراحی
+                                        بیزینس</Typography>
+                                    <Typography variant={'h6'} color={theme.palette.dark} fontWeight={700}>دروس جدید
+                                        در دسترس است</Typography>
                                 </Grid>
                             </Grid>
-                            <Grid bgcolor={theme.palette.seven}
-                                  p={{xs: '50px 33px 22px 33px', md: '50px 32px 22px 32px'}}
-                                  borderRadius={'0 0 20px 20px'}>
-                                <Grid className={'StartButton'} display={'flex'} alignItems={'center'}
-                                      justifyContent={'space-between'}>
-                                    <button style={{
-                                        backgroundColor: theme.palette.main,
-                                        color: 'white',
-                                        borderRadius: '16px',
-                                        border: 'none',
-                                        fontSize: '14px',
-                                        fontWeight: 700,
-                                        padding: isLargeScreen ? '8px 34px' : '8px 17px'
-                                    }}>
-                                        شروع کنید!
-                                    </button>
-                                    <Users count={18}/>
+                            <Grid pb={'40px'}>
+                                <Typography variant={'h3'} fontWeight={700} color={theme.palette.dark}>برای ایجاد
+                                    محصول بهتر چه نیازهایی دارید؟</Typography>
+                            </Grid>
+                            <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'} gap={'26px'}
+                                  pb={{xs: '40px', lg: '74px'}}>
+                                <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'}
+                                      gap={'6px'}>
+                                    <img src={'/assets/images/timer.svg'} alt={''}/>
+                                    <Typography variant={'h6'} fontWeight={700} color={theme.palette.dark}>85
+                                        دقیقه</Typography>
                                 </Grid>
-                                <Grid></Grid>
+                                <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'}
+                                      gap={'6px'}>
+                                    <img src={'/assets/images/slowMotion.svg'} alt={''}/>
+                                    <Typography variant={'h6'} fontWeight={700} color={theme.palette.dark}>فرمت
+                                        ویدیو</Typography>
+                                </Grid>
+                            </Grid>
+                            <Grid className={'StartButton'} display={'flex'} alignItems={'center'}
+                                  justifyContent={'space-between'}>
+                                <button style={{
+                                    backgroundColor: theme.palette.main,
+                                    color: 'white',
+                                    borderRadius: '16px',
+                                    border: 'none',
+                                    fontSize: '14px',
+                                    fontWeight: 700,
+                                    padding: isLargeScreen ? '8px 27px' : '8px 17px'
+                                }}>
+                                    شروع کنید!
+                                </button>
+                                <Users count={18}/>
                             </Grid>
                         </Grid>
                     </Grid>

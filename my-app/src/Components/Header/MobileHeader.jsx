@@ -137,6 +137,7 @@ const MobileHeader = ({id, marginLeft}) => {
                                 alignItems: 'flex-start',
                                 justifyContent: 'flex-start',
                                 gap: '16px',
+                                zIndex: 11,
                             }}
                         >
                             <Link to={'/ChangePassword'}>

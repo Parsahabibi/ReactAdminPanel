@@ -207,7 +207,7 @@ const Shop = () => {
                               mb={{xs: '20px', lg: '40px'}}
                               position={'relative'}>
                             <img src={'/assets/images/MobileBanner.png'} alt={''}
-                                 style={{borderRadius: '15px', display: displayXs, width: '100%', height: '100%'}}/>
+                                 style={{borderRadius: '25px', display: displayXs, width: '100%', height: '100%'}}/>
                             <img src={'/assets/images/DesktopBanner.png'} alt={''}
                                  style={{borderRadius: '15px', display: display, width: '100%', height: '100%'}}/>
                             <Grid position={'absolute'} top={{xs: '26px', md: '80px' , xl:'45px'}} right={{xs: '15px', g: '45px'}}>

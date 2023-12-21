@@ -176,7 +176,7 @@ const ReviewTable = () => {
                             xs: '60px',
                             xxs: '95px',
                             sm: '200px',
-                            md: '175px',
+                            md: '120px',
                             lg: '65px',
                             g: '155px',
                             xl: '160px'
@@ -192,8 +192,8 @@ const ReviewTable = () => {
                             xs: '10px',
                             xxs: '25px',
                             sm: '140px',
-                            md: '90px',
-                            lg: '25px',
+                            md: '70px',
+                            lg: '20px',
                             g: '70px',
                             xl: '110px'
                         }}>
@@ -208,7 +208,7 @@ const ReviewTable = () => {
                             xs: '10px',
                             xxs: '20px',
                             sm: '100px',
-                            md: '80px',
+                            md: '60px',
                             lg: '20px',
                             g: '40px',
                             xl: '100px'

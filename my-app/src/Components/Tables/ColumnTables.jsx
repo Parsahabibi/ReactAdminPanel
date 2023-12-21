@@ -123,7 +123,7 @@ const ColumnTables = () => {
     }
 
     return (
-        <Grid maxHeight={{xs: '346px', lg: '232px'}} sx={{
+        <Grid maxHeight={{xs: '346px', md:'300px' ,  lg: '232px'}} sx={{
             overflow: 'auto', scrollbarWidth: 'none', '&::-webkit-scrollbar': {
                 display: 'none',
             },
@@ -137,7 +137,7 @@ const ColumnTables = () => {
                             xs: '50px',
                             xxs: '75px',
                             sm: '180px',
-                            md: '160px',
+                            md: '90px',
                             lg: '58px',
                             g: '100px',
                             xl: '137px'
@@ -153,7 +153,7 @@ const ColumnTables = () => {
                             xs: '30px',
                             xxs: '44px',
                             sm: '120px',
-                            md: '105px',
+                            md: '90px',
                             lg: '40px',
                             g: '85px',
                             xl: '122px'
@@ -169,7 +169,7 @@ const ColumnTables = () => {
                             xs: '20px',
                             xxs: '45px',
                             sm: '135px',
-                            md: '105px',
+                            md: '90px',
                             lg: '30px',
                             g: '85px',
                             xl: '122px'

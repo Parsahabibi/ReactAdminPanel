@@ -411,7 +411,7 @@ const Profile = () => {
                                         <Typography variant={'h6'} color={theme.palette.dark} fontWeight={700}
                                                     pb={'15px'} className="titleUpload">لورم ایپسوم متن </Typography>
                                         <Typography variant={'h6'} color={theme.palette.light} fontWeight={700}
-                                                    pb={'77px'} className="desUpload">مورد نیاز، و کاربردهای متنوع با
+                                                    pb={'77px'} textAlign={'justify'} className="desUpload">مورد نیاز، و کاربردهای متنوع با
                                             هدف بهبود ابزارهای
                                             کاربردی می باشد، کتابهای زیادی در شصن را می طلبد،</Typography>
                                         <Grid className="ButtonDesktopUpload" display={'flex'} alignItems={'center'}

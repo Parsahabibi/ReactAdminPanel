@@ -58,7 +58,7 @@ const TopSellers = () => {
                             xs: '108px',
                             xxs: '150px',
                             sm: '350px',
-                            md: '220px',
+                            md: '205px',
                             l: '290px',
                             lg: '105px',
                             g: '135px',

@@ -158,9 +158,9 @@ const MobileLogin = ({flag}) => {
                 {/*/>*/}
             </Grid>
             <Grid display={'flex'} alignItems={'center'} justifyContent={'space-between'} pb={'16px'}>
-                <Grid width={'48%'} height={'1px'} bgcolor={theme.palette.light}></Grid>
+                <Grid width={'45%'} height={'1px'} bgcolor={theme.palette.light}></Grid>
                 <Typography variant={'h6'} fontWeight={500} color={theme.palette.light}>یا</Typography>
-                <Grid width={'48%'} height={'1px'} bgcolor={theme.palette.light}></Grid>
+                <Grid width={'45%'} height={'1px'} bgcolor={theme.palette.light}></Grid>
             </Grid>
             <Grid>
                 <form onSubmit={handleSubmit(onSubmitForm)} ref={formRef}>

@@ -29,6 +29,9 @@ const MobileLogin = ({flag}) => {
     const theme = useTheme()
 
     const isUp400px = useMediaQuery((theme) => theme.breakpoints.up('xxs'));
+    const isUpG = useMediaQuery((theme) => theme.breakpoints.up('g'));
+
+    let Lorem = isUpG ? 'h1' : 'h2'
 
 
     let Variant = isUp400px ? 'subtitle1' : 'subtitle2'
@@ -125,18 +128,18 @@ const MobileLogin = ({flag}) => {
 
 
     return (
-        <Grid p={'88px 40px 120px 40px'} bgcolor={theme.palette.one} width={flag ? '100%' : '50%'}>
+        <Grid p={'88px 40px 120px 40px'} bgcolor={theme.palette.one} width={flag ? '100%' : '50%'} height={'120vh'}>
             <ToastContainer />
             <Link to={'/'} style={{cursor: 'pointer'}}>
                 <Grid className={'return'} display={'flex'} alignItems={'center'} justifyContent={'flex-end'}
-                      pb={'32px'}>
+                      pb={{xs: '32px', g: '120px' , xl:'210px'}}>
                     <Typography variant={'h6'} color={theme.palette.light} fontWeight={500}>برگشت به
                         داشبورد</Typography>
                     <img src={'/assets/images/arrowDown.svg'} alt={''}/>
                 </Grid>
             </Link>
             <Grid className={'Enter'} pb={'24px'}>
-                <Typography variant={'h2'} color={theme.palette.dark} fontWeight={700} pb={'8px'}
+                <Typography variant={Lorem} color={theme.palette.dark} fontWeight={700} pb={'8px'}
                             lineHeight={'56px'}>ورود</Typography>
                 <Typography variant={'h6'} color={theme.palette.light} fontWeight={500} pb={'32px'}>ایمیل و رمز عبور را
                     وارد کنید.</Typography>
@@ -155,9 +158,9 @@ const MobileLogin = ({flag}) => {
                 {/*/>*/}
             </Grid>
             <Grid display={'flex'} alignItems={'center'} justifyContent={'space-between'} pb={'16px'}>
-                <Grid width={'40%'} height={'1px'} bgcolor={theme.palette.light}></Grid>
+                <Grid width={'48%'} height={'1px'} bgcolor={theme.palette.light}></Grid>
                 <Typography variant={'h6'} fontWeight={500} color={theme.palette.light}>یا</Typography>
-                <Grid width={'40%'} height={'1px'} bgcolor={theme.palette.light}></Grid>
+                <Grid width={'48%'} height={'1px'} bgcolor={theme.palette.light}></Grid>
             </Grid>
             <Grid>
                 <form onSubmit={handleSubmit(onSubmitForm)} ref={formRef}>
@@ -246,7 +249,7 @@ const MobileLogin = ({flag}) => {
                                 setShow(!show)
                             }} type={'submit'} style={{
                             padding: '15px 0px',
-                            marginBottom: '8px',
+                            marginBottom: '24px',
                             backgroundColor: theme.palette.main,
                             color: 'white',
                             border: 'none',

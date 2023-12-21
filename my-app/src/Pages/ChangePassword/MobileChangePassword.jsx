@@ -14,7 +14,7 @@ const MobileChangePassword = ({flag}) => {
     const [show, setShow] = useState(false)
     const [password, setPassword] = useState(true)
     const [login, setLogin] = useState(false)
-    const [repetition , setRepetition] = useState(true)
+    const [repetition, setRepetition] = useState(true)
 
     const navigate = useNavigate()
 
@@ -24,6 +24,9 @@ const MobileChangePassword = ({flag}) => {
     const theme = useTheme()
 
     const isUp400px = useMediaQuery((theme) => theme.breakpoints.up('xxs'));
+    const isUpG = useMediaQuery((theme) => theme.breakpoints.up('g'));
+
+    let Lorem = isUpG ? 'h1' : 'h2'
 
 
     let Variant = isUp400px ? 'subtitle1' : 'subtitle2'
@@ -32,7 +35,7 @@ const MobileChangePassword = ({flag}) => {
     const validation = yup.object().shape({
         current: yup.string().required('پر کردن این فیلد اجباری است'),
         password: yup.string().required('پر کردن این فیلد اجباری است'),
-        repetition:yup.string().required('پر کردن این فیلد اجباری است')
+        repetition: yup.string().required('پر کردن این فیلد اجباری است')
     })
 
 
@@ -54,14 +57,13 @@ const MobileChangePassword = ({flag}) => {
                 fontSize: '14px',
                 padding: '15px 10px',
                 fontWeight: 900,
-                width:'250px',
-                marginRight:'-10px'
+                width: '250px',
+                marginRight: '-10px'
             }}>
                 {message}
             </Grid>
         );
     };
-
 
 
     const SuccessToast = ({closeToast, message}) => {
@@ -73,8 +75,8 @@ const MobileChangePassword = ({flag}) => {
                 fontSize: '14px',
                 padding: '15px 10px',
                 fontWeight: 900,
-                width:'250px',
-                marginRight:'-10px'
+                width: '250px',
+                marginRight: '-10px'
             }}>
                 {message}
             </Grid>
@@ -91,21 +93,9 @@ const MobileChangePassword = ({flag}) => {
     };
 
 
-    {/* todo for login whit google*/
-    }
-    // const handleGoogleLoginSuccess = (response) => {
-    //     console.log('Google login successful:', response);
-    //     // Handle the successful login, you may want to perform additional actions.
-    // };
-    //
-    // const handleGoogleLoginFailure = (error) => {
-    //     console.error('Google login failed:', error);
-    //     // Handle the login failure, you may want to show an error message.
-    // };
-
 
     useEffect(() => {
-        if ((watchedValues.email && watchedValues.email.trim() !== '') && (watchedValues.password && watchedValues.password.trim() !== '') && (watchedValues.current && watchedValues.current.trim()!=='')) {
+        if ((watchedValues.email && watchedValues.email.trim() !== '') && (watchedValues.password && watchedValues.password.trim() !== '') && (watchedValues.current && watchedValues.current.trim() !== '')) {
             setIsFormComplete(true);
         } else {
             setIsFormComplete(false);
@@ -118,21 +108,24 @@ const MobileChangePassword = ({flag}) => {
                 if (inputValues.current === '123' && inputValues.password === inputValues.repetition && inputValues.current !== inputValues.password) {
                     setLogin(true)
                     toast.success(<SuccessToast message="تغییر رمز عبور با موفقیت انجام شد"/>);
-                   setTimeout(
-                       ()=>{ navigate('/')}, 6000
-                   )
+                    setTimeout(
+                        () => {
+                            navigate('/')
+                        }, 6000
+                    )
+                    let formSubmited = inputValues
                     reset({
                         current: '',
                         password: '',
-                        repetition :''
+                        repetition: ''
                     });
                     setInputValues({});
                 } else {
-                    if(inputValues.current !== '123'){
+                    if (inputValues.current !== '123') {
                         toast.error(<CustomToast message="رمز عبور فعلی اشتباه است"/>);
-                    } else if (inputValues.password !== inputValues.repetition){
+                    } else if (inputValues.password !== inputValues.repetition) {
                         toast.error(<CustomToast message="رمز عبور جدید با تکرار آن یکسان نیست"/>);
-                    } else if (inputValues.current === inputValues.password){
+                    } else if (inputValues.current === inputValues.password) {
                         toast.error(<CustomToast message="رمز عبور جدید با رمز عبور فعلی نباید یکسان باشد"/>);
                     }
                     setLogin(false)
@@ -148,9 +141,12 @@ const MobileChangePassword = ({flag}) => {
         }
     };
 
+    console.log(watchedValues, 'uhy')
+
+
     return (
 
-        <Grid p={'88px 40px 120px 40px'} bgcolor={theme.palette.one} width={flag ? '100%' : '50%'}>
+        <Grid p={'88px 40px 120px 40px'} bgcolor={theme.palette.one} width={flag ? '100%' : '50%'} height={'120vh'}>
             <ToastContainer/>
             <Link to={'/'} style={{cursor: 'pointer'}}>
                 <Grid className={'return'} display={'flex'} alignItems={'center'} justifyContent={'flex-end'}
@@ -161,7 +157,7 @@ const MobileChangePassword = ({flag}) => {
                 </Grid>
             </Link>
             <Grid className={'Enter'} pb={'24px'}>
-                <Typography variant={'h2'} color={theme.palette.dark} fontWeight={700} pb={'8px'}
+                <Typography variant={Lorem} color={theme.palette.dark} fontWeight={700} pb={'8px'}
                             lineHeight={'56px'}>تغییر رمز عبور
                 </Typography>
             </Grid>

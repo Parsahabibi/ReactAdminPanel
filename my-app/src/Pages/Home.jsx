@@ -583,7 +583,7 @@ const Home = () => {
                                 xs: '49px',
                                 xxs: '52px',
                                 sm: '250px',
-                                md: '220px',
+                                md: '115px',
                                 l: '186px',
                                 lg: '250px',
                                 g: '161px',

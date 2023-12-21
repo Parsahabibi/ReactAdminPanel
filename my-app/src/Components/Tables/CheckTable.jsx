@@ -38,7 +38,7 @@ const CheckTable = () => {
                 {/*<th className="CheckBox"></th>*/}
 
                 <th className="Name">
-                    <Grid pl={{xs: '82px', xxs: '95px', sm: '250px', l: '215px', lg: '100px', g: '210px', xg: '196px'}}
+                    <Grid pl={{xs: '82px', xxs: '95px', sm: '250px', md:'200px' ,  l: '215px', lg: '100px', g: '210px', xg: '196px'}}
                           pb={{xs: '12px', l: '28px'}}>
                         <Typography textAlign={'right'} variant={variant} fontWeight={500}
                                     color={theme.palette.light}>نام
@@ -47,7 +47,7 @@ const CheckTable = () => {
                 </th>
                 <th>
                     <Grid className="Advance"
-                          pl={{xs: '7px', xxs: '24px', sm: '110px', l: '115px', lg: '25px', g: '65px', xg: '116px'}}
+                          pl={{xs: '7px', xxs: '24px', sm: '110px', md:'80px' ,  l: '115px', lg: '25px', g: '65px', xg: '116px'}}
                           pb={{xs: '12px', l: '28px'}}>
                         <Typography textAlign={'right'} variant={variant} fontWeight={500}
                                     color={theme.palette.light}>پیشرفت
@@ -56,7 +56,7 @@ const CheckTable = () => {
                 </th>
                 <th>
                     <Grid className="Count"
-                          pl={{xs: '10px', xxs: '35px', sm: '95px', l: '95px', lg: '40px', g: '80px', xg: '141px'}}
+                          pl={{xs: '10px', xxs: '35px', sm: '95px', md:'65px' , l: '95px', lg: '40px', g: '80px', xg: '141px'}}
                           pb={{xs: '12px', l: '28px'}}>
                         <Typography textAlign={'right'} variant={variant} fontWeight={500}
                                     color={theme.palette.light}>تعداد

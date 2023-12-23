@@ -215,16 +215,16 @@ const Profile = () => {
 
 
     const notificationTexts = [
-        {text: 'لورم ایپسوم متن ساختگی', checked: true},
-        {text: 'لورم ایپسوم متن ساختگی', checked: true},
-        {text: 'لورم ایپسوم متن ساختگی', checked: false},
-        {text: 'لورم ایپسوم متن ساختگی', checked: false},
-        {text: 'لورم ایپسوم متن ساختگی', checked: false},
-        {text: 'لورم ایپسوم متن ساختگی', checked: true},
-        {text: 'لورم ایپسوم متن ساختگی', checked: false},
-        {text: 'لورم ایپسوم متن ساختگی', checked: true},
-        {text: 'لورم ایپسوم متن ساختگی', checked: false},
-        {text: 'لورم ایپسوم متن ساختگی', checked: true},
+        {id:1 , text: 'لورم ایپسوم متن ساختگی', checked: true},
+        {id:2 , text: 'لورم ایپسوم متن ساختگی', checked: true},
+        {id:3 , text: 'لورم ایپسوم متن ساختگی', checked: false},
+        {id:4 , text: 'لورم ایپسوم متن ساختگی', checked: false},
+        {id:5 , text: 'لورم ایپسوم متن ساختگی', checked: false},
+        {id:6 , text: 'لورم ایپسوم متن ساختگی', checked: true},
+        {id:7 , text: 'لورم ایپسوم متن ساختگی', checked: false},
+        {id:8 , text: 'لورم ایپسوم متن ساختگی', checked: true},
+        {id:9 , text: 'لورم ایپسوم متن ساختگی', checked: false},
+        {id:10 , text: 'لورم ایپسوم متن ساختگی', checked: true},
     ];
 
 
@@ -561,7 +561,7 @@ const Profile = () => {
                                     {
                                         LoremData.map(
                                             item =>
-                                                <Grid p={{
+                                                <Grid key={item.id} p={{
                                                     xs: '14px 35px',
                                                     xxs: '14px 40px 14px 69px',
                                                     lg: '14px 31px 14px 81px',

@@ -96,9 +96,9 @@ const DesktopHeader = ({SubTitle, MainTitle }) => {
                     {
                         IconsData.map(
                             item =>
-                                <>
+                                <Grid key={item.id} display={'flex'} alignItems={'center'} justifyContent={'center'}>
                                     {item.icon}
-                                </>
+                                </Grid>
                         )
                     }
                 </Grid>

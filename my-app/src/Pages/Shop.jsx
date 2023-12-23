@@ -265,6 +265,7 @@ const Shop = () => {
                                         ItemsData.map(
                                             item =>
                                                 <Grid key={item.id}
+                                                      style={{cursor:'pointer'}}
                                                       bgcolor={active === item.id ? 'white' : 'transparent'}
                                                       borderRadius={'16px'}
                                                       p={{xs: '4px 17px', md: '4px 26px'}}

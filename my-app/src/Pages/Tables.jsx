@@ -24,29 +24,8 @@ const Tables = () => {
     let fontSizeTitle = isUp400px ? 'subtitle1' : 'subtitle2'
 
 
-    // let FontSizeTitleLarge = isUpXl ? 'h2' : 'h3'
-    //
-    // let FontSizeDescription = isUpXl ? 'h6' : 'h5'
-
     let HeaderTables = isMd ? 'h2' : 'h6'
 
-    // let TopSellersVariant = isUpLg ? 'h3' : 'h5';
-    //
-    // let AllButton = isUpLg ? 'h6' : 'subtitle1';
-    //
-    // let TitleHistoryCard = isUpG ? 'h6' : 'subtitle1';
-    //
-    // let SubTitleHistoryCard = isUpG ? 'h6' : 'subtitle2'
-    //
-    // let PriceAndTimeHistoryCard = isUpG ? 'h5' : 'subtitle1'
-    //
-    // let padding = isMd ? '11px 32px' : '4px 10px'
-    //
-    // let fontSize = isMd ? '16px' : '10px'
-    //
-    // let display = isMd ? 'block' : 'none'
-    //
-    // let displayXs = isMd ? 'none' : 'block'
 
     return (
         <Grid bgcolor={theme.palette.primary.one} height={'100vh'} width={'100%'} display={'flex'}

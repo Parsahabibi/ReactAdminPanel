@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Grid, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Dashboard from "../Components/Dashboard";
 import Header from "../Components/Header/Header";
@@ -21,7 +21,8 @@ const Shop = () => {
     };
 
 
-    const [active, setActive] = useState(1)
+    const storedActive = localStorage.getItem('active');
+    const [active, setActive] = useState(storedActive ? parseInt(storedActive, 10) : 1);
 
 
     const [show, setShow] = useState(false)
@@ -190,6 +191,10 @@ const Shop = () => {
     let display = isMd ? 'block' : 'none'
 
     let displayXs = isMd ? 'none' : 'block'
+
+    useEffect(() => {
+        localStorage.setItem('active', active.toString());
+    }, [active]);
 
     return (
         <Grid bgcolor={theme.palette.primary.one} height={'100vh'} width={'100%'} display={'flex'}

@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {FormControlLabel, Grid, makeStyles, styled, Switch, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Dashboard from "../Components/Dashboard";
 import Header from "../Components/Header/Header";
@@ -62,19 +62,28 @@ const Profile = () => {
 
     const fileInputRef = useRef(null);
 
-    const handleButtonClick = () => {
-        fileInputRef.current.click();
-    };
+    useEffect(() => {
+        // Check if there is a file in localStorage
+        const storedFileName = localStorage.getItem('uploadedFileName');
+        if (storedFileName) {
+            const fileNameDisplay = document.querySelector('.fileNameDisplay');
+            const DesktopFileNameDisplay = document.querySelector('.DesktopFileNameDisplay');
+            fileNameDisplay.textContent = storedFileName;
+            DesktopFileNameDisplay.textContent = storedFileName;
+        }
+    }, []); // Run only on component mount
 
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
         if (selectedFile) {
             if (selectedFile.type === 'application/pdf') {
-
                 const fileNameDisplay = document.querySelector('.fileNameDisplay');
                 const DesktopFileNameDisplay = document.querySelector('.DesktopFileNameDisplay');
                 fileNameDisplay.textContent = selectedFile.name;
                 DesktopFileNameDisplay.textContent = selectedFile.name;
+
+                // Save file name to localStorage
+                localStorage.setItem('uploadedFileName', selectedFile.name);
 
                 // Clear the input value
                 fileInputRef.current.value = '';
@@ -85,6 +94,11 @@ const Profile = () => {
         } else {
             alert('فایلی انتخاب نشده است.');
         }
+    };
+
+    const handleButtonClick = () => {
+        // Trigger click on the hidden file input
+        fileInputRef.current.click();
     };
 
 
@@ -226,6 +240,29 @@ const Profile = () => {
         {id:9 , text: 'لورم ایپسوم متن ساختگی', checked: false},
         {id:10 , text: 'لورم ایپسوم متن ساختگی', checked: true},
     ];
+
+
+    const [switchStates, setSwitchStates] = useState(() => {
+        // Retrieve the saved state from local storage or set default values
+        const savedStates = JSON.parse(localStorage.getItem('switchStates')) || {};
+        return notificationTexts.reduce((acc, item) => {
+            acc[item.id] = savedStates[item.id] !== undefined ? savedStates[item.id] : item.checked;
+            return acc;
+        }, {});
+    });
+
+    // Update local storage whenever the switch states change
+    useEffect(() => {
+        localStorage.setItem('switchStates', JSON.stringify(switchStates));
+    }, [switchStates]);
+
+    // Handle switch toggle
+    const handleSwitchToggle = (id) => {
+        setSwitchStates((prevStates) => {
+            const newStates = { ...prevStates, [id]: !prevStates[id] };
+            return newStates;
+        });
+    };
 
 
     return (
@@ -607,7 +644,7 @@ const Profile = () => {
                                             item =>
                                                 <Grid key={item.id} pb={item.id === notificationTexts.length ? '0px' :'24px'}>
                                                     <FormControlLabel sx={{display:'flex' , alignItems:'center' , justifyContent:'flex-start' , gap:'8px' , marginRight: 0,}}
-                                                        control={<IOSSwitch sx={{ my: 1 }} defaultChecked = {item.checked} />}
+                                                        control={<IOSSwitch sx={{ my: 1 }} checked={switchStates[item.id]} onChange={() => handleSwitchToggle(item.id)} />}
                                                         label={<Typography  variant={'subtitle1'} color={theme.palette.dark} fontWeight={500}>{item.text}</Typography>}
                                                     />
 

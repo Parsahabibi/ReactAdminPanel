@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Grid, Typography, useMediaQuery, useTheme} from "@mui/material";
 
 const ReviewTable = () => {
@@ -122,13 +122,26 @@ const ReviewTable = () => {
 )
     ;
 
+    useEffect(() => {
+        const savedRowData = JSON.parse(localStorage.getItem('rowData'));
+        if (savedRowData) {
+            setRowData(savedRowData);
+        }
+    }, []);
+
+    const saveToLocalStorage = (data) => {
+        localStorage.setItem('rowData', JSON.stringify(data));
+    };
+
     const handleCheckboxChange = (index) => {
         // Create a shallow copy of the rowData array
         const updatedRowData = [...rowData];
         // Toggle the isChecked property for the specified index
         updatedRowData[index].isChecked = !updatedRowData[index].isChecked;
         // Update the state with the new rowData
-        setRowData(updatedRowData); // Assuming you have a state variable and a setter function for the rowData
+        setRowData(updatedRowData);
+        // Save to local storage
+        saveToLocalStorage(updatedRowData);
     };
 
 

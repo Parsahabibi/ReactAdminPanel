@@ -78,6 +78,14 @@
     font-size: 10px;
     font-weight: 700;
 }
+
+@media screen and (min-width: 1200px) {
+    .Calender .weekday-container p {
+        padding-bottom: 0;
+        margin: 0;
+    }
+}
+
 @media screen and (min-width: 1000px) {
  .Calender .weekday-container p {
         font-size: 12px;

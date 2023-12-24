@@ -1,16 +1,13 @@
 import React, {useEffect, useState} from 'react'
-import {Grid, useTheme, useMediaQuery, Typography, Button} from "@mui/material";
+import {Grid, useTheme, useMediaQuery, Typography} from "@mui/material";
 import Header from "../Components/Header/Header";
-import DesktopLayoutHeader from "../Components/Layout/DesktopLayoutHeader";
-import HeaderLayout from "../Components/Layout/HeaderLayout";
-import {AddMemberIcon, Dollar, File, Income, LeftCircle, MoreHoriz, RightCircle, Tick} from "../Components/Icons";
+import {AddMemberIcon, Dollar, File, Income, LeftCircle, RightCircle, Tick} from "../Components/Icons";
 import MobileNavbarCard from "../Components/NavbarCard/MobileNavbarCard";
 import DesktopNavbarCard from "../Components/NavbarCard/DesktopNavbarCard";
 import Dashboard from "../Components/Dashboard";
 import WeeklyIncomeChart from "../Components/Charts/WeeklyIncomeChart";
 import MonthlyIncomeChart from "../Components/Charts/MonthlyIncomeChart";
 import CircleChart from "../Components/Charts/CircleChart";
-import BarChart from "../Components/Charts/BarChart";
 import ChartMoreOption from "../Components/ChartMoreOption";
 import CheckTable from "../Components/Tables/CheckTable";
 import Calender from "../Components/Calender/Calender";
@@ -24,8 +21,6 @@ const Home = () => {
 
     const screenWidth = window.innerWidth;
     const isLargeScreen = screenWidth >= 1000;
-
-    const CheckedColor = theme.palette.dark;
 
     const dataTask = [
         {id: 1, text: "لورم ایپسوم ", checked: false},
@@ -45,8 +40,29 @@ const Home = () => {
     ];
 
 
-    const [mainCheckboxTask, setMainCheckboxTask] = useState(false);
-    const [taskStates, setTaskStates] = useState(dataTask.map(() => false));
+    const saveToLocalStorage = (taskStates) => {
+        localStorage.setItem('taskStates', JSON.stringify(taskStates));
+    };
+
+    // Function to load task states from local storage
+    const loadFromLocalStorage = () => {
+        const storedTaskStates = localStorage.getItem('taskStates');
+        return storedTaskStates ? JSON.parse(storedTaskStates) : Array(dataTask.length).fill(false);
+    };
+
+
+    const saveMainCheckboxToLocalStorage = (value) => {
+        localStorage.setItem('mainCheckboxTask', JSON.stringify(value));
+    };
+
+    // Function to load mainCheckboxTask from local storage
+    const loadMainCheckboxFromLocalStorage = () => {
+        const storedMainCheckboxTask = localStorage.getItem('mainCheckboxTask');
+        return storedMainCheckboxTask ? JSON.parse(storedMainCheckboxTask) : false;
+    };
+
+    const [mainCheckboxTask, setMainCheckboxTask] = useState(loadMainCheckboxFromLocalStorage);
+    const [taskStates, setTaskStates] = useState(loadFromLocalStorage);
 
     const handleMainCheckboxChange = () => {
         setMainCheckboxTask(!mainCheckboxTask);
@@ -263,6 +279,15 @@ const Home = () => {
         {id: 5, name: 'سحر محمدی ', position: 'مدیر هنری', image: '/assets/images/TeamMemberImage.svg'},
         {id: 6, name: 'سحر محمدی ', position: 'مدیر هنری', image: '/assets/images/TeamMemberImage.svg'},
     ]
+
+
+    useEffect(() => {
+        saveToLocalStorage(taskStates);
+    }, [taskStates]);
+
+    useEffect(() => {
+        saveMainCheckboxToLocalStorage(mainCheckboxTask);
+    }, [mainCheckboxTask]);
 
 
     return (
@@ -577,7 +602,7 @@ const Home = () => {
                                                     </Grid>
                                                     <Grid display={'flex'} alignItems={'center'}
                                                           justifyContent={'center'}>
-                                                        <img src={'/assets/images/dragIndicator.svg'}/>
+                                                        <img src={'/assets/images/dragIndicator.svg'} alt={''}/>
                                                     </Grid>
                                                 </Grid>
                                         )

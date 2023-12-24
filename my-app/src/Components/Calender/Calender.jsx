@@ -7,8 +7,15 @@ const Calender = () => {
 
     const theme = useTheme()
 
-    const [selectedYear, setSelectedYear] = useState(1402);
-    const [selectedMonth, setSelectedMonth] = useState(0); // January is 0 in JavaScript Date
+    const [selectedYear, setSelectedYear] = useState(() => {
+        const storedYear = localStorage.getItem('selectedYear');
+        return storedYear ? parseInt(storedYear, 10) : 1402;
+    });
+
+    const [selectedMonth, setSelectedMonth] = useState(() => {
+        const storedMonth = localStorage.getItem('selectedMonth');
+        return storedMonth ? parseInt(storedMonth, 10) : 0;
+    });
     const [monthDays, setMonthDays] = useState([31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29]);
 
     const monthNames = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
@@ -103,6 +110,13 @@ const Calender = () => {
     const updateCalendar = () => {
         updateMonthDays();
     };
+
+    useEffect(() => {
+        updateMonthDays();
+        // Save selectedYear and selectedMonth to local storage
+        localStorage.setItem('selectedYear', selectedYear.toString());
+        localStorage.setItem('selectedMonth', selectedMonth.toString());
+    }, [selectedYear, selectedMonth]);
 
 
     return (

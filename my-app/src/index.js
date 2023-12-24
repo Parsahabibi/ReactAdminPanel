@@ -1,31 +1,4 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-// import './index.css';
-// import App from './App';
-// import reportWebVitals from './reportWebVitals';
-// import { ThemeProvider } from '@mui/material/styles';
-// import CssBaseline from '@mui/material/CssBaseline';
-// import Theme from "./Theme/Theme";
-//
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//     <React.StrictMode>
-//         <ThemeProvider theme={Theme}>
-//             <CssBaseline/>
-//             <App/>
-//         </ThemeProvider>
-//     </React.StrictMode>
-// );
-//
-// // If you want to start measuring performance in your app, pass a function
-// // to log results (for example: reportWebVitals(console.log))
-// // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
-
-
-
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -35,38 +8,21 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Theme from "./Theme/Theme";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-const MainApp = () => {
-    useEffect(() => {
-        // Update local storage whenever the App component updates
-        const handleStorageChange = () => {
-            // Replace this with the logic to save the necessary data to local storage
-            console.log('Updating local storage...');
-        };
-
-        // Attach the event listener
-        window.addEventListener('storage', handleStorageChange);
-
-        // Remove the event listener when the component unmounts
-        return () => {
-            window.removeEventListener('storage', handleStorageChange);
-        };
-    }, []);
-
-    return (
-        <React.StrictMode>
-            <ThemeProvider theme={Theme}>
-                <CssBaseline/>
-                <App/>
-            </ThemeProvider>
-        </React.StrictMode>
-    );
-};
-
-root.render(<MainApp />);
+root.render(
+    <React.StrictMode>
+        <ThemeProvider theme={Theme}>
+            <CssBaseline/>
+            <App/>
+        </ThemeProvider>
+    </React.StrictMode>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+
+
+
 

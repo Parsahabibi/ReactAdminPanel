@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Grid, Typography, useMediaQuery, useTheme} from "@mui/material";
 
 const CheckTable = () => {
@@ -30,6 +30,24 @@ const CheckTable = () => {
         variant = 'h6';
     }
 
+    const [checkedItems, setCheckedItems] = useState(() => {
+        // Retrieve saved state from local storage or use default
+        const storedState = JSON.parse(localStorage.getItem('checkedItems')) || {};
+        return dataTable.reduce((acc, item, index) => {
+            acc[index] = storedState[index] || false;
+            return acc;
+        }, {});
+    });
+
+
+    const handleCheckboxChange = (index) => {
+        setCheckedItems((prev) => {
+            const newState = {...prev, [index]: !prev[index]};
+            localStorage.setItem('checkedItems', JSON.stringify(newState));
+            return newState;
+        });
+    };
+
 
     return (
         <table>
@@ -38,7 +56,16 @@ const CheckTable = () => {
                 {/*<th className="CheckBox"></th>*/}
 
                 <th className="Name">
-                    <Grid pl={{xs: '82px', xxs: '95px', sm: '250px', md:'200px' ,  l: '215px', lg: '130px', g: '210px', xg: '196px'}}
+                    <Grid pl={{
+                        xs: '82px',
+                        xxs: '95px',
+                        sm: '250px',
+                        md: '200px',
+                        l: '215px',
+                        lg: '130px',
+                        g: '210px',
+                        xg: '196px'
+                    }}
                           pb={{xs: '12px', l: '28px'}}>
                         <Typography textAlign={'right'} variant={variant} fontWeight={500}
                                     color={theme.palette.light}>نام
@@ -47,7 +74,16 @@ const CheckTable = () => {
                 </th>
                 <th>
                     <Grid className="Advance"
-                          pl={{xs: '7px', xxs: '24px', sm: '110px', md:'80px' ,  l: '115px', lg: '25px', g: '65px', xg: '116px'}}
+                          pl={{
+                              xs: '7px',
+                              xxs: '24px',
+                              sm: '110px',
+                              md: '80px',
+                              l: '115px',
+                              lg: '25px',
+                              g: '65px',
+                              xg: '116px'
+                          }}
                           pb={{xs: '12px', l: '28px'}}>
                         <Typography textAlign={'right'} variant={variant} fontWeight={500}
                                     color={theme.palette.light}>پیشرفت
@@ -56,7 +92,16 @@ const CheckTable = () => {
                 </th>
                 <th>
                     <Grid className="Count"
-                          pl={{xs: '10px', xxs: '35px', sm: '95px', md:'65px' , l: '95px', lg: '40px', g: '80px', xg: '141px'}}
+                          pl={{
+                              xs: '10px',
+                              xxs: '35px',
+                              sm: '95px',
+                              md: '65px',
+                              l: '95px',
+                              lg: '40px',
+                              g: '80px',
+                              xg: '141px'
+                          }}
                           pb={{xs: '12px', l: '28px'}}>
                         <Typography textAlign={'right'} variant={variant} fontWeight={500}
                                     color={theme.palette.light}>تعداد
@@ -74,27 +119,42 @@ const CheckTable = () => {
 
             </tr>
             </thead>
-            <tbody style={{height:'88px' , overflowY:'auto'}}>
+            <tbody style={{height: '88px', overflowY: 'auto'}}>
             {dataTable.map((item, index) => (
-                <tr key={index} style={{marginBottom:'16px'}}>
+                <tr key={index} style={{marginBottom: '16px'}}>
                     <td className="CheckBox"
-                        style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start' , paddingBottom:'16px' , gap:isMd? '12px' : '0px' }}>
-                        <input type="checkbox"  id={`Check${index}`} style={{width:'20px' , height:'20px' , accentColor:theme.palette.main , cursor:'pointer'}}/>
-                        <label htmlFor={`Check${index}`} style={{cursor:'pointer'}}>
-                            <Typography variant={'subtitle1'} fontWeight={500} color={theme.palette.three}>{item.name}</Typography>
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'flex-start',
+                            paddingBottom: '16px',
+                            gap: isMd ? '12px' : '0px'
+                        }}>
+                        <input type="checkbox" id={`Check${index}`} style={{
+                            width: '20px',
+                            height: '20px',
+                            accentColor: theme.palette.main,
+                            cursor: 'pointer'
+                        }}
+                               checked={checkedItems[index]}
+                               onChange={() => handleCheckboxChange(index)}
+                        />
+                        <label htmlFor={`Check${index}`} style={{cursor: 'pointer'}}>
+                            <Typography variant={'subtitle1'} fontWeight={500}
+                                        color={theme.palette.three}>{item.name}</Typography>
                         </label>
                     </td>
-                    <td style={{ paddingBottom:'16px'}}>
+                    <td style={{paddingBottom: '16px'}}>
                         <Typography variant={'subtitle1'} fontWeight={700} color={theme.palette.dark}>
                             {item.progress}
                         </Typography>
                     </td>
-                    <td style={{ paddingBottom:'16px'}}>
+                    <td style={{paddingBottom: '16px'}}>
                         <Typography variant={'subtitle1'} fontWeight={700} color={theme.palette.dark}>
                             {item.count}
                         </Typography>
                     </td>
-                    <td style={{ paddingBottom:'16px'}}>
+                    <td style={{paddingBottom: '16px'}}>
                         <Typography variant={'subtitle1'} fontWeight={700} color={theme.palette.dark}>
                             {item.date}
                         </Typography>
